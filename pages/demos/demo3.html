@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malvertising Demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/demo.css">
+    <style>
+    
+
+        .ad-container {
+            text-align: center;
+            margin-top: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .ad {
+            width: 600px;
+            height: 300px;
+            background: url('https://blogapp.bitdefender.com/labs/content/images/2022/11/ransomware-decryption-tools-banner-1-1.jpeg') no-repeat center center;
+            background-size: cover;
+            cursor: pointer;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .ad:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slider-container">
+        <div class="slides">
+            <div class="slide active">
+                <h2>Malvertising Demo</h2>
+                <p>Malvertising (Quảng cáo độc hại) là một hình thức tấn công lợi dụng quảng cáo trực tuyến để phát tán
+                    phần mềm độc hại. Người dùng có thể bị lừa tải xuống phần mềm độc hại hoặc truy cập vào các trang
+                    web độc hại thông qua các quảng cáo tưởng chừng như hợp pháp.</p>
+            </div>
+            <div class="slide">
+                <h2>Malicious Advertisement</h2>
+                <p>Hãy thử nhấp vào quảng cáo bên dưới để xem cách một quảng cáo hợp pháp có thể dẫn bạn đến một trang
+                    độc hại:</p>
+                <div class="ad-container">
+                    <div class="ad" onclick="window.location.href='../stuff/Hacked.html'"
+                        title="Bấm vào để tải phần mềm giải mã miến phí tốt nhất 2025 !!!"></div>
+                </div>
+            </div>
+            <div class="slide">
+                <h2>What Happened?</h2>
+                <p>Khi bạn nhấp vào quảng cáo, bạn đã bị chuyển hướng đến một trang web độc hại. Đây là cách
+                    malvertising hoạt động để phát tán phần mềm độc hại hoặc thu thập thông tin người dùng.</p>
+                <p><strong>Kết luận:</strong> Để bảo vệ khỏi malvertising:</p>
+                <ul>
+                    <li>Sử dụng các công cụ chặn quảng cáo (ad blocker).</li>
+                    <li>Tránh nhấp vào các quảng cáo không rõ nguồn gốc.</li>
+                    <li>Quản lý các đối tác quảng cáo để đảm bảo nội dung quảng cáo không chứa mã độc.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="dots-container"></div>
+
+        <div class="navigation">
+            <button class="nav-button" id="prevBtn">Back</button>
+            <button id="backToHomeBtn"
+                style="display: none; padding: 12px 20px; background-color: #2563eb; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 1em; transition: background-color 0.3s;">
+                Back to lesson
+            </button>
+            <button class="nav-button" id="nextBtn">Next</button>
+        </div>
+    </div>
+
+    <script src="../../assets/js/demo.js"></script>
+
+    <script>
+
+
+        backToHomeBtn.addEventListener('click', () => {
+            window.location.href = '../lessons/lesson23.html'; // Change to your homepage URL
+        });
+
+        
+    </script>
+</body>
+
+</html>

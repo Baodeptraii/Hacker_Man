@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Spoofing
+
+
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/lessonstyle.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <header class="bg-success text-white py-5 text-center">
+        <div class="container text-center">
+            <h1 class="display-4">Email Spoofing
+
+
+            </h1>
+            <a href="../../index.html" class="btn btn-light btn-lg mt-3">Back to Home</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Hiếm - Thỉnh thoảng - Thường xuyên -->
+        <!-- Khó - Trung bình - Dễ -->
+        <!-- Nhẹ - Trung bình - Nghiêm trọng -->
+
+        <div class="row row-box">
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Độ phổ biến</h3>
+                    <p>Thường xuyên</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Khả năng khai thác</h3>
+                    <p>Dễ</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Ảnh hưởng</h3>
+                    <p>Nhẹ</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Nội dung chính -->
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-16">
+
+                <div class="lesson-list p-4 shadow-sm bg-white rounded">
+
+                    <div class="what">
+                        <h2> <i class="fa-solid fa-magnifying-glass"></i>Email Spoofing
+
+
+                            là gì ?</h2>
+                        <p>
+                            <a href="../stuff/glossary.html">Email Spoofing</a> là một kỹ thuật tấn công mà kẻ tấn công gửi email từ một địa chỉ email giả
+                            mạo
+                            hoặc thay đổi thông tin nguồn gốc của email để lừa đảo người nhận. Kỹ thuật này thường được
+                            sử dụng để gửi email rác hoặc email lừa đảo, nhưng cũng có thể được sử dụng để tấn công
+                            phishing hoặc tấn công từ chối dịch vụ (DoS).
+                        </p>
+                        <p>
+                            Hơn 95% email được gửi qua internet là email rác hoặc email lừa đảo. Một phần lớn trong số
+                            đó được gửi từ các máy chủ email spoofed, nơi kẻ tấn công đã thay đổi thông tin nguồn gốc
+                            của email để tránh bị phát hiện. Kẻ tấn công sẽ lợi dụng người dùng để:
+                        <ul class="styled-list-3">
+                            <li>Đánh cắp thông tin cá nhân bằng cách gửi tin nhắn lừa đảo (Phishing) </li>
+                            <li>Phân tán phần mềm độc hại</li>
+                            <li>Lừa họ mắc bẫy scam online</li>
+                            <li>Phân tán email rác</li>
+                        </ul>
+                        </p>
+
+                    </div>
+
+                    <br>
+
+                    <div class="how">
+                        <h2> <i class="fa-solid fa-shield-halved"></i>Cách để ngăn chặn Email Spoofing
+
+                        </h2>
+                        <p>
+                            Với tư cách là người quản trị hệ thống, ae phải đảm bảo tên miền mình đang sử dụng không bị
+                            lợi dụng trong các trường hợp spam thư rác. Do đó, ae có thể áp dụng hai cách phổ biến sau:
+                        </p>
+                        <p>
+                            <span class="bold">Implement the Sender Policy Framework (SPF - Chính sách người gửi)
+                            </span> :
+                            Sử dụng bản ghi DNS để ghi rõ máy chủ nào được phép gửi email từ miền của ae. <br>
+                            <span class="bold">Implement Domain Key Identified Mail (DKIM -Thư xác định khóa
+                                miền)</span> :
+                            DKIM sử dụng <a href="../stuff/glossary.html">chữ ký số</a> để xác định rằng email được gửi đi là hợp pháp và không bị thay đổi.
+                            <br>
+                            <span class="bold">Implement Domain-based Message Authentication, Reporting, and Conformance
+                                (DMARC - Xác thực, Báo cáo và Tuân thủ dựa trên miền)</span> :
+                            DMARC là một cơ chế xác thực email mà sử dụng SPF và DKIM để xác định xem một email có phải
+                            là hợp pháp hay không.
+                        </p>
+                        <p>
+                            Việc áp dụng các công nghệ này cũng đem lại lợi ích cho ae trong việc đỡ bị gắn nhãn email
+                            mình gửi là spam.
+                        </p>
+                        <p>
+                            Việc triển khai các phương pháp trên sẽ giúp ae bảo vệ tên miền của mình khỏi việc bị lợi
+                            dụng, tuy nhiên
+                            nó lại yêu cầu sự hiểu biết về cách hoạt động của email và DNS. Nếu ae không chắc chắn về
+                            cách thức
+                            hoạt động của chúng, vẫn có một số phương pháp gửi email phổ biến hơn mà ae có thể áp dụng:
+                        </p>
+                        <p>
+                        <div class="div-1">
+                            <p>
+                                <span class="red-bold">Transactional Email Services ( Dịch vụ email giao dịch )</span>
+                                Amazon Simple Email Service, Mailgun, Postmark, SendGrid ...
+                                <span class="red-bold">Email Marketing Services ( Dịch vụ email marketing )</span>
+                                Mailchimp, Constant Contact, AWeber, GetResponse ...
+                                <span class="red-bold">Mail Transfer Agents (MTAs) ( Các đại lý chuyển thư )</span>
+                                Postfix, Sendmail, Exim, Qmail ...
+                            </p>
+
+
+                        </div>
+                        </p>
+
+
+                    </div>
+
+
+
+
+
+                    <br>
+
+                    <div class="moreinfo">
+                        <h2> <i class="fa-solid fa-info"></i> Thông tin thêm</h2>
+                        <p>
+                            Đây là một số bài viết hay ho mà mình thấy nên đọc thêm:
+                        </p>
+                        <ul class="styled-list">
+
+                            <li><i class="fa-solid fa-link"></i><a href="https://www.cloudflare.com/learning/dns/dns-records/dkim/">What is DKIM?</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://www.cloudflare.com/learning/dns/dns-records/spf/">What is SPF?</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://www.cloudflare.com/learning/dns/dns-records/dmarc/">What is DMARC?</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://www.cloudflare.com/learning/dns/dns-records/mx-record/">What is an MX
+                                    Record?</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <footer class="bg-dark text-white text-center py-3">
+        <script>
+
+        </script>
+        <p>&copy; Clone lại thằng Hacksplaining | <a href="https://github.com/Baodeptraii"
+                class="text-white text-decoration-none">By Re3on</a></p>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"></script>
+    </footer>
+
+    <!-- Thêm Bootstrap JS và Popper.js -->
+
+</body>
+
+</html>

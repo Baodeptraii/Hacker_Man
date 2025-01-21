@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clickjacking</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/lessonstyle.css">
+    <style>
+        table {
+            width: 60%;
+            border-collapse: collapse;
+            margin: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            text-align: center;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="bg-success text-white py-5 text-center">
+        <div class="container text-center">
+            <h1 class="display-4">Clickjacking</h1>
+            <a href="../../index.html" class="btn btn-light btn-lg mt-3">Back to Home</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Hiếm - Thỉnh thoảng - Thường xuyên -->
+        <!-- Khó - Trung bình - Dễ -->
+        <!-- Nhẹ - Trung bình - Nghiêm trọng -->
+
+        <div class="row row-box">
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Độ phổ biến</h3>
+                    <p>Thỉnh thoảng</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Khả năng khai thác</h3>
+                    <p>Dễ</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Ảnh hưởng</h3>
+                    <p>Trung bình</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Nội dung chính -->
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-16">
+
+                <div class="lesson-list p-4 shadow-sm bg-white rounded">
+
+                    <div class="what">
+                        <h2> <i class="fa-solid fa-magnifying-glass"></i>Clickjacking là gì ?<a href="../demos/demo2.html">Demo</a ></h2> 
+                        <p>
+                            Các cuộc tấn công Clickjacking (tấn công đánh cắp cú nhấp chuột) lừa người dùng thực hiện
+                            hành động mà họ không hề có ý định, thường bằng cách hiển thị một phần tử trang vô hình nằm
+                            phía trên nội dung mà người dùng cho rằng họ đang tương tác.<br>
+                            <span class="bold">Clickjacking won't affect your site directly, but it could potentially
+                                affect your users. And only you can protect them!</span><br>
+                            Tạm dịch: "Clickjacking không ảnh hưởng trực tiếp đến trang web của bạn, nhưng có thể ảnh
+                            hưởng đến người dùng của bạn. Và chỉ có bạn mới có thể bảo vệ họ!"<br>
+                            Dựa vào Clickjacking, hacker có thể thực hiện để:
+                        <ul style="list-style-type: none;">
+                            <li>Thu thập thông tin đăng nhập bằng cách hiển thị một hộp đăng nhập giả mạo chồng lên hộp
+                                đăng nhập thật.</li>
+                            <li>Kích hoạt webcam hoặc micro của người dùng bằng cách hiển thị các phần tử ẩn trên giao
+                                diện cài đặt Adobe Flash.</li>
+                            <li>Phát tán sâu trên các mạng xã hội như Twitter và MySpace.</li>
+                            <li>Quảng bá các trò lừa đảo trực tuyến, khiến người dùng nhấp vào các liên kết mà họ thường
+                                không nhấp vào.</li>
+                            <li>Phát tán phần mềm độc hại thông qua việc chuyển hướng đến các liên kết tải xuống độc
+                                hại.</li>
+                        </ul>
+
+                        </p>
+                        <p style="color: gray; font-size: small;">Haha, mình thấy cái này giống trên mấy trang web lậu, ae bấm vào nút Play là nó hiện ra trang "cố đạ" ấy =)) </p>
+
+
+                    </div>
+
+                    <br>
+
+                    <div class="how">
+                        <h2> <i class="fa-solid fa-shield-halved"></i>Cách để ngăn chặn Clickjacking</h2>
+                        <p>Các cuộc tấn công clickjacking thường lợi dụng iframe để bọc trang web của bạn và thêm các
+                            phần tử vô hình phía trên. Để ngăn chặn điều này, hãy đảm bảo rằng trang web của bạn không
+                            thể bị nhúng trong iframe từ các trang độc hại. Dưới đây là các biện pháp bạn có thể áp
+                            dụng:
+
+                        </p>
+
+                        <p class="red-bold">
+                            Content Security Policy (CSP - Chính sách bảo mật nội dung)
+
+                        </p>
+                        <p>
+                            Tiêu đề HTTP Content-Security-Policy là một phần của tiêu chuẩn HTML5, cung cấp phạm vi bảo
+                            vệ rộng hơn tiêu đề cũ X-Frame-Options. Sử dụng thuộc tính frame-ancestors trong CSP để kiểm
+                            soát nơi trang của ae được phép nhúng:
+                        <pre class="code-block">
+<span class="comment">// Trang không thể được hiển thị trong bất kỳ khung nào.</span>
+Content-Security-Policy: frame-ancestors 'none'
+
+<span class="comment">// Trang chỉ được hiển thị trong khung có cùng nguồn gốc với chính nó.</span>
+Content-Security-Policy: frame-ancestors 'self'
+
+<span class="comment">// Trang chỉ được hiển thị trong khung từ nguồn gốc được chỉ định.</span>
+Content-Security-Policy: frame-ancestors *uri*</pre>
+
+                        </p>
+
+
+
+                        <p class="red-bold">
+                            X-Frame-Options Header (Tiêu đề X-Frame-Options)
+
+                        </p>
+                        <p>
+                            So với CSP, tiêu đề X-Frame-Options đơn giản hơn và hỗ trợ ít tùy chọn hơn. Tuy nhiên, nó
+                            vẫn là một cách hiệu quả để ngăn chặn clickjacking. Sử dụng tiêu đề X-Frame-Options để chỉ
+                            định cách trang của ae được nhúng:
+                        <table>
+                            <tr>
+                                <th>Giá trị</th>
+                                <th>Mô tả</th>
+                            </tr>
+                            <tr>
+                                <td>DENY</td>
+                                <td>Trang không thể được nhúng trong bất kỳ khung nào.</td>
+                            </tr>
+                            <tr>
+                                <td>SAMEORIGIN</td>
+                                <td>Trang chỉ được nhúng trong khung có cùng nguồn gốc với chính nó.</td>
+                            </tr>
+                            <tr>
+                                <td>ALLOW-FROM uri</td>
+                                <td>Trang chỉ được nhúng trong khung từ nguồn gốc được chỉ định.</td>
+                            </tr>
+                        </table>
+                        </p>
+
+                        <p class="red-bold">
+                            Frame Killing
+                        </p>
+                        <p>
+                            Trong các trình duyệt cũ, có thể không sử dụng được 2 tiêu chuẩn như trên, ae hoàn toàn có
+                            thể tự xây dựng một đoạn mã JavaScript để ngăn chặn clickjacking. Dưới đây là một ví dụ về
+                            cách thức hoạt động của frame killing:
+                        <pre class="code-block">
+&lt;<span class="keyword">style</span>&gt;
+<span class="comment">// Ẩn nội dung mặc định</span>
+    <span class="class-name">html</span> { <span class="variable">display</span>: none; }
+&lt;/<span class="keyword">style</span>&gt;
+
+&lt;<span class="keyword">script</span>&gt;
+    <span class="class-name">if</span> (self == <span class="string">top</span> ) {
+        <span class="comment">// Nếu không bị nhúng, hiển thị trang</span>
+        <span class="string">document</span>.documentElement.style.display = <span class="string">'block'</span>;
+    } <span class="class-name">else</span> {
+        <span class="comment">// Nếu bị nhúng, thoát khỏi khung</span>
+        <span class="string">top</span>.location = self.location;
+    }
+&lt;/<span class="keyword">script</span>&gt;</pre>
+
+                        </p>
+                        <p>Hầu hết các trang web không cần được nhúng trong một iframe. Vì vậy, việc sử dụng một tập
+                            lệnh "frame-killing" (ngăn chặn việc nhúng iframe) là giải pháp đơn giản và hiệu quả.
+
+                            Nếu ứng dụng của bạn cần cho phép nhúng nội dung vào iframe, hãy cân nhắc sử dụng danh sách
+                            cho phép (whitelist) các miền đáng tin cậy. Điều này giúp bạn kiểm soát chặt chẽ những nơi
+                            nội dung của mình có thể được nhúng.
+
+                            Mặc dù "frame-killing" cung cấp mức bảo vệ cao chống lại clickjacking, nó có thể gây ra lỗi
+                            hoặc xung đột trong một số trường hợp. Vì vậy, luôn ưu tiên sử dụng các tiêu đề HTTP bảo mật
+                            như <span class="bold">X-Frame-Options</span> hoặc <span
+                                class="bold">Content-Security-Policy (CSP)</span> làm biện pháp phòng ngừa đầu tiên để
+                            bảo vệ trang web của bạn một cách hiệu quả.</p>
+                    </div>
+
+                    <br>
+
+                    <div class="moreinfo">
+                        <h2> <i class="fa-solid fa-info"></i> Thông tin thêm</h2>
+                        <p>
+                            Đây là một số bài viết hay ho mà mình thấy nên đọc thêm:
+                        </p>
+
+                        <ul class="styled-list">
+                            <li>
+                                <i class="fa-solid fa-link"></i>
+                                <a
+                                    href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/frame-ancestors">
+                                    Content Security Policy: frame-ancestors
+                                </a>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-link"></i>
+                                <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options">
+                                    X-Frame-Options
+                                </a>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-link"></i>
+                                <a href="https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet">
+                                    OWASP Clickjacking Defense Cheat Sheet
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <footer class="bg-dark text-white text-center py-3">
+        <script>
+            function saveInput() {
+                const userInput = document.getElementById('userInput').value;
+                const output = document.getElementById('output');
+
+                // Lưu và hiển thị nội dung mà không mã hóa (raw HTML) => dễ bị XSS
+                output.innerHTML = userInput;
+
+                // Ngăn chặn reload form
+                return false;
+            }
+        </script>
+        <p>&copy; Clone lại thằng Hacksplaining | <a href="https://github.com/Baodeptraii"
+                class="text-white text-decoration-none">By Re3on</a></p>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"></script>
+    </footer>
+
+    <!-- Thêm Bootstrap JS và Popper.js -->
+
+</body>
+
+</html>

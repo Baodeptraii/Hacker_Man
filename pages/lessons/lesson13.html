@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Enumeration
+
+
+
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/lessonstyle.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <header class="bg-success text-white py-5 text-center">
+        <div class="container text-center">
+            <h1 class="display-4">User Enumeration
+
+
+
+            </h1>
+            <a href="../../index.html" class="btn btn-light btn-lg mt-3">Back to Home</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Hiếm - Thỉnh thoảng - Thường xuyên -->
+        <!-- Khó - Trung bình - Dễ -->
+        <!-- Nhẹ - Trung bình - Nghiêm trọng -->
+
+        <div class="row row-box">
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Độ phổ biến</h3>
+                    <p>Thường xuyên</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Khả năng khai thác</h3>
+                    <p>Dễ</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Ảnh hưởng</h3>
+                    <p> Nhẹ</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Nội dung chính -->
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-16">
+
+                <div class="lesson-list p-4 shadow-sm bg-white rounded">
+
+                    <div class="what">
+                        <h2> <i class="fa-solid fa-magnifying-glass"></i>User Enumeration
+
+                            là gì ?<a href="../demos/demo8.html">Demo</a ></h2>
+                        <p>
+                            User Enumeration (Liệt kê người dùng) là một kỹ thuật tấn công mà kẻ tấn công sử dụng để xác
+                            định thông tin về
+                            người dùng của một hệ thống. Kẻ tấn công thường sử dụng các lỗ hổng trong hệ thống để xác
+                            định thông tin về người dùng, bao gồm tên người dùng, địa chỉ email, và các thông tin khác.
+                            Cho chép liệt kê tất cả người dùng trên hệ thống không phải lỗi của ae, nhưng khi kết hợp
+                            với
+                            các lỗ hổng bảo mật khác (như tấn công vét cạn mật khẩu - <a href="../stuff/glossary.html">Brute Force</a>), User Enumeration có
+                            thể
+                            trở thành một vấn đề nghiêm trọng.
+                        </p>
+
+
+                        <p>
+
+                        </p>
+
+                    </div>
+
+                    <br>
+
+                    <div class="how">
+                        <h2> <i class="fa-solid fa-shield-halved"></i>Cách để ngăn chặn User Enumeration
+                        </h2>
+                        <p><span class="red-bold">Login (Đăng nhập)</span></p>
+                        <p>
+                            Khi xảy ra lỗi đăng nhập, hãy trả về thông báo chung chung như: "Tên người dùng hoặc mật
+                            khẩu không đúng".
+                            <br>
+                            Đảm bảo phản hồi HTTP và thời gian phản hồi không khác biệt khi nhập sai mật khẩu hoặc tên
+                            người dùng không tồn tại.
+
+                        </p>
+                        <p><span class="red-bold">Register (Đăng kí)</span></p>
+                        <p>
+                            Tránh để trang web thông báo rằng tên người dùng đã được sử dụng.
+                            <br>
+                            Nếu tên người dùng là địa chỉ email, hãy gửi email đặt lại mật khẩu nếu người dùng cố gắng
+                            đăng ký bằng địa chỉ đã tồn tại.
+                            <br>
+                            Nếu tên người dùng không phải là email, hãy bảo vệ trang đăng ký bằng CAPTCHA.
+                        </p>
+                        <p><span class="red-bold">Reset Password (Đặt lại mật khẩu)</span></p>
+                        <p>
+                            Đảm bảo trang "Quên mật khẩu" không tiết lộ tên người dùng.
+                            <br>
+                            Nếu quy trình đặt lại mật khẩu của ae yêu cầu gửi email, hãy để người dùng nhập địa chỉ
+                            email của họ. Sau đó, gửi email chứa liên kết đặt lại mật khẩu nếu tài khoản đó tồn tại.
+                        </p>
+                        <p><span class="red-bold">Profile Page (Trang cá nhân)</span></p>
+                        <p>
+                            Nếu người dùng có trang cá nhân, hãy đảm bảo rằng chỉ những người đã đăng nhập mới có thể
+                            xem được.
+                            <br>
+                            Nếu ẩn trang cá nhân, đảm bảo rằng trang cá nhân bị ẩn không thể phân biệt được với một
+                            trang cá nhân không tồn tại.
+                        </p>
+                    </div>
+
+
+
+                    <br>
+
+                    <div class="moreinfo">
+                        <h2> <i class="fa-solid fa-info"></i> Thông tin thêm</h2>
+                        <p>
+                            Đây là một số bài viết hay ho mà mình thấy nên đọc thêm:
+                        </p>
+                        <ul class="styled-list">
+                            <li><i class="fa-solid fa-link"></i><a
+                                    href="https://www.owasp.org/index.php/Top_10-2017_A2-Broken_Authentication">OWASP
+                                    Top
+                                    10 - Broken Authentication</a></li>
+                            <li><i class="fa-solid fa-link"></i><a
+                                    href="https://www.owasp.org/index.php/Testing_for_User_Enumeration_and_Guessable_User_Account_(OWASP-AT-002)">OWASP
+                                    Testing for User Enumeration and Guessable User Account</a></li>
+                            <li><i class="fa-solid fa-link"></i><a
+                                    href="https://www.owasp.org/index.php/Testing_for_Brute_Force_(OWASP-AT-004)">OWASP
+                                    Testing for Brute Force</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <footer class="bg-dark text-white text-center py-3">
+        <script>
+
+        </script>
+        <p>&copy; Clone lại thằng Hacksplaining | <a href="https://github.com/Baodeptraii"
+                class="text-white text-decoration-none">By Re3on</a></p>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"></script>
+    </footer>
+
+    <!-- Thêm Bootstrap JS và Popper.js -->
+
+</body>
+
+</html>

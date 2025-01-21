@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DoS Attack Demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/demo.css">
+    <style>
+        .attack-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .attack-button {
+            padding: 12px 24px;
+            font-size: 1.2em;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .attack-button:hover {
+            background-color: #b02a37;
+        }
+
+        .log-container {
+            margin-top: 20px;
+            padding: 10px;
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .log-entry {
+            font-family: monospace;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slider-container">
+        <div class="slides">
+            <div class="slide active">
+                <h2>DoS Attack Demo</h2>
+                <p>Trong tấn công từ chối dịch vụ (DoS), kẻ tấn công gửi một lượng lớn yêu cầu đến máy chủ mục tiêu, làm cho máy chủ không thể xử lý các yêu cầu hợp pháp.</p>
+            </div>
+            <div class="slide">
+                <h2>Simulate a DoS Attack</h2>
+                <p>
+                    Thực tế, DoS thường được thực hiện bằng cách sử dụng botnet, một mạng các máy tính bị nhiễm malware và gửi yêu cầu hoặc một lượng gói tin lớn đến máy chủ mục tiêu.
+                <br>Nhấn nút bên dưới để gửi nhiều yêu cầu đến máy chủ giả lập và quan sát máy chủ bị quá tải.</p>
+
+                <div class="attack-container">
+                    <button class="attack-button" onclick="simulateDosAttack()">Launch Attack</button>
+                    <div class="log-container" id="logContainer">
+                        <p class="log-entry">Logs will appear here...</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide">
+                <h2>What Happened?</h2>
+                <p>Khi bạn nhấn nút, một lượng lớn yêu cầu giả lập đã được gửi đến máy chủ, khiến máy chủ không thể đáp ứng kịp thời.</p>
+                <p><strong>Kết luận:</strong> Để bảo vệ khỏi DoS:</p>
+                <ul>
+                    <li>Áp dụng các biện pháp hạn chế tần suất yêu cầu (rate limiting).</li>
+                    <li>Sử dụng dịch vụ phát hiện và ngăn chặn DoS chuyên biệt.</li>
+                    <li>Tăng cường khả năng chịu tải của hệ thống.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="dots-container"></div>
+
+        <div class="navigation">
+            <button class="nav-button" id="prevBtn">Back</button>
+            <button id="backToHomeBtn"
+                style="display: none; padding: 12px 20px; background-color: #2563eb; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 1em; transition: background-color 0.3s;">
+                Back to lesson
+            </button>
+            <button class="nav-button" id="nextBtn">Next</button>
+        </div>
+    </div>
+
+    <script src="../../assets/js/demo.js"></script>
+
+    <script>
+        function simulateDosAttack() {
+            const logContainer = document.getElementById('logContainer');
+            logContainer.innerHTML = ''; // Clear logs
+            let requestsSent = 0;
+
+            const interval = setInterval(() => {
+                requestsSent++;
+                const logEntry = document.createElement('p');
+                logEntry.classList.add('log-entry');
+                logEntry.textContent = `Request ${requestsSent}: Sent to server.`;
+
+                logContainer.appendChild(logEntry);
+                logContainer.scrollTop = logContainer.scrollHeight;
+
+                if (requestsSent >= 100) {
+                    clearInterval(interval);
+                    const finalLog = document.createElement('h1');
+                    finalLog.classList.add('log-entry');
+                    finalLog.style.color = 'red';
+                    finalLog.textContent = 'Server overloaded!';
+                    logContainer.appendChild(finalLog);
+                    alert('Server overloaded!');
+                }
+            }, 50);
+        }
+
+        // Handle back to lesson button
+        document.getElementById('backToHomeBtn').addEventListener('click', () => {
+            window.location.href = '../lessons/lesson21.html'; // Replace with your lesson URL
+        });
+    </script>
+</body>
+
+</html>

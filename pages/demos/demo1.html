@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Injection Demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/demo.css">
+    <style>
+
+    </style>
+
+
+
+</head>
+
+<body>
+    <div class="slider-container">
+        <div class="slides">
+            <div class="slide active">
+                <h2>SQL Injection Demo</h2>
+                <p>Khám phá cách lỗ hổng SQL injection có thể xâm phạm các ứng dụng web. SQL injection xảy ra khi dữ
+                    liệu đầu vào của người dùng được đưa trực tiếp vào các truy vấn SQL mà không được khử trùng đúng
+                    cách.</p>
+            </div>
+            <div class="slide">
+                <h2>Login Page</h2>
+                <p>Hãy thử nhập thông tin đăng nhập sau để xem lỗ hổng đang hoạt động:</p>
+                <ul>
+                    <li><strong>Username:</strong> admin</li>
+                    <li><strong>Password:</strong> gì cũng được hoặc <code>' OR '1'='1</code> để thử tấn công</li>
+                </ul>
+                <div class="login-container">
+                    <form class="login-form" id="loginForm">
+                        <input type="text" id="username" placeholder="Username" required>
+                        <input type="password" id="password" placeholder="Password" required>
+                        <button type="button" onclick="attemptLogin()">Login</button>
+                    </form>
+                    <div id="loginError" class="error"></div>
+                </div>
+            </div>
+            <div class="slide">
+                <h2>What Happened?</h2>
+                <p>SQL injection hoạt động vì ứng dụng đã trực tiếp đưa dữ liệu đầu vào của người dùng vào truy vấn. Sau
+                    đây là
+                    truy vấn được mô phỏng:</p>
+                <pre><code>SELECT * FROM users WHERE username = 'admin' AND password = '' OR '1'='1'</code></pre>
+                <p>Điều kiện này luôn đúng vì <code>' OR '1'='1'</code>, cho phép kẻ tấn công bỏ qua
+                    xác thực.</p>
+                <p><strong>Kết luận:</strong> Luôn sử dụng các truy vấn tham số hóa hoặc các câu lệnh đã chuẩn bị để
+                    ngăn chặn SQL
+                    injection:</p>
+                <pre><code>
+PreparedStatement stmt = conn.prepareStatement("SELECT * FROM users WHERE username = ? AND password = ?");
+stmt.setString(1, username);
+stmt.setString(2, password);
+ResultSet rs = stmt.executeQuery();
+                </code></pre>
+            </div>
+        </div>
+
+        <div class="dots-container"></div>
+
+        <div class="navigation">
+            <button class="nav-button" id="prevBtn">Back</button>
+            <button id="backToHomeBtn"
+                style="display: none; padding: 12px 20px; background-color: #2563eb; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 1em; transition: background-color 0.3s;">
+                Back to lesson
+            </button>
+
+            <button class="nav-button" id="nextBtn">Next</button>
+        </div>
+    </div>
+
+
+    <script src="../../assets/js/demo.js" defer></script>
+
+    <script>
+
+        backToHomeBtn.addEventListener('click', () => {
+            window.location.href = '../lessons/lesson1.html'; // Change to your homepage URL
+        });
+
+
+        function attemptLogin() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const loginError = document.getElementById('loginError');
+
+            // Simulated backend check (vulnerable to SQL Injection)
+            const mockDatabase = {
+                users: [
+                    { username: 'admin', password: 'password123' }
+                ]
+            };
+
+            // SQL-like query simulation
+            const query = `SELECT * FROM users WHERE username = '${username}' AND password = '${password}'`;
+
+            // Vulnerable authentication logic
+            const userFound = mockDatabase.users.some(
+                user =>
+                    user.username === username &&
+                    user.password === password ||
+                    query.includes("' OR '1'='1")
+            );
+
+            if (userFound) {
+                loginError.innerHTML = 'Login successful!';
+                loginError.style.color = 'green';
+            } else {
+                loginError.innerHTML = 'Invalid username or password.';
+                loginError.style.color = 'red';
+            }
+        }
+    </script>
+
+</body>
+
+</html>

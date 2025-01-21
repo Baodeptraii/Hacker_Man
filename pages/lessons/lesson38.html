@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DNS Poisoning
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/lessonstyle.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <header class="bg-success text-white py-5 text-center">
+        <div class="container text-center">
+            <h1 class="display-4">DNS Poisoning
+
+
+
+
+            </h1>
+            <a href="../../index.html" class="btn btn-light btn-lg mt-3">Back to Home</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Hiếm - Thỉnh thoảng - Thường xuyên -->
+        <!-- Khó - Trung bình - Dễ -->
+        <!-- Nhẹ - Trung bình - Nghiêm trọng -->
+
+        <div class="row row-box">
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Độ phổ biến</h3>
+                    <p>Hiếm</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Khả năng khai thác</h3>
+                    <p>Khó</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Ảnh hưởng</h3>
+                    <p>Nghiêm trọng</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Nội dung chính -->
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-16">
+
+                <div class="lesson-list p-4 shadow-sm bg-white rounded">
+
+                    <div class="what">
+                        <h2> <i class="fa-solid fa-magnifying-glass"></i>DNS Poisoning
+                            là gì ?</h2>
+                        <p>
+                            DNS Poisoning (Đầu độc DNS) là một kỹ thuật tấn công mạng mà kẻ tấn công thay đổi bản ghi
+                            DNS của một
+                            máy chủ DNS. Khi một máy tính cố gắng truy cập một trang web, nó sẽ gửi một yêu cầu đến
+                            máy chủ DNS để tìm địa chỉ IP của trang web. Kẻ tấn công có thể thay đổi bản ghi DNS để
+                            trỏ đến một trang web giả mạo, thường là một trang web giả mạo được thiết kế để lừa đảo
+                            người dùng.
+                        </p>
+                        <p>
+                            Trong một cuộc tấn công đầu độc DNS, kẻ tấn công khai thác các lỗ hổng trong cơ sở hạ tầng
+                            DNS để cung cấp thông tin địa chỉ IP sai hoặc độc hại để phản hồi các truy vấn DNS.
+
+                            Điều này cho phép chúng chặn, đọc và thao túng lưu lượng truy cập dành cho các hệ thống khác
+                            - bao gồm cả trang web của ae! Các cuộc tấn công DNS Poisoning thường được sử dụng để:
+                        <ul class="styled-list-3">
+                            <li><span class="bold">Phishing (Lừa đảo)</span>: Chuyển hướng người dùng đến các trang web
+                                giả mạo bắt chước các
+                                trang web hợp pháp để đánh cắp thông tin nhạy cảm như thông tin đăng nhập.</li>
+                            <li><span class="bold"><a href="../stuff/glossary.html">MITM (Tấn công người đứng giữa)</a></span>: Chặn và thay đổi thông tin
+                                liên lạc giữa hai bên, cho
+                                phép kẻ tấn công nghe lén hoặc thao túng dữ liệu đang được trao đổi.</li>
+                            <li><span class="bold">Ddos (Tấn công từ chối dịch vụ phân tán)</span>: Làm quá tải một
+                                trang web hoặc máy chủ bằng
+                                cách chuyển hướng một lượng lớn lưu lượng truy cập đến một địa chỉ IP mục tiêu.</li>
+                            <li><span class="bold"><a href="../stuff/glossary.html">Malware</a> Distribution (Phân tán mã độc)</span>: Chuyển hướng người
+                                dùng đến các máy chủ độc hại
+                                lưu trữ phần mềm độc hại, dẫn đến việc tải xuống và cài đặt phần mềm độc hại một cách vô
+                                tình.</li>
+                        </ul>
+                        </p>
+
+
+
+                    </div>
+
+                    <br>
+
+                    <div class="how">
+                        <h2> <i class="fa-solid fa-shield-halved"></i>Cách ngăn chặn DNS Poisoning
+                        </h2>
+
+                        <p>Tin tốt là, việc lưu lượng truy cập của ae bị đánh cắp thông qua đầu độc DNS không phải là
+                            mối đe dọa lớn khi xét riêng lẻ - miễn là ae triển khai HTTPS. Nếu kẻ tấn công định tuyến
+                            lại lưu lượng truy cập HTTPS của ae thông qua đầu độc DNS, chúng cũng sẽ cần phải xuất
+                            trình chứng chỉ (SSL) cho trình duyệt của nạn nhân.
+                        </p>
+                        <p>
+                            Điều này cho phép chúng có hai lựa chọn thay thế: nếu chúng xuất trình chứng chỉ của ae,
+                            chúng sẽ không thể giải mã lưu lượng truy cập được gửi đến trang web giả mạo của chúng (với
+                            điều kiện chúng chưa tìm ra cách xâm phạm khóa mã hóa của ae!). Nếu chúng xuất trình chứng
+                            chỉ
+                            của riêng chúng, trình duyệt sẽ đưa ra cảnh báo rằng chứng chỉ đó là bất hợp pháp.</p>
+
+                        <p>
+                            Vì lý do này, các cuộc tấn công đầu độc DNS hiếm khi được sử dụng riêng lẻ — chúng thường
+                            được kết hợp với một số loại xâm phạm chứng chỉ.
+                        </p>
+                        <p><span class="red-bold">DNSSEC</span></p>
+                        <p>
+                            Tin tốt khác là hệ thống DNS có thể được bảo mật hơn bằng cách bật Tiện ích mở rộng bảo mật
+                            DNS (DNSSEC - DNS Security Extensions). DNSSEC là một tập hợp các giao thức mã hóa cho phép máy chủ DNS ký kỹ thuật số
+                            các phản hồi của chúng và do đó ngăn chặn các cuộc tấn công đầu độc DNS.
+                        </p>
+                        <p>
+
+
+
+                            Bật DNSSEC yêu cầu thay đổi cả máy khách và máy chủ vì máy chủ DNS phải công bố các bản ghi
+                            DNS có chứa khóa mã hóa (và phải chuẩn bị xác thực các phản hồi DNS từ các máy chủ DNS
+                            khác), trong khi máy khách phải xác thực các khóa mã hóa do máy chủ trả về.
+                        </p>
+                        <p>
+
+
+
+                            Hầu như tất cả các tên miền cấp cao nhất (TLD - top-level domains) đều hỗ trợ DNSSEC và các nhà cung cấp dịch vụ
+                            lưu trữ chính đều hỗ trợ DNSSEC cho các tên miền mà họ lưu trữ. Việc bật DNSSEC có độ phức
+                            tạp khác nhau tùy theo nhà cung cấp dịch vụ lưu trữ, nhưng nó cung cấp một lớp bảo
+                            mật bổ sung quan trọng cho hệ thống DNS của ae. 
+                        </p>
+
+
+
+                    </div>
+
+
+
+
+
+                    <br>
+
+                    <div class="moreinfo">
+                        <h2> <i class="fa-solid fa-info"></i> Thông tin thêm</h2>
+                        <p>
+                            Đây là một số bài viết hay ho mà mình thấy nên đọc thêm:
+                        </p>
+                        <ul class="styled-list">
+
+
+                            <li><i class="fa-solid fa-link"></i><a href="https://www.cloudflare.com/learning/dns/dns-cache-poisoning/" target="_blank">DNS
+                                    Cache Poisoning</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://www.cloudflare.com/learning/dns/dnssec/how-dnssec-works/" target="_blank">How
+                                    DNSSEC Works</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://www.cloudflare.com/learning/dns/dnssec/dnssec-implementation/" target="_blank">DNSSEC
+                                    Implementation</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://www.cloudflare.com/learning/dns/dnssec/dnssec-deployment/" target="_blank">DNSSEC
+                                    Deployment</a></li>
+
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <footer class="bg-dark text-white text-center py-3">
+        <script>
+
+        </script>
+        <p>&copy; Clone lại thằng Hacksplaining | <a href="https://github.com/Baodeptraii"
+                class="text-white text-decoration-none">By Re3on</a></p>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"></script>
+    </footer>
+
+    <!-- Thêm Bootstrap JS và Popper.js -->
+
+</body>
+
+</html>

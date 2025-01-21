@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Information Leakage
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/lessonstyle.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <header class="bg-success text-white py-5 text-center">
+        <div class="container text-center">
+            <h1 class="display-4">Information Leakage
+            </h1>
+            <a href="../../index.html" class="btn btn-light btn-lg mt-3">Back to Home</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Hiếm - Thỉnh thoảng - Thường xuyên -->
+        <!-- Khó - Trung bình - Dễ -->
+        <!-- Nhẹ - Trung bình - Nghiêm trọng -->
+
+        <div class="row row-box">
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Độ phổ biến</h3>
+                    <p>Thường xuyên</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Khả năng khai thác</h3>
+                    <p>Dễ</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Ảnh hưởng</h3>
+                    <p> Nhẹ</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Nội dung chính -->
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-16">
+
+                <div class="lesson-list p-4 shadow-sm bg-white rounded">
+
+                    <div class="what">
+                        <h2> <i class="fa-solid fa-magnifying-glass"></i>Information Leakage
+                            là gì ?</h2>
+                        <p>
+                            Information Leakage (Rò rỉ thông tin - Tiết lộ thông tin hệ thống) là một lỗ hổng bảo mật
+                            mà kẻ tấn công sử dụng để thu thập thông tin nhạy cảm từ hệ thống mà không cần đăng nhập.
+                            <br>
+                            Việc tiết lộ thông tin hệ thống có thể giúp kẻ tấn công hiểu về trang web của ae và lên kế
+                            hoạch tấn công. Có thể không khả thi khi che giấu hoàn toàn công nghệ mà ae sử dụng, nhưng
+                            một số bước đơn giản có thể ngăn chặn 90% các cuộc tấn công.
+                            Hãy cố gắng tiết lộ càng ít thông tin về công nghệ và kiến trúc hệ thống
+                            càng tốt, đặc biệt là các thông tin về gỡ lỗi (debugging) và thông tin về lỗi (error
+                            messages) - đây thường là nơi kẻ tấn công cố gắng tìm ra lỗ hổng đầu tiên.
+
+                        </p>
+                        <p><span class="bold">When a zero-day vulnerability is discovered, hackers will immediately try
+                                to find a way to exploit it. If your site leaks information about the technology you
+                                use, you could well become subject to automated attacks.</span>
+                            <br>
+                            Tạm dịch: "Khi một <a href="../stuff/glossary.html">lỗ hổng zero-day</a> được phát hiện, hacker sẽ ngay lập tức cố gắng tìm cách
+                            khai thác nó. Nếu trang web của bạn rò rỉ thông tin về công nghệ bạn sử dụng, bạn có thể trở
+                            thành đối tượng của các cuộc tấn công tự động."
+                        </p>
+
+                    </div>
+
+                    <br>
+
+                    <div class="how">
+                        <h2> <i class="fa-solid fa-shield-halved"></i>Cách để ngăn chặn Information Leakage
+
+                        </h2>
+                        <p><span class="red-bold">Disable the "Server" HTTP Header and Similar Headers (Vô hiệu hóa
+                                "Server"
+                                HTTP Header và các Header tương tự)</span></p>
+                        </span></p>
+                        <p>
+                            Trong cấu hình máy chủ web, hãy tắt các header HTTP như Server, X-Powered-By, hoặc bất kỳ
+                            header nào cho biết công nghệ hoặc phiên bản ae đang sử dụng.
+
+                        </p>
+                        <p><span class="red-bold">Use Clean URLs (Sử dụng các URLs sạch)</span></p>
+                        <p>
+                            Tránh sử dụng các đuôi tệp như .php, .asp, hoặc .jsp trong URL. Thay vào đó, triển khai URL
+                            sạch để không lộ dấu hiệu về công nghệ phía sau.
+                        </p>
+                        <p><span class="red-bold">Ensure Cookie Parameters are Generic (Đảm bảo tham số của cookie là
+                                chung chung)
+                            </span></p>
+                        <p>
+                            Các tham số trong cookie cần được đặt tên chung chung, không để lộ thông tin như framework
+                            hay hệ thống cơ sở dữ liệu mà ae sử dụng.
+                        </p>
+                        <p><span class="red-bold">Disable Client-Side Error Reporting (Vô hiệu hóa báo cáo lỗi phía
+                                client)</span></p>
+                        <p>
+                            Tắt chế độ báo lỗi chi tiết phía client: Khi ae đang code hoặc xây dựng môi trường dự án,
+                            các thông báo nhật ký
+                            và hệ thống báo cáo lỗi khác có thể rất hữu ích, nhưng khi đưa sản phẩm ra sử dụng, các
+                            thông báo về lỗi chỉ nên giới hạn ở phía máy chủ của ae. <br>
+                            Các thông tin như stack trace hoặc thông tin routing không nên được hiển thị trong HTML của
+                            trang lỗi. <br>
+                            Với các lỗi không mong đợi, chỉ trả về một trang HTTP 500 với nội dung chung chung. Tùy vào
+                            công nghệ ae sử dụng, hãy xử lý các
+                            ngoại lệ (exception) và lỗi một cách an toàn.
+                        </p>
+                        <p><span class="red-bold">Sanitize Data Passed to the Client (Làm sạch dữ liệu được truyền đến
+                                client)</span></p>
+                        <p>
+                            Chỉ gửi dữ liệu cần thiết đến client qua trang hoặc API AJAX và các ID từ cơ sở dữ liệu nên
+                            được <a href="../stuff/glossary.html">làm khó hiểu (obfuscate)</a> để không tiết lộ thông tin nhạy cảm.
+                        </p>
+                        <p><span class="red-bold"> JavaScript (Làm khó hiểu JavaScript)</span></p>
+                        <p>Làm khó cho kẻ tấn công trong việc kiểm tra mã JavaScript, đồng thời giúp tăng tốc độ tải
+                            trang.</p>
+
+                        <p><span class="red-bold">Sanitize Template Files (Làm sạch các tệp mẫu)</span></p>
+                        <p>Kiểm tra mã nguồn để đảm bảo không có dữ liệu nhạy cảm trong các tệp template, chú thích,
+                            hoặc mã thừa (dead code).</p>
+                        <p><span class="red-bold">Ensure Correct Configuration of Your Web Root Directory (Đảm bảo cấu
+                                hình đúng của thư mục gốc của trang web)</span></p>
+                        <p>Phân tách rõ ràng giữa thư mục công khai và thư mục cấu hình. Đảm bảo tất cả thành viên trong
+                            nhóm hiểu rõ sự khác biệt này.</p>
+
+                        <p><span class="red-bold">Một số code tham khảo</span></p>
+
+                        <div class="div-1" style="margin: 1rem;">
+                            <span class="red-bold">Python - Django</span>
+                            Django cung cấp tệp <span class="bold">global_settings.py</span> để định nghĩa các thiết lập
+                            mặc định. Các thiết lập
+                            này có thể được ghi đè bởi các tệp cấu hình riêng biệt cho từng môi trường.
+                            <br>
+                            Tùy chỉnh tên cookie cho session bằng cách đặt <span
+                                class="bold">SESSION_COOKIE_NAME</span>:
+                            <pre class="code-block">
+<span class="comment">// Tên của cookie là gì cũng được</span>
+<span class="string">SESSION_COOKIE_NAME</span> = <span class="variable">'session'</span>
+
+Sử dụng cờ DEBUG để kiểm soát mức độ chi tiết của thông báo lỗi:
+DEBUG = True: Hiển thị stack trace trên trang lỗi (chỉ dùng trong môi trường phát triển).
+DEBUG = False: Trả về trang lỗi chung chung và báo cáo lỗi qua email cho quản trị viên.</pre>
+
+                            <span class="red-bold">Ruby - Rails</span>
+                            Rails cung cấp các cấu hình mặc định hợp lý cho môi trường phát triển, kiểm thử và sản xuất.
+                            Đảm bảo ae sử dụng đúng cấu hình cho từng môi trường.
+                            <pre class="code-block">
+<span class="string">Rails</span>.application.config.session_store <span class="variable">:cookie_store, key: 'id'</span> </pre>
+
+
+                            <span class="red-bold">Java - Tomcat</span>
+                            Ẩn thông tin trong Server Header bằng cách
+                            chỉnh sửa tệp <span class="bold">conf/server.xml</span> để ẩn Server header:
+                            <pre class="code-block">
+&lt;Connector <span class="string">port</span> ="8080" <span class="string">server</span> ="Server"/&gt;</pre>
+                            </pre>
+                            Cấu hình Session trong tệp <span class="bold">web.xml</span>
+                            <pre class="code-block">
+&lt;<span class="string">session-config</span>&gt;
+    &lt;<span class="string">cookie-config</span>&gt;
+        &lt;<span class="string">name</span>&gt;session&lt;/<span class="string">name</span>&gt;
+    &lt;/<span class="string">cookie-config</span>&gt;
+&lt;/<span class="string">session-config</span>&gt;</pre>
+
+
+                        </div>
+
+                    </div>
+
+
+
+                    <br>
+
+                    <div class="moreinfo">
+                        <h2> <i class="fa-solid fa-info"></i> Thông tin thêm</h2>
+                        <p>
+                            Đây là một số bài viết hay ho mà mình thấy nên đọc thêm:
+                        </p>
+                        <ul class="styled-list">
+                            <li><i class="fa-solid fa-link"></i><a
+                                    href="https://www.hacksplaining.com/prevention/information-leakage"
+                                    target="_blank">Hacksplaining - Information Leakage</a></li>
+                            <li><i class="fa-solid fa-link"></i><a
+                                    href="https://owasp.org/www-community/attacks/Information_Leakage"
+                                    target="_blank">OWASP - Information Leakage</a></li>
+                            <li><i class="fa-solid fa-link"></i><a
+                                    href="https://portswigger.net/web-security/information-leakage"
+                                    target="_blank">PortSwigger - Information Leakage</a></li>
+
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <footer class="bg-dark text-white text-center py-3">
+        <script>
+
+        </script>
+        <p>&copy; Clone lại thằng Hacksplaining | <a href="https://github.com/Baodeptraii"
+                class="text-white text-decoration-none">By Re3on</a></p>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"></script>
+    </footer>
+
+    <!-- Thêm Bootstrap JS và Popper.js -->
+
+</body>
+
+</html>

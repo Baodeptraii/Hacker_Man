@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session Fixation
+
+
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/lessonstyle.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <header class="bg-success text-white py-5 text-center">
+        <div class="container text-center">
+            <h1 class="display-4">Session Fixation
+
+
+            </h1>
+            <a href="../../index.html" class="btn btn-light btn-lg mt-3">Back to Home</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Hiếm - Thỉnh thoảng - Thường xuyên -->
+        <!-- Khó - Trung bình - Dễ -->
+        <!-- Nhẹ - Trung bình - Nghiêm trọng -->
+
+        <div class="row row-box">
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Độ phổ biến</h3>
+                    <p>Hiếm</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Khả năng khai thác</h3>
+                    <p>Trung bình</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Ảnh hưởng</h3>
+                    <p>Trung bình</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Nội dung chính -->
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-16">
+
+                <div class="lesson-list p-4 shadow-sm bg-white rounded">
+
+                    <div class="what">
+                        <h2> <i class="fa-solid fa-magnifying-glass"></i>Session Fixation
+
+
+                            là gì ?</h2>
+                        <p>
+                            Session Fixation là một kỹ thuật tấn công mà kẻ tấn công cố gắng ép người dùng sử dụng một
+                            ID phiên (session ID) mà họ chọn. Khi người dùng đăng nhập vào hệ thống, kẻ tấn công cung
+                            cấp một ID phiên mà họ chọn, thường là thông qua một liên kết độc hại hoặc một trang web
+                            giả mạo. Khi người dùng đăng nhập, ID phiên này sẽ được sử dụng, cho phép kẻ tấn công truy
+                            cập vào tài khoản của người dùng.
+                        </p>
+                        <p>
+                            Lỗ hổng này sẽ dẫn tới bị chiếm đoạt phiên (session hijacking), nơi kẻ tấn công sử dụng
+                            ID phiên mà họ chọn để chiếm quyền điều khiển phiên của người dùng. Việc triển khai các
+                            phiên
+                            làm việc an toàn trên ứng dụng web là chìa khóa để bảo vệ người dùng của ae.
+                        </p>
+                        <p>
+                            Việc chiếm đoạt phiên cho phép kẻ tấn công bỏ qua các cơ chế xác thực (authentication) và
+                            không gặp
+                            bất kì trở ngại nào. Đây gần như là vấn đề nghiêm trọng nhất mà ae có thể gặp phải khi xây
+                            dựng ứng dụng web
+                            - và ae thậm chí còn không biết nó khi nào xảy ra !
+                        </p>
+
+                    </div>
+
+                    <br>
+
+                    <div class="how">
+                        <h2> <i class="fa-solid fa-shield-halved"></i>Cách để ngăn chặn Session Fixation
+
+                        </h2>
+
+
+                        <p><span class="red-bold">Don't Pass Session IDs in GET/POST Variables (Không truyền ID phiên
+                                vào các biến GET/POST)</span></p>
+                        <p>
+                            Truyền ID phiên trong chuỗi truy vấn (query string) hoặc trong các biến POST là một cách
+                            tiếp cận không an toàn.
+                            Nó không chỉ có nguy cơ tạo ra các URLs độc hại và còn khiến ID phiên bị lộ thông qua những
+                            cách sau:
+                        <ul class="styled-list-3">
+                            <li>Liên kết ra ngoài (tiêu đề Referer sẽ cho biết người dùng sử dụng trình duyệt)</li>
+                            <li>Trong lịch sử tìm kiếm và thanh dấu trang (bookmarks)</li>
+                            <li>Trong các tập tin log, proxy</li>
+                            <li>Trong các tập tin backup</li>
+                        </ul>
+                        Tốt nhất hãy truyền ID phiên qua cookie của HTTP header, và không truyền nó qua URL hoặc POST
+                        data.
+                        </p>
+
+                        <p><span class="red-bold">Regenerate the Session ID at Authentication (Tạo lại ID phiên khi xác
+                                thực)</span></p>
+                        <p>
+                            Khi người dùng đăng nhập vào hệ thống, hãy tạo lại ID phiên. Điều này sẽ đảm bảo rằng ID
+                            phiên sẽ thay đổi sau khi người dùng đăng nhập,
+                            và không thể bị chiếm đoạt. Đây là cách đơn giản nhất để ngăn chặn các cuộc tấn công session fixation.
+                        </p>
+
+                        <p><span class="red-bold">Accept Only Server-Generated Session IDs (Chỉ chấp nhận ID phiên do
+                                máy chủ tạo ra)</span></p>
+                        <p>
+                            Đảm bảo rằng ID phiên chỉ được tạo ra bởi máy chủ, và không chấp nhận ID phiên do người dùng
+                            tạo ra. Tuy nhiên cách này không hoàn toàn an toàn, vì kẻ tấn công có thể dễ dàng lấy được ID
+                            phiên từ máy chủ và chuyển cho nạn nhân kết nối độc hại.
+                        </p>
+
+                        <p><span class="red-bold">Timeout and Replace Old Session IDs (Hạn giờ và thay thế ID phiên
+                                cũ)</span></p>
+                        <p>
+                            Hãy đặt hạn giờ cho phiên làm việc, và thay thế ID phiên cũ bằng ID phiên mới sau mỗi lần
+                            đăng nhập. Điều này sẽ giúp giảm thiểu nguy cơ bị chiếm đoạt phiên.
+                        </p>
+
+                        <p><span class="red-bold">Require a New Session When Visiting From Suspicious Referrers
+                                (Yêu cầu ID phiên mới khi truy cập từ nguồn gốc đáng ngờ)</span></p>
+                        <p>
+                            Nếu người dùng đến từ một trang web không an toàn, hãy yêu cầu họ đăng nhập lại. Điều này
+                            giúp ngăn chặn kẻ tấn công sử dụng ID phiên của họ để chiếm quyền điều khiển phiên của người
+                            dùng.
+                        </p>
+
+
+                    </div>
+
+
+
+                    <br>
+
+                    <div class="moreinfo">
+                        <h2> <i class="fa-solid fa-info"></i> Thông tin thêm</h2>
+                        <p>
+                            Đây là một số bài viết hay ho mà mình thấy nên đọc thêm:
+                        </p>
+                        <ul class="styled-list">
+                            <li><i class="fa-solid fa-link"></i><a href="https://owasp.org/www-community/attacks/Session_fixation">OWASP: Session
+                                    Fixation</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://portswigger.net/web-security/session-fixation">PortSwigger: Session
+                                    Fixation</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://www.acunetix.com/blog/articles/session-fixation/">Acunetix: Session
+                                    Fixation</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <footer class="bg-dark text-white text-center py-3">
+        <script>
+
+        </script>
+        <p>&copy; Clone lại thằng Hacksplaining | <a href="https://github.com/Baodeptraii"
+                class="text-white text-decoration-none">By Re3on</a></p>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"></script>
+    </footer>
+
+    <!-- Thêm Bootstrap JS và Popper.js -->
+
+</body>
+
+</html>

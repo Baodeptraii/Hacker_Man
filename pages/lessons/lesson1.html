@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Injection </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/lessonstyle.css">
+    <style>
+       
+    </style>
+</head>
+
+<body>
+
+    <header class="bg-success text-white py-5 text-center">
+        <div class="container text-center">
+            <h1 class="display-4">SQL Injection</h1>
+            <a href="../../index.html" class="btn btn-light btn-lg mt-3">Back to Home</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Hiếm - Thỉnh thoảng - Thường xuyên -->
+        <!-- Dễ - Trung bình - Khó -->
+        <!-- Nhẹ - Trung bình - Nghiêm trọng -->
+
+        <div class="row row-box">
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Độ phổ biến</h3>
+                    <p>Thỉnh thoảng</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Khả năng khai thác</h3>
+                    <p>Dễ</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Ảnh hưởng</h3>
+                    <p>Nghiêm trọng</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Nội dung chính -->
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-16">
+
+                <div class="lesson-list p-4 shadow-sm bg-white rounded">
+
+                    <div class="what">
+                        <h2> <i class="fa-solid fa-magnifying-glass"></i>SQL Injection là gì ?  <a href="../demos/demo1.html">Demo</a ></h2> 
+                        <p>
+                            SQL Injection (SQLi) là một loại tấn công "<a href="../stuff/glossary.html">injection</a>", xảy ra khi kẻ tấn công gửi các dữ
+                            liệu
+                            đầu vào là các đoạn mã có thể gây hại cho
+                            hệ thống của ae. Vì sự rộng rãi của cơ sở dữ liệu SQL nên SQLi cũng là loại tấn công phổ
+                            biến
+                            nhất trên Internet hiện nay ( Đoán thế =))) ).
+                        </p>
+                        <p class="bold">
+                            "If you only have time to protect yourself against one vulnerability, you should be checking
+                            for
+                            SQL injection vulnerabilities in your codebase!"
+                        </p>
+                        <p>
+                            Tạm dịch: "Nếu bạn chỉ có thời gian để bảo vệ mình khỏi một lỗ hổng, bạn nên kiểm tra các lỗ
+                            hổng SQL injection trong mã nguồn của mình!"
+                        </p>
+                        <p>
+                            Rủi ro (Risk) của SQLi là cực kì nghiêm trọng. Phần lớn SQLi sử dụng để :
+                        <ul style="list-style-type: decimal ;">
+                            <li>Thu thập thông tin nhạy cảm: Tên đăng nhập, mật khẩu, số thẻ tín dụng ...</li>
+                            <li>Liệt kê thông tin xác thực của người dùng đã đăng ký trên một trang web.</li>
+                            <li>Xóa dữ liệu hoặc các bảng (table) trong cơ sở dữ liệu khiến trang web bị hỏng hoặc không
+                                sử dụng được.</li>
+                            <li>Chèn trực tiếp các mã độc vào trang web, ảnh hưởng trực tiếp đến người dùng.</li>
+                        </ul>
+                        </p>
+
+                    </div>
+
+                    <br>
+
+                    <div class="how">
+                        <h2> <i class="fa-solid fa-shield-halved"></i>Cách để ngăn chặn SQL Injection</h2>
+                        <p class="bold">
+                            Vây SQL injection là một rủi ro nghiêm trọng, làm thế nào để ae có thể tự bảo vệ mình ?
+                        </p>
+                        <p class="red-bold">
+                            Parameterized Statements (Tham số hóa các câu lệnh)
+                        </p>
+                        <p>
+                            Tham số hóa các câu lệnh SQL là cách tốt nhất để ngăn chặn SQL Injection. Thay vì tạo câu
+                            lệnh SQL bằng cách nối chuỗi, hãy sử dụng các tham số trong câu lệnh SQL. Các tham số này sẽ
+                            được
+                            truyền vào câu lệnh SQL sau khi đã được kiểm tra và xác thực, giúp ngăn chặn SQL Injection.
+                        </p>
+                        <p>
+                            Ví dụ ae sử dụng JDBC ( Java Database Connectivity) như sau:
+                        </p>
+
+                        <pre class="code-block">
+<span class="comment">// Kết nối tới database.</span>
+<span class="class-name">Connection</span> <span class="variable">conn</span> = <span class="class-name">DriverManager</span>.getConnection(URL, USER, PASS);
+
+<span class="comment">// Tạo truy vấn SQL, nhưng chỉ định rõ tham số truyền vào ( dấu "?" ).</span>
+<span class="class-name">String</span> <span class="variable">sql</span> = <span class="string">"SELECT * FROM users WHERE email = ?"</span>;
+
+<span class="comment">// Truyền chuỗi truy vấn dạng tham số vào câu lệnh.</span>
+<span class="class-name">PreparedStatement</span> <span class="variable">stmt</span> = <span class="variable">conn</span>.prepareStatement(<span class="variable">sql</span>);
+
+<span class="comment">// Email truyền vào chính là tham số ở vị trí đầu tiên.</span>
+<span class="variable">stmt</span>.setString(1, <span class="variable">email</span>);
+
+<span class="comment">// Chạy thôi ...</span>
+<span class="class-name">ResultSet</span> <span class="variable">results</span> = <span class="variable">stmt</span>.executeQuery(<span class="variable">sql</span>);
+
+<span class="keyword">while</span> (<span class="variable">results</span>.next())
+{
+    <span class="comment">// Nếu code như này thì không sao cả.</span>
+}</pre>
+
+                        <p>Cách trên rất an toàn khi ae đã tham số hóa các câu lệnh truy vấn. Nhưng nếu không thì sao ?
+                        </p>
+
+                        <pre class="code-block">
+<span class="class-name">String</span> <span class="variable">email</span> = <span class="string">"youremail@gmail.com"</span>;
+<span class="comment">// Kết nối tới database.</span>
+<span class="class-name">Connection</span> <span class="variable">conn</span> = <span class="class-name">DriverManager</span>.getConnection(URL, USER, PASS);
+<span class="class-name">PreparedStatement</span> <span class="variable">stmt</span> = <span class="variable">conn</span>.prepareStatement();
+
+<span class="comment">// Như này thì chết. Đừng tạo truy vấn bằng cách nối chuỗi. Hacker có thể truyền mã độc vào cái biến "email" kia kìa</span>
+<span class="class-name">String</span> <span class="variable">sql</span> = <span class="string">"SELECT * FROM users WHERE email = "'" + <span class="variable">email</span> + "'" </span>;
+
+<span class="class-name">ResultSet</span> <span class="variable">results</span> = <span class="variable">stmt</span>.executeQuery(<span class="variable">sql</span>);
+
+<span class="keyword">while</span> (<span class="variable">results</span>.next())
+{
+    <span class="comment">// Đến đây thì toi hết dữ liệu rồi.</span>
+}</pre>
+
+                        <p>Điều khác biệt chính là dữ liệu được truyền vào phương thức <span
+                                class="bold">executeQuery(...)</span>. Trong trường
+                            hợp đầu tiên, chuỗi tham số và các tham số được truyền đến cơ sở dữ liệu một cách riêng
+                            biệt, cơ sở dữ liệu hoàn toàn
+                            có thể xử lí một cách chính xác. Nhưng trong trường hợp thứ hai, chuỗi truy vấn đã được xây
+                            dựng trước khi gửi tới cơ sở dữ
+                            liệu, hacker có thể lợi dụng điều này để truyền một tham số độc hại nào đấy vào cơ sở dữ
+                            liệu của ae. </p>
+
+                        <p class="red-bold">
+                            Object Relational Mapping (Ánh xạ quan hệ đối tượng)
+                        </p>
+                        <p>Cái này mình không hiểu lắm nên ko dịch nhé :V </p>
+
+                        <p class="red-bold">
+                            Escaping Inputs ( Thoát khỏi đầu vào)
+                        </p>
+                        <p>Đây là cách khá phổ biến, nhưng không an toàn bằng cách tham số hóa câu lệnh. Escaping inputs
+                            là quá trình xử lý dữ liệu đầu vào trước khi chúng được sử dụng trong câu lệnh SQL. Các
+                            ký tự đặc biệt như dấu nháy đơn ( ' ) hoặc dấu gạch chéo ( \ ) sẽ được thêm vào trước các
+                            ký tự tương ứng để chúng không bị hiểu lầm là một phần của câu lệnh SQL.</p>
+                        <p>
+                            Nói chung là ae thấy mã SQLi hay có kiểu dấu nháy đơn ( ' ) hay dấu nháy kép ( " ) ấy. Nếu
+                            ae
+                            muốn chèn dấu nháy đơn vào câu lệnh SQL thì phải thêm dấu gạch chéo (\) vào trước dấu nháy
+                            đơn.
+                            Hoặc việc lặp lại kí tự -- thay ' với ' ' -- nghĩa là <span class="bold">"đây là một phần
+                                của chuỗi, không phải phần kết thúc chuỗi".</span>
+                            Nếu ae không thoát đầu vào dữ liệu, câu truy vấn không biết dừng ở vị trí nào thì hacker có
+                            thể chèn mã độc vào câu lệnh SQL của ae.
+                        </p>
+                        <p>Đây là một trong những cách dễ nhất và hầu hết các ngôn ngữ lập trình cũng đã xây dựng các
+                            hàm chuẩn ( standard functions) để xử lí cái này.
+                            Vì cách này khá phổ biến nên hacker cũng biết cách vượt qua nó nên mình phải cực kì cẩn thận
+                            trong việc kết thúc câu truy vấn trong cơ sở dữ liệu.
+                            Dẫu vậy trong một số trường hợp, dù có nghịch thế nào đi nữa, ae vẫn không thể chọn ra kí tự
+                            để thoát. Cho nên cách tốt nhất vẫn là tham số hóa câu lệnh.
+                        </p>
+                        <p>Ví dụ trong trường hợp này, các tham số kiểu số (numeric) vẫn rất dễ bị tấn công:</p>
+                        <pre class="code-block">
+<span class="comment">\\ id thì đâu cần xử lí dấu ' </span>
+<span class="class-name">def </span><span class="variable">current_user</span>(id){
+    <span class="variable">User</span>.where(<span class="string">"id = "</span>, <span class="variable">id</span>)
+}
+<span class="class-name">end</span> </pre>
+   
+                        <p class="red-bold">
+                            Sanitizing Inputs ( Làm sạch đầu vào)
+                        </p>
+                        <p>
+                            Sanitizing inputs là quá trình loại bỏ các ký tự đặc biệt khỏi dữ liệu đầu vào trước khi
+                            chúng được sử dụng trong câu lệnh SQL.
+                            Cách này không an toàn bằng cách tham số hóa câu lệnh, nhưng nó vẫn là một cách để ngăn chặn
+                            SQL Injection.
+                            Ví dụ hacker thường nhập mật khẩu kiểu như này: <span class="bold"> ' OR 1 = 1 -- </span> để
+                            bypass qua
+                            trang đăng nhập. Nếu ae sử dụng cách này, ae có thể loại bỏ các ký tự đặc biệt như dấu nháy
+                            đơn ( ' ) hoặc dấu gạch chéo ( \ ) khỏi dữ liệu đầu vào.
+                        </p>
+                        <p>
+                            Cách để áp dụng phương pháp này có thể như:
+                        <ul style="list-style-type: decimal ;">
+                            <li>Sử dụng <a href="../stuff/glossary.html">biểu thức chính quy (Regular expression)</a> để so sánh các dữ liệu đầu vào</li>
+                            <li>Chắc chắn các trường nhập số hoặc chữ không chứa các ký hiệu </li>
+                            <li>Loại bỏ khoảng trắng hoặc dấu xuống dòng nếu không cần thiết</li>
+                        </ul>
+                        </p>
+
+                    </div>
+
+                    <br>
+
+                    <div class="moreinfo">
+                        <h2> <i class="fa-solid fa-info"></i> Thông tin thêm</h2>
+                        <p>
+                            Đây là một số bài viết hay ho mà mình thấy nên đọc thêm:
+                        </p>
+                        <ul class="styled-list">
+                            <li><i class="fa-solid fa-link"></i><a href="https://www.acunetix.com/blog/articles/sql-injection-cheat-sheet/">SQL
+                                    Injection Cheat Sheet</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://portswigger.net/web-security/sql-injection">PortSwigger</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://owasp.org/www-community/attacks/SQL_Injection">OWASP</a></li>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+   
+
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; Clone lại thằng Hacksplaining | <a href="https://github.com/Baodeptraii"
+                class="text-white text-decoration-none">By Re3on</a></p>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"></script>
+
+    </footer>
+
+    <!-- Thêm Bootstrap JS và Popper.js -->
+
+</body>
+
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unencrypted Communication Demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/demo.css">
+    <style>
+        .demo-container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+
+        .demo-section {
+            margin-bottom: 20px;
+        }
+
+        .input-message {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 1em;
+        }
+
+        .output {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #e9ecef;
+            font-family: monospace;
+        }
+
+        .output.unencrypted {
+            color: red;
+        }
+
+        .output.encrypted {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slider-container">
+        <div class="slides">
+            <div class="slide active">
+                <h2>Unencrypted Communication Demo</h2>
+                <p>Giao tiếp không mã hóa xảy ra khi dữ liệu được truyền qua mạng mà không sử dụng các phương pháp bảo vệ, cho phép kẻ tấn công dễ dàng đánh cắp thông tin.</p>
+            </div>
+            <div class="slide">
+                <h2>Simulate Communication</h2>
+                <div class="demo-container">
+                    <div class="demo-section">
+                        <label for="message">Nhập tin nhắn: (không có dấu nhé ae)</label>
+                        <input type="text" id="message" class="input-message" placeholder="Type your message here">
+                        <button class="btn btn-primary" onclick="simulateCommunication()">Gửi</button>
+                    </div>
+                    <div class="demo-section">
+                        <h4>Dữ liệu truyền không mã hóa:</h4>
+                        <div class="output unencrypted" id="unencryptedOutput">-</div>
+                    </div>
+                    <div class="demo-section">
+                        <h4>Dữ liệu truyền mã hóa:</h4>
+                        <div class="output encrypted" id="encryptedOutput">-</div>
+                        <p style="font-size: small; color: #3d3b3b; margin: 5px;">Đố ae biết mã hóa dùng thuật toán nào đấy</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide">
+                <h2>What Happened?</h2>
+                <p>Giao tiếp không mã hóa hiển thị nội dung tin nhắn rõ ràng, dễ dàng bị kẻ tấn công đánh cắp.</p>
+                <p>Mã hóa dữ liệu trước khi gửi qua mạng sử dụng thuật toán như AES sẽ bảo vệ tin nhắn bằng cách chuyển nó thành dạng mà chỉ người nhận mới có thể giải mã.</p>
+                <p><strong>Kết luận:</strong></p>
+                <ul>
+                    <li>Sử dụng HTTPS để bảo vệ dữ liệu truyền qua mạng.</li>
+                    <li>Áp dụng các thuật toán mã hóa mạnh như AES hoặc RSA cho các ứng dụng nhạy cảm.</li>
+                    <li>Không gửi thông tin quan trọng qua các kết nối không an toàn.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="dots-container"></div>
+
+        <div class="navigation">
+            <button class="nav-button" id="prevBtn">Back</button>
+            <button id="backToHomeBtn"
+                style="display: none; padding: 12px 20px; background-color: #2563eb; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 1em; transition: background-color 0.3s;">
+                Back to lesson
+            </button>
+            <button class="nav-button" id="nextBtn">Next</button>
+        </div>
+    </div>
+
+    <script src="../../assets/js/demo.js"></script>
+    <script>
+        function simulateCommunication() {
+            const message = document.getElementById("message").value;
+
+            // Simulate unencrypted communication
+            const unencryptedOutput = document.getElementById("unencryptedOutput");
+            unencryptedOutput.textContent = message || "(No message entered)";
+
+            // Simulate encrypted communication (simple AES-like encoding simulation)
+            const encryptedOutput = document.getElementById("encryptedOutput");
+            if (message) {
+                const encryptedMessage = btoa(message); // Base64 as a simple encoding example
+                encryptedOutput.textContent = encryptedMessage;
+            } else {
+                encryptedOutput.textContent = "(No message entered)";
+            }
+        }
+
+        // Handle back to lesson button
+        document.getElementById('backToHomeBtn').addEventListener('click', () => {
+            window.location.href = '../lessons/lesson12.html'; // Replace with your lesson URL
+        });
+    </script>
+</body>
+
+</html>

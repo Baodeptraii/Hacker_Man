@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Mismanagement Demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/demo.css">
+    <style>
+        .password-container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+
+        .password-input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .strength-indicator {
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .strength-indicator.weak {
+            color: red;
+        }
+
+        .strength-indicator.medium {
+            color: orange;
+        }
+
+        .strength-indicator.strong {
+            color: green;
+        }
+
+        .tips-list {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slider-container">
+        <div class="slides">
+            <div class="slide active">
+                <h2>Password Mismanagement Demo</h2>
+                <p>Password Mismanagement (Quản lý mật khẩu kém) có thể dẫn đến các rủi ro bảo mật nghiêm trọng như bị lộ mật khẩu hoặc dễ dàng bị hack.</p>
+            </div>
+            <div class="slide">
+                <h2>Check Password Strength</h2>
+                <div class="password-container">
+                    <input type="password" id="passwordInput" class="password-input" placeholder="Nhập mật khẩu của bạn">
+                    <div id="strengthIndicator" class="strength-indicator">Độ mạnh của mật khẩu sẽ hiện ở đây</div>
+                </div>
+                <a style="text-decoration: none; font-size: large;" href="https://www.passwordmonster.com/">Hoặc ae có thể dùng mấy trang web kiểu này</a>
+
+            </div>
+            <div class="slide">
+                <h2>Common Password Management Mistakes</h2>
+                <p>Các lỗi phổ biến khi quản lý mật khẩu:</p>
+                <ul>
+                    <li>Dùng chung một mật khẩu cho nhiều tài khoản.</li>
+                    <li>Sử dụng mật khẩu dễ đoán như <code>123456</code> hoặc <code>password</code>.</li>
+                    <li>Lưu mật khẩu dưới dạng văn bản rõ ràng (plaintext) trong cơ sở dữ liệu.</li>
+                </ul>
+                <p><strong>Kết luận:</strong> Để bảo vệ mật khẩu:</p>
+                <ul>
+                    <li>Sử dụng mật khẩu phức tạp và dài.</li>
+                    <li>Thay đổi mật khẩu định kỳ.</li>
+                    <li>Sử dụng trình quản lý mật khẩu đáng tin cậy.</li>
+                    <li>Lưu mật khẩu dưới dạng mã băm an toàn.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="dots-container"></div>
+
+        <div class="navigation">
+            <button class="nav-button" id="prevBtn">Back</button>
+            <button id="backToHomeBtn"
+                style="display: none; padding: 12px 20px; background-color: #2563eb; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 1em; transition: background-color 0.3s;">
+                Back to lesson
+            </button>
+            <button class="nav-button" id="nextBtn">Next</button>
+        </div>
+    </div>
+
+    <script src="../../assets/js/demo.js"></script>
+    <script>
+        const passwordInput = document.getElementById('passwordInput');
+        const strengthIndicator = document.getElementById('strengthIndicator');
+
+        // Function to evaluate password strength
+        function evaluatePasswordStrength(password) {
+            let strength = 0;
+
+            if (password.length >= 8) strength++; // Length requirement
+            if (/[A-Z]/.test(password)) strength++; // Uppercase letters
+            if (/[a-z]/.test(password)) strength++; // Lowercase letters
+            if (/\d/.test(password)) strength++; // Numbers
+            if (/[@$!%*?&]/.test(password)) strength++; // Special characters
+
+            return strength;
+        }
+
+        // Event listener for password input
+        passwordInput.addEventListener('input', () => {
+            const password = passwordInput.value;
+            const strength = evaluatePasswordStrength(password);
+
+            if (strength <= 2) {
+                strengthIndicator.textContent = 'Yếu (Weak)';
+                strengthIndicator.className = 'strength-indicator weak';
+            } else if (strength <= 4) {
+                strengthIndicator.textContent = 'Trung bình (Medium)';
+                strengthIndicator.className = 'strength-indicator medium';
+            } else {
+                strengthIndicator.textContent = 'Mạnh (Strong)';
+                strengthIndicator.className = 'strength-indicator strong';
+            }
+        });
+
+        // Handle back to lesson button
+        document.getElementById('backToHomeBtn').addEventListener('click', () => {
+            window.location.href = '../lessons/lesson15.html'; // Replace with your lesson URL
+        });
+    </script>
+</body>
+
+</html>

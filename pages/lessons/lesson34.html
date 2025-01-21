@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regex Injection
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/lessonstyle.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <header class="bg-success text-white py-5 text-center">
+        <div class="container text-center">
+            <h1 class="display-4">Regex Injection
+
+
+
+
+            </h1>
+            <a href="../../index.html" class="btn btn-light btn-lg mt-3">Back to Home</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Hiếm - Thỉnh thoảng - Thường xuyên -->
+        <!-- Khó - Trung bình - Dễ -->
+        <!-- Nhẹ - Trung bình - Nghiêm trọng -->
+
+        <div class="row row-box">
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Độ phổ biến</h3>
+                    <p>Thường xuyên</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Khả năng khai thác</h3>
+                    <p>Dễ</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Ảnh hưởng</h3>
+                    <p>Nhẹ</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Nội dung chính -->
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-16">
+
+                <div class="lesson-list p-4 shadow-sm bg-white rounded">
+
+                    <div class="what">
+                        <h2> <i class="fa-solid fa-magnifying-glass"></i>Regex Injection
+                            là gì ?</h2>
+                        <p>
+
+                            Biểu thức chính quy (regex) là một cách mô tả thứ tự và loại ký tự xuất hiện trong một
+                            chuỗi. Chúng thường được sử dụng để xác thực đầu vào hoặc tìm kiếm các kết quả khớp với "ký
+                            tự
+                            đại diện" trong một tập hợp các chuỗi. Nếu biểu thức chính quy (thay vì chuỗi mà nó đang
+                            kiểm tra) được tạo ra từ đầu vào không đáng tin cậy hoặc regex tồn tại trong code của
+                            ae do thiết kế kém, kẻ tấn công có thể thực hiện một cuộc tấn công tiêm regex bằng cách
+                            gửi một lượng lớn gửi đầu vào độc hại và máy chủ sẽ cần một lượng lớn tài nguyên để xử lý.
+                            Điều này có thể dẫn đến tình trạng từ chối dịch vụ (DoS) hoặc làm chậm máy chủ của ae.
+                        </p>
+
+
+
+                    </div>
+
+                    <br>
+
+                    <div class="how">
+                        <h2> <i class="fa-solid fa-shield-halved"></i>Cách ngăn chặn Regex Injection
+                        </h2>
+
+
+                        <p>
+                            Những đoạn mã sau đây mô tả một máy chủ web đơn giản. Máy chủ này cho phép khách hàng gửi
+                            một biểu
+                            thức tìm kiếm "wildcard" (ký tự đại diện), rồi máy chủ sử dụng biểu thức đó như một biểu
+                            thức chính quy (regular expression) để kiểm tra danh sách các kết quả có thể khớp. Cách làm
+                            này khá "ngây thơ", vì có thể dẫn đến những vấn đề bảo mật.
+                        <div class="div-1">
+                            <span class="red-bold">Python</span>
+                            <pre class="code-block">
+<span class="keyword">def</span> <span class="variable">search</span>(<span class="variable">pattern</span>):
+    <span class="comment"># Đừng truyền cái gì qua HTTP!</span>
+    <span class="variable">regex</span> = <span class="keyword">re.compile</span>(<span class="variable">pattern</span>)
+    <span class="variable">matches</span> = (<span class="keyword">item</span> <span class="keyword">for</span> <span class="variable">item</span> <span class="keyword">in</span> <span class="variable">ITEMS</span> <span class="keyword">if</span> <span class="variable">regex.match(item)</span>)
+    <span class="keyword">return</span> <span class="variable">matches</span>
+                            </pre>
+                            <span class="red-bold">Java</span>
+                            <pre class="code-block">
+<span class="keyword">public void</span> <span class="variable">doGet</span>(<span class="class-name">HttpServletRequest</span> <span class="variable">request</span>, <span class="class-name">HttpServletResponse</span> <span class="variable">response</span>) <span class="keyword">throws</span> <span class="class-name">IOException</span>
+{
+    <span class="comment">// Đừng truyền cái gì qua HTTP!</span>
+    <span class="class-name">String</span> <span class="variable">search</span> = <span class="variable">request.getParameter</span>(<span class="string">"search"</span>);
+
+    <span class="class-name">List&lt;String&gt;</span> <span class="variable">matches</span> = <span class="variable">ITEMS.stream</span>()
+        .<span class="variable">filter</span>(<span class="variable">item</span> -> <span class="variable">item.matches</span>(<span class="variable">search</span>))
+        .<span class="variable">collect</span>(<span class="class-name">Collectors.toList</span>());
+
+    <span class="variable">response.setContentType</span>(<span class="string">"application/json"</span>);
+    <span class="class-name">PrintWriter</span> <span class="variable">out</span> = <span class="variable">response.getWriter</span>();
+    <span class="variable">out.write</span>(<span class="keyword">new</span> <span class="class-name">Gson</span>().<span class="variable">toJson</span>(<span class="variable">matches</span>));
+    <span class="variable">out.flush</span>();
+}</pre>
+
+
+                            <span class="red-bold">Node</span>
+                            <pre class="code-block">
+<span class="variable">app.get</span>(<span class="string">'/search'</span>, (<span class="variable">request</span>, <span class="variable">response</span>) => {
+    <span class="comment">// Đừng truyền cái gì qua HTTP!</span>
+    <span class="keyword">const</span> <span class="variable">regex</span> = <span class="keyword">new</span> <span class="class-name">RegExp</span>(<span class="variable">request.query.search</span>);
+    <span class="keyword">const</span> <span class="variable">matches</span> = <span class="variable">items.filter</span>(<span class="variable">item</span> => <span class="keyword">return</span> <span class="variable">item.match</span>(<span class="variable">regex</span>));
+    <span class="variable">response.send</span>(<span class="string">`&lt;div&gt;
+        &lt;h1&gt;Matches&lt;/h1&gt;
+        &lt;p&gt;${matches.join('&lt;/p&gt;&lt;p&gt;')}&lt;/p&gt;
+        &lt;a href="/"&gt;Back&lt;/a&gt;
+    &lt;/div&gt;`</span>);
+});</pre>
+
+
+
+
+                        </div>
+                        </p>
+
+                        <p>
+                            Ngoài ra, kẻ tấn công có thể lợi dụng các biểu thức chính quy kém hiệu quả ngay cả khi chúng
+                            không kiểm soát được dạng của biểu thức chính quy. Ví dụ, bằng cách truyền tham số "email"
+                            được tạo ra một cách độc hại đến trang đăng ký, chúng có thể thăm dò các biểu thức xác thực
+                            ( validation expressions) của trang web và tìm ra cách để bypass chúng.
+                            Điều này có thể khiến hệ thống ae bị tấn công.
+                        </p>
+                        <p>
+                            Để giảm thiểu việc bị tấn công, ae nên sử dụng các biểu thức chính quy cụ thể và chặt chẽ
+                            như sau:
+                        <ul class="styled-list-4">
+                            <li>Không tạo biểu thức chính quy trực tiếp từ đầu vào không đáng tin cậy - hãy tạo chúng
+                                chúng trong code-base của ae.</li>
+                            <li>Sử dụng chỉ mục tìm kiếm như Elasticsearch hoặc Lucene cho các tìm kiếm phức tạp, thay
+                                vì chạy các biểu thức chính quy khớp với các tập dữ liệu lớn.</li>
+                            
+                        </ul>
+                        </p>
+                        <p>
+                            Hãy sử dụng các thư viện tự động hóa việc tạo biểu thức chính quy từ các chuỗi đầu vào hay 
+                            kiểm tra các biểu thức chính quy không an toàn. Node.js có thư viện <span class="bold">safe-regex</span> có thể sử dụng như sau:
+                            <pre class="code-block">
+<span class="variable">$</span> <span class="class-name">node</span> <span class="variable">safe.js</span> <span class="string">'(x+x+)+y'</span>
+<span class="keyword">false</span>
+<span class="variable">$</span> <span class="class-name">node</span> <span class="variable">safe.js</span> <span class="string">'(beep|boop)*'</span>
+<span class="keyword">true</span>
+<span class="variable">$</span> <span class="class-name">node</span> <span class="variable">safe.js</span> <span class="string">'(a+){10}'</span>
+<span class="keyword">false</span>
+<span class="variable">$</span> <span class="class-name">node</span> <span class="variable">safe.js</span> <span class="string">'\blocation\s*:[^:\n]+\b(Oakland|San Francisco)\b'</span>
+<span class="keyword">true</span></pre>
+                            
+                            
+                        </p>
+
+
+
+                    </div>
+
+
+
+
+
+                    <br>
+
+                    <div class="moreinfo">
+                        <h2> <i class="fa-solid fa-info"></i> Thông tin thêm</h2>
+                        <p>
+                            Đây là một số bài viết hay ho mà mình thấy nên đọc thêm:
+                        </p>
+                        <ul class="styled-list">
+
+
+                            <li><i class="fa-solid fa-link"></i><a href="https://owasp.org/www-community/attacks/Regular_expression_Denial_of_Service_-_ReDoS"
+                                    target="_blank">OWASP - Regular expression Denial of Service - ReDoS</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://portswigger.net/web-security/cross-site-scripting/regex-injection"
+                                    target="_blank">PortSwigger - Regex Injection</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://www.acunetix.com/blog/articles/regular-expression-security/"
+                                    target="_blank">Acunetix - Regular Expression Security</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <footer class="bg-dark text-white text-center py-3">
+        <script>
+
+        </script>
+        <p>&copy; Clone lại thằng Hacksplaining | <a href="https://github.com/Baodeptraii"
+                class="text-white text-decoration-none">By Re3on</a></p>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"></script>
+    </footer>
+
+    <!-- Thêm Bootstrap JS và Popper.js -->
+
+</body>
+
+</html>

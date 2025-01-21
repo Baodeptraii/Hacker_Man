@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Downgrade Attacks
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/lessonstyle.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <header class="bg-success text-white py-5 text-center">
+        <div class="container text-center">
+            <h1 class="display-4">Downgrade Attacks
+
+
+
+
+            </h1>
+            <a href="../../index.html" class="btn btn-light btn-lg mt-3">Back to Home</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Hiếm - Thỉnh thoảng - Thường xuyên -->
+        <!-- Khó - Trung bình - Dễ -->
+        <!-- Nhẹ - Trung bình - Nghiêm trọng -->
+
+        <div class="row row-box">
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Độ phổ biến</h3>
+                    <p>Thỉnh thoảng</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Khả năng khai thác</h3>
+                    <p>Khó</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Ảnh hưởng</h3>
+                    <p>Trung bình</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Nội dung chính -->
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-16">
+
+                <div class="lesson-list p-4 shadow-sm bg-white rounded">
+
+                    <div class="what">
+                        <h2> <i class="fa-solid fa-magnifying-glass"></i>Downgrade Attacks
+                            là gì ?</h2>
+                        <p>
+
+                            Downgrade Attacks (Tấn công hạ cấp) xảy ra khi kẻ tấn công buộc một hệ thống phải sử dụng
+                            phiên bản cũ hoặc kém an toàn hơn của một giao thức, phần mềm, hoặc thuật toán mã hóa. Điều
+                            này làm suy yếu các biện pháp bảo mật và khai thác các lỗ hổng đã được vá trong các phiên
+                            bản mới hơn.
+
+
+
+                        </p>
+                        <p>
+                            Lưu lượng truy cập Internet được bảo vệ bởi Transport Layer Security (TLS). Các trang web
+                            bảo mật sử dụng HTTPS, tức là giao thức HTTP được truyền qua TLS (hoặc tiền thân của nó,
+                            Secure Sockets Layer - SSL). Qua từng năm, TLS đã dần cải thiện bảo mật, với các phiên bản
+                            mới hơn thường vá các lỗ hổng bảo mật của các phiên bản cũ hơn. Tuy nhiên, nếu một trang web
+                            không hỗ trợ phiên bản TLS mới nhất, kẻ tấn công có thể buộc trang web sử dụng phiên bản cũ
+                            hơn, dễ bị tấn công hơn.
+                        <table>
+                            <tr>
+                                <th>Giao thức</th>
+                                <th>Ra mắt</th>
+                                <th>Khai tử</th>
+                                <th>Rủi ro</th>
+                            </tr>
+                            <tr>
+                                <td>TLS 1.3</td>
+                                <td>8/2018</td>
+                                <td>N/A</td>
+                                <td>*</td>
+                            </tr>
+                            <tr>
+                                <td>TLS 1.2</td>
+                                <td>8/2008</td>
+                                <td>N/A</td>
+                                <td>*</td>
+                            </tr>
+                            <tr>
+                                <td>TLS 1.1</td>
+                                <td>8/2006</td>
+                                <td>3/2024</td>
+                                <td>*</td>
+                            </tr>
+                            <tr>
+                                <td>TLS 1.0</td>
+                                <td>1/1999</td>
+                                <td>6/2018</td>
+                                <td>*</td>
+                            </tr>
+                            <tr>
+                                <td>SSL 3.0</td>
+                                <td>1996</td>
+                                <td>2014</td>
+                                <td>Dễ bị tấn công POODLE </td>
+                            </tr>
+                            <tr>
+                                <td>SSL 2.0</td>
+                                <td>2/1995</td>
+                                <td>1990</td>
+                                <td>Cực kì nguy hiểm</td>
+                            </tr>
+
+
+                        </table>
+                        </p>
+
+
+
+                    </div>
+
+                    <br>
+
+                    <div class="how">
+                        <h2> <i class="fa-solid fa-shield-halved"></i>Cách ngăn chặn Downgrade Attacks
+                        </h2>
+                        <p><span class="red-bold">Specify a Minimum Version of TLS (Sử dụng phiên bản đủ mạnh)</span>
+                        </p>
+                        <p>
+                            Để giảm thiểu các cuộc tấn công hạ cấp, máy chủ web của ae nên được cấu hình để sử dụng
+                            phiên bản TLS mạnh tối thiểu . Phiên bản TLS tối thiểu hiện tại được khuyến nghị là TLS 1.3.
+                        </p>
+                        <p>
+
+
+                            Việc chỉ định phiên bản TLS tối thiểu sẽ không gây gánh nặng quá mức cho hầu hết các ứng
+                            dụng web, vì các trình duyệt hiện đại có khả năng tự cập nhật và thường sử dụng các tiêu
+                            chuẩn mã hóa mới nhất. Tuy nhiên, một số loại ứng dụng web không thể quá nghiêm ngặt trong
+                            cách tiếp cận của chúng: nếu ae đang duy trì các dịch vụ web cho các thiết bị nhúng, thì
+                            các máy khách như vậy hiếm khi nhận được các bản cập nhật bảo mật, vì vậy, thật không may,
+                            ae sẽ phải sử dụng các tiêu chuẩn mã hóa cũ hơn trong thời gian khá dài.
+                        </p>
+                        <p><span class="red-bold">Ensure All Traffic is Sent Over HTTPS (Đảm bảo tất tả lưu lượng chỉ
+                                truyền qua giao thức HTTPS)</span></p>
+                        <p>
+                            Để đảm bảo mọi lưu lượng truy cập đến trang web của ae được gửi qua kết nối an toàn, ae
+                            nên cấu hình máy chủ web của mình để chuyển hướng mọi kết nối không an toàn (cổng 80) đến
+                            đnơi an toàn hơn (cổng 443).
+                          </p>  <p>
+                            Ae cũng nên triển khai tiêu đề HTTP Strict Transport Security (HSTS) để cho trình duyệt
+                            biết rằng chúng chỉ nên tạo kết nối an toàn đến máy chủ web của ae. 
+                            <pre class="code-block">Strict-Transport-Security: max-age=31536000</pre>
+                            
+                        </p>
+                        <p><span class="red-bold">Code tham khảo</span></p>
+                        <p>
+                            <div class="div-1">
+                                <span class="red-bold">Máy chủ web Nginx</span>
+<pre class="code-block">
+<span class="keyword">server</span> {
+    <span class="variable">listen</span> <span class="number">80</span>;
+    <span class="variable">server_name</span> <span class="string">example.com</span>;
+
+    <span class="comment"># Chuyển từ HTTP sang HTTPS</span>
+    <span class="keyword">return</span> <span class="number">301</span> <span class="string">https://$server_name$request_uri</span>;
+}
+
+<span class="keyword">server</span> {
+    <span class="variable">listen</span> <span class="number">443</span> <span class="variable">ssl</span>; <span class="variable">server_name</span> <span class="string">example.com</span>;
+
+    <span class="comment"># Sử dụng chứng chỉ số để mã hóa, </span>
+    <span class="comment"># và một cặp khóa bí mật để giải mã.</span>
+    <span class="variable">ssl_certificate</span> <span class="string">/path/to/ssl/certificate.crt</span>;
+    <span class="variable">ssl_certificate_key</span> <span class="string">/path/to/ssl/private.key</span>;
+
+    <span class="variable">add_header</span> <span class="string">Strict-Transport-Security "max-age=31536000"</span>;
+
+    <span class="comment"># Sử dụng phiên bản TLS đủ mạnh</span>
+    <span class="variable">ssl_protocols</span> <span class="variable">TLSv1.3</span>;
+}
+                                  </pre>
+<span class="red-bold">Máy chủ web Apache</span>
+<pre class="code-block">
+<span class="comment"># Chuyển từ HTTP sang HTTPS</span>
+<span class="keyword">&lt;VirtualHost</span> <span class="variable">*</span>:<span class="number">80</span><span class="keyword">&gt;</span>
+    <span class="variable">ServerName</span> <span class="string">example.com</span>
+    
+    <span class="variable">RewriteEngine</span> <span class="keyword">On</span>
+    <span class="variable">RewriteCond</span> <span class="variable">%{HTTPS}</span> <span class="string">off</span>
+    <span class="variable">RewriteRule</span> <span class="string">^ https://%{HTTP_HOST}%{REQUEST_URI}</span> <span class="variable">[L,R=301]</span>
+<span class="keyword">&lt;/VirtualHost&gt;</span>
+
+<span class="comment"># Tải SSL module</span>
+<span class="variable">LoadModule</span> <span class="variable">ssl_module</span> <span class="string">modules/mod_ssl.so</span>
+
+<span class="comment"># Cấu hình SSL/TLS </span>
+<span class="keyword">&lt;VirtualHost</span> <span class="variable">_default_</span>:<span class="number">443</span><span class="keyword">&gt;</span>
+    <span class="variable">ServerName</span> <span class="string">example.com</span>
+
+    <span class="variable">Header</span> <span class="variable">always</span> <span class="variable">set</span> <span class="string">Strict-Transport-Security "max-age=31536000"</span>
+
+    <span class="comment"># SSL Engine </span>
+    <span class="variable">SSLEngine</span> <span class="keyword">on</span>
+
+    <span class="comment"># Sử dụng chứng chỉ số để mã hóa, </span>
+    <span class="comment"># và một cặp khóa bí mật để giải mã.</span>
+    <span class="variable">SSLCertificateFile</span> <span class="string">/path/to/your/certificate.crt</span>
+    <span class="variable">SSLCertificateKeyFile</span> <span class="string">/path/to/your/private-key.key</span>
+    
+    <span class="comment"># Sử dụng phiên bản đủ mạnh</span>
+    <span class="variable">SSLProtocol</span> <span class="variable">+TLSv1.3</span>
+
+    
+    <span class="comment"># Logging</span>
+    <span class="variable">ErrorLog</span> <span class="string">"/var/log/httpd/error_log"</span>
+    <span class="variable">TransferLog</span> <span class="string">"/var/log/httpd/access_log"</span>
+<span class="keyword">&lt;/VirtualHost&gt;</span>
+                                  </pre>
+                                  
+                                  
+                            </div>
+                        </p>
+
+
+                    </div>
+
+
+
+
+
+                    <br>
+
+                    <div class="moreinfo">
+                        <h2> <i class="fa-solid fa-info"></i> Thông tin thêm</h2>
+                        <p>
+                            Đây là một số bài viết hay ho mà mình thấy nên đọc thêm:
+                        </p>
+                        <ul class="styled-list">
+
+                            <li><i class="fa-solid fa-link"></i><a href="https://www.cloudflare.com/learning/ssl/what-is-tls/">What is TLS?</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://www.cloudflare.com/learning/ssl/why-https/">Why HTTPS?</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://www.cloudflare.com/learning/ssl/ssl-tls-deployment-best-practices/">SSL/TLS Deployment Best Practices</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://www.cloudflare.com/learning/ssl/ssl-tls-handshake/">SSL/TLS Handshake</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://www.cloudflare.com/learning/ssl/ssl-tls-encryption/">SSL/TLS Encryption</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <footer class="bg-dark text-white text-center py-3">
+        <script>
+
+        </script>
+        <p>&copy; Clone lại thằng Hacksplaining | <a href="https://github.com/Baodeptraii"
+                class="text-white text-decoration-none">By Re3on</a></p>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"></script>
+    </footer>
+
+    <!-- Thêm Bootstrap JS và Popper.js -->
+
+</body>
+
+</html>

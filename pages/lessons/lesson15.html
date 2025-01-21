@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Mismanagement
+
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/lessonstyle.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <header class="bg-success text-white py-5 text-center">
+        <div class="container text-center">
+            <h1 class="display-4">Password Mismanagement
+
+            </h1>
+            <a href="../../index.html" class="btn btn-light btn-lg mt-3">Back to Home</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Hiếm - Thỉnh thoảng - Thường xuyên -->
+        <!-- Khó - Trung bình - Dễ -->
+        <!-- Nhẹ - Trung bình - Nghiêm trọng -->
+
+        <div class="row row-box">
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Độ phổ biến</h3>
+                    <p>Thường xuyên</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Khả năng khai thác</h3>
+                    <p>Trung bình</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Ảnh hưởng</h3>
+                    <p> Nghiêm trọng</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Nội dung chính -->
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-16">
+
+                <div class="lesson-list p-4 shadow-sm bg-white rounded">
+
+                    <div class="what">
+                        <h2> <i class="fa-solid fa-magnifying-glass"></i>Password Mismanagement
+
+                            là gì ?<a href="../demos/demo7.html">Demo</a ></h2>
+                        <p>
+                            Password Mismanagement là một lỗ hổng bảo mật phổ biến, thường xảy ra khi các nhà phát triển
+                            không quản lý mật khẩu một cách an toàn. Điều này có thể dẫn đến việc lộ thông tin nhạy cảm
+                            như mật khẩu, thông tin tài khoản, hoặc thông tin cá nhân khác. <br>
+
+                        </p>
+                        <p><span class="bold">Secure authentication is essential to keeping your users safe. </span>
+                            <br>
+                            Tạm dịch: "Xác thực an toàn là điều cần thiết để bảo vệ người dùng của bạn."
+                        </p>
+                        <p>
+                            Nếu tài khoản của những người dùng của ae dễ bị hack, thì nghiễm nhiên chả ai muốn sử dụng
+                            dịch vụ của ae cả.
+                            Đảm bảo xác thực mạnh là sự kết hợp giữa việc thúc đẩy người dùng của mình sử dụng mật khẩu
+                            mạnh và cung cấp các công cụ để họ quản lý mật khẩu một cách an toàn. Các kẻ tấn công luôn
+                            liên tục tìm cách để
+                            vượt ra các hàng rào bảo mật, vì vậy với tư cách là một nhà phát triển, ae cần phải cung cấp
+                            một môi trường an toàn để ngăn chặn các cuộc tấn công.
+
+                        </p>
+
+                    </div>
+
+                    <br>
+
+                    <div class="how">
+                        <h2> <i class="fa-solid fa-shield-halved"></i>Cách để ngăn chặn Password Mismanagement
+
+
+                        </h2>
+                        <p><span class="red-bold">Use Third-Party Authentication if Possible (Sử dụng xác thực bên thứ
+                                ba nếu có thể)</span></p>
+                        </span></p>
+                        <p>
+                            Không tồn tại bất cứ đoạn code nào là an toàn 100%. Hãy sử dụng các dịch vụ xác thực bên thứ
+                            ba
+                            cung cấp thay vì tự xây dựng. Một số hệ thống xác thực bên thứ ba phổ biến như: Đăng nhập
+                            <span class="bold"> bằng Facebook, Google Sign-In, Linkedin, ...</span> <br>
+                            Tích hợp xác thực của bên thứ ba vào trang web của ae một phần cũng giúp người dùng dễ dàng
+                            đăng ký và sử dụng. Hơn nữa điều này sẽ loại bỏ hoàn toàn các mũi tấn công có thể xảy ra
+                            trên web của ae.
+                            Các hệ thống xác thực hiện nay đều đủ mạnh mẽ để ngăn chặn các cuộc tấn công từ phía bên
+                            ngoài,
+                            họ còn cung cấp chi tiết "hướng dẫn sử dụng" cho từng ngôn ngữ và framework.
+
+
+                        </p>
+
+                        <p><span class="red-bold">Ensure Password Complexity (Đảm bảo độ phức tạp của mật khẩu)</span>
+                        </p>
+                        </span></p>
+                        <p>
+                            Đảm bảo mật khẩu có độ tài tối thiểu và cân nhắc thực thi các quy tắc về độ phức tạp của mật
+                            khẩu.
+                            Một số quy tắc phổ biến có thể được áp dụng như: <br>
+                            - Mật khẩu phải chứa ít nhất 8 ký tự <br>
+                            - Mật khẩu phải chứa ít nhất một chữ cái viết hoa <br>
+                            - Mật khẩu phải chứa ít nhất một chữ cái viết thường <br>
+                            - Mật khẩu phải chứa ít nhất một kí tự đặc biệt <br>
+                            Hoặc ae có thể sử dụng một số dịch vụ tự động tạo mật khẩu mạnh như <span
+                                class="bold">1Password, LastPass, ...</span>
+
+
+
+                        </p>
+
+                        <p><span class="red-bold">Allow Password Resets via Email (Cho phép đặt lại mật khẩu qua
+                                email)</span></p>
+
+                        <p>
+                            Cách an toàn nhất để thực hiện đặt lại mật khẩu là cho phép người dùng tự gửi cho mình mã
+                            xác nhận thông qua email
+                            . Đảm bảo các liên kết đó có thời gian chờ hợp lý và không thể tái sử dụng.
+                        </p>
+
+                        <p><span class="red-bold">Confirm Old Password On Reset (Xác nhận mật khẩu cũ khi đặt
+                                lại)</span>
+
+                        <p>
+                            Nếu người dùng đã đăng nhập và muốn đặt lại mật khẩu, hãy yêu cầu họ xác nhận mật khẩu cũ
+                            trước
+                            đó. Điều này sẽ bảo vệ người dùng của ae nếu họ đã quên đăng xuất khỏi máy tính công cộng
+                            hoặc
+                            thiết bị cá nhân.
+                        </p>
+
+                        <p><span class="red-bold">Prevent Brute-Forcing (Ngăn chặn Brute-Forcing)</span></p>
+
+                        <p>
+                            Một phương thức tấn công phổ biến là sử dụng các script (đoạn mã tự động) để liên tục thử
+                            đăng nhập bằng những tên người dùng và mật khẩu thông dụng. Phương thức này tốn rất ít tài
+                            nguyên tính toán, và có nhiều công cụ tự động hỗ trợ kiểu tấn công này. Các "từ điển mật
+                            khẩu"
+                            lớn — danh sách mật khẩu bị rò rỉ từ các vụ hack trước đây — giúp kẻ tấn công biết được
+                            những cụm từ mà người dùng thường sử dụng làm mật khẩu.<br>
+
+                            Hãy cố gắng ngăn chặn lộ thông tin tài khoản người dùng. Một biện pháp quan trọng là không
+                            cung cấp bất kỳ phản hồi nào khi kẻ tấn công đoán đúng tên người dùng. Điều này buộc kẻ tấn
+                            công phải tăng đáng kể số lần đoán để có thể hack được một tài khoản. <br>
+
+                            Một cách cũng khá hiệu quả khác là Xử lý khi đăng nhập thất bại nhiều lần.
+                            Các hệ thống bảo mật cao sẽ khóa tài khoản cho đến khi có sự can thiệp từ quản trị viên,
+                            nhưng cách này thường đòi hỏi nhiều công sức. Thay vào đó, khóa tài khoản tạm thời (chỉ vài
+                            giây hoặc vài phút) cũng đủ làm cho các cuộc tấn công brute-force kém hiệu quả.
+                            Một cách khác là yêu cầu người dùng thực hiện một hành động để chứng minh họ không phải là
+                            script tự động, chẳng hạn như giải CAPTCHA. Điều này thường đủ để ngăn chặn các cuộc tấn
+                            công.
+
+
+                        </p>
+
+                        <p><span class="red-bold">Store Passwords With A Strong Hash, Salted (Lưu trữ mật khẩu với một
+                                hàm băm mạnh)
+                            </span></p>
+                        <p>
+                            <span class="bold">Passwords should always be stored as salted hashes.
+                            </span>
+                            <br>
+                            Tạm dịch: "Mật khẩu luôn nên được lưu trữ dưới dạng băm có thêm <a href="../stuff/glossary.html">"salt"</a>. "
+                            <br>
+                            Mật khẩu nên được lưu dưới dạng băm có thêm salt (một giá trị ngẫu nhiên). Hàm băm là một
+                            phương pháp mã hóa một chiều, biến đổi mật khẩu gốc thành một chuỗi không thể giải ngược. Dữ
+                            liệu này có thể được dùng để kiểm tra tính đúng đắn khi người dùng nhập lại mật khẩu mà
+                            không cần lưu mật khẩu gốc.
+                            <br>
+                            Mặc dù việc băm mật khẩu là một bước bảo mật quan trọng, nhưng nó vẫn có thể bị tấn công
+                            bằng rainbow table (một bảng chứa các giá trị băm được tính sẵn cho các mật khẩu thông
+                            dụng). Bằng cách thêm salt vào mật khẩu trước khi băm, mỗi lần nhập cùng một mật khẩu sẽ tạo
+                            ra một giá trị băm khác nhau. Điều này làm cho các cuộc tấn công sử dụng rainbow table trở
+                            nên vô hiệu, trong khi vẫn đảm bảo khả năng kiểm tra mật khẩu.
+
+                        </p>
+
+                        <p><span class="red-bold">Timeout Sessions After Inactivity, and Provide a Logout Function (Hết
+                                thời gian phiên sau thời gian không hoạt động, và cung cấp chức năng đăng xuất)</span>
+                            </span></p>
+                        <p>
+                            Đảm bảo người dùng của ae có thể kết thúc <a href="../stuff/glossary.html">phiên</a> làm việc bất cứ khi nào họ muốn. Một nút đăng xuất đơn
+                            giản giúp họ đóng phiên an toàn. Người dùng có thể chủ động đăng xuất khi họ không sử dụng trang web nữa.
+                            <br>
+                            Nếu trang web của ae xử lý dữ liệu nhạy cảm, hãy thiết lập thời gian chờ để tự động kết
+                            thúc phiên khi người dùng không hoạt động trong một khoảng thời gian nhất định. Điều này bảo
+                            vệ tài khoản người dùng trong trường hợp họ quên đăng xuất.
+                        </p>
+
+                        <p><span class="red-bold">Use HTTPS for Secure Communication (Sử dung giao thức HTTPS)
+                            </span></p>
+                        <p>
+                            Luôn sử dụng giao thức HTTPS khi yêu cầu người dùng nhập thông tin đăng nhập. Nếu không, mật
+                            khẩu có thể bị đánh cắp qua các cuộc tấn công kiểu <a href="../stuff/glossary.html">"người trung gian" (man in the middle)</a>.
+                            Tất cả dữ liệu trao đổi giữa máy chủ và trình duyệt sau khi người dùng đăng nhập cũng nên
+                            được mã hóa bằng HTTPS. Điều này ngăn chặn nguy cơ kẻ xấu chiếm quyền kiểm soát phiên làm
+                            việc của người dùng.
+                        </p>
+
+
+
+
+                    </div>
+
+
+
+                    <br>
+
+                    <div class="moreinfo">
+                        <h2> <i class="fa-solid fa-info"></i> Thông tin thêm</h2>
+                        <p>
+                            Đây là một số bài viết hay ho mà mình thấy nên đọc thêm:
+                        </p>
+                        <ul class="styled-list">
+                            <li><i class="fa-solid fa-link"></i><a href="https://www.owasp.org/index.php/Authentication_Cheat_Sheet">OWASP
+                                    Authentication Cheat Sheet</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://www.owasp.org/index.php/Password_Storage_Cheat_Sheet">OWASP Password
+                                    Storage Cheat Sheet</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://www.owasp.org/index.php/Session_Management_Cheat_Sheet">OWASP Session
+                                    Management Cheat Sheet</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <footer class="bg-dark text-white text-center py-3">
+        <script>
+
+        </script>
+        <p>&copy; Clone lại thằng Hacksplaining | <a href="https://github.com/Baodeptraii"
+                class="text-white text-decoration-none">By Re3on</a></p>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"></script>
+    </footer>
+
+    <!-- Thêm Bootstrap JS và Popper.js -->
+
+</body>
+
+</html>

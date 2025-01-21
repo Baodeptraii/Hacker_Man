@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server-Side Request Forgery
+
+
+
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/lessonstyle.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <header class="bg-success text-white py-5 text-center">
+        <div class="container text-center">
+            <h1 class="display-4">Server-Side Request Forgery
+
+
+
+            </h1>
+            <a href="../../index.html" class="btn btn-light btn-lg mt-3">Back to Home</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Hiếm - Thỉnh thoảng - Thường xuyên -->
+        <!-- Khó - Trung bình - Dễ -->
+        <!-- Nhẹ - Trung bình - Nghiêm trọng -->
+
+        <div class="row row-box">
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Độ phổ biến</h3>
+                    <p>Thường xuyên</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Khả năng khai thác</h3>
+                    <p>Dễ</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Ảnh hưởng</h3>
+                    <p>Trung bình</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Nội dung chính -->
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-16">
+
+                <div class="lesson-list p-4 shadow-sm bg-white rounded">
+
+                    <div class="what">
+                        <h2> <i class="fa-solid fa-magnifying-glass"></i>Server-Side Request Forgery
+
+
+
+                            là gì ?</h2>
+                        <p>
+                            Server-Side Request Forgery (SSRF - Giả mạo yêu cầu máy chủ) là một cuộc tấn công mà kẻ tấn
+                            công có thể gửi các yêu
+                            cầu từ máy chủ mục tiêu mà máy chủ mục tiêu không thể kiểm soát. Kẻ tấn công có thể sử dụng
+                            cuộc tấn công này để truy cập vào các dịch vụ nội bộ, đọc dữ liệu từ máy chủ mục tiêu, hoặc
+                            thậm chí tấn công vào các hệ thống nội bộ từ xa. Kẻ tấn công sẽ tạo một yêu cầu HTTP độc hại
+                            nhằm kích hoạt một yêu cầu tiếp theo từ máy chủ của ae đến một tên miền hoặc địa chỉ IP mà
+                            kẻ tấn công chọn. Các lỗ hổng SSRF có thể được sử dụng để thăm dò mạng hoặc được sử dụng để
+                            ngụy trang
+                            cho các cuộc tấn công từ xa.
+                        </p>
+                        <p>
+                            Có nhiều lý do khiến máy chủ web của ae thực hiện các yêu cầu HTTP đến máy chủ khác, chẳng
+                            hạn như:
+                        <ul>
+                            <li>Gọi API của bên thứ ba để phản hồi hành động của người dùng.</li>
+                            <li>Giao tiếp với nhà cung cấp dịch vụ Single Sign-On (SSO - Đăng nhập một lần).</li>
+                            <li>Triển khai các chức năng tải lên hình ảnh chấp nhận URL thay vì tệp</li>
+                            <li>Kiểm tra URL xác thực</li>
+                        </ul>
+                        </p>
+                        <p>
+                            Trong những trường hợp trên, miền của URL sẽ được lấy từ yêu cầu HTTP. Điều này cho phép kẻ
+                            tấn công kích hoạt các yêu cầu HTTP đến
+                            các miền tùy ý. Người dùng có ác ý sẽ cố gắng lợi dụng điều này trong các cuộc tấn công từ
+                            chối dịch vụ (Dos) nhằm vào các mục tiêu khác
+                            và để thăm dò các địa chỉ IP nội bộ trong mạng nội bộ của ae.
+                        </p>
+
+
+                    </div>
+
+                    <br>
+
+                    <div class="how">
+                        <h2> <i class="fa-solid fa-shield-halved"></i>Cách để ngăn chặn Server-Side Request Forgery
+
+
+                        </h2>
+
+                        <p><span class="red-bold">Construct The Domains Of URLs On The Server (Xây dựng miền của URL
+                                trên máy chủ):</span>
+                        </p>
+                        <p>
+                            Cách dễ nhất để giảm thiểu lỗ hổng SSRF là không bao giờ thực hiện các yêu cầu HTTP đến tên
+                            miền được rút ra từ yêu cầu HTTP. Ví dụ, nếu ae gọi API Google Maps từ máy chủ web của
+                            mình, miền của API phải được xác định trong code phía máy chủ, thay vì được lấy về từ máy
+                            khách.
+                            Một cách dễ dàng để thực hiện việc này là sử dụng Google Maps SDK, trông như thế này
+                            trong Java:
+                        <pre class="code-block">
+<span class="string">DirectionsResult </span><span class="variable">result </span>=
+DirectionsApi.newRequest(ctx)
+    .mode(com.google.maps.model.TravelMode.BICYCLING)
+    .avoid(
+        RouteRestriction.HIGHWAYS,
+        RouteRestriction.TOLLS,
+        RouteRestriction.FERRIES)
+    .region(<span class="string">"vn"</span>)
+    .origin(<span class="string">"Ha Noi"</span>)
+    .destination(<span class="string">"Ho Chi Minh City</span>)
+    .await();                           
+                            </pre>
+                        </p>
+                        <p><span class="red-bold">Disable External Validation URLs (Vô hiệu hóa xác thực URLs bên
+                                ngoài)</span></p>
+                        <p>
+                            Các tài liệu XML thường tham chiếu đến các tệp lược đồ được lưu trữ trên các URL từ xa. Tuy
+                            nhiên, ae nên biết cách xác thực tệp XML đã tải lên trước. Nếu ae thực hiện xác
+                            thực tài liệu XML trên máy chủ của mình, hãy đảm bảo rằng nó dựa trên tệp lược đồ được lưu
+                            trữ cục bộ, thay vì được rút ra từ XML đã được tải lên - thứ có thể bị kẻ tấn công kiểm
+                            soát.
+                            Sau đây là cách vô hiệu hóa xác thực lược đồ bên ngoài trong gói <span class="bold">java.xml.validation</span> nếu ae
+                            sử dụng Java:
+                        <pre class="code-block">
+<span class="string">SchemaFactory </span><span class="variable">factory </span>  = SchemaFactory.newInstance(<span class="class-name">"http://www.w3.org/2001/XMLSchema"</span>);
+<span class="string">Schema        </span><span class="variable">schema    </span>= factory.newSchema();
+<span class="string">Validator     </span><span class="variable">validator </span>= schema.newValidator();
+validator.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
+</pre>
+                        </p>
+
+                        <p><span class="red-bold">Only Make Outgoing HTTP Calls On Behalf of Real Users (Chỉ thực hiện
+                                cuộc gọi HTTP đi ra thay mặt cho người dùng thực)</span></p>
+                        <p>
+                            Một số trang web cần thực hiện các yêu cầu đến các URL của bên thứ ba tùy ý. Ví dụ, các
+                            trang mạng xã hội cho phép chia sẻ liên kết web và thường sẽ kéo siêu dữ liệu đồ thị mở từ
+                            các URL đó xuống để tạo bản xem trước liên kết. Trong trường hợp này, ae nên thực hiện
+                            các yêu cầu HTTP đến các URL bên ngoài từ máy khách, thay vì từ máy chủ. Điều này giúp
+                            đảm bảo rằng các yêu cầu HTTP chỉ được thực hiện khi người dùng thực sự muốn thực hiện
+                            chúng.
+                        </p>
+
+                        <p><span class="red-bold">Validate The URLs You Do Access (Xác thực các URL mà ae truy
+                                cập)</span>
+                            </span></p>
+                        <p>
+                            Để ngăn chặn kẻ tấn công thăm dò mạng của ae, ae nên đảm bảo các yêu cầu phía máy chủ chỉ
+                            được gửi đến các URL có thể truy cập công khai. Để thực thi điều này, ae nên:
+                        <ul class="styled-list-2">
+                            <li>Trao đổi với nhóm về việc giới hạn các máy chủ nội bộ có thể truy cập được từ
+                                máy chủ web của ae.</li>
+                            <li> Xác thực rằng các URL được cung cấp chứa tên miền web chứ không phải địa chỉ IP.</li>
+                            <li> Không cho phép các URL có cổng không chuẩn.</li>
+                            <li> Đảm bảo tất cả các URL đều có thể truy cập qua HTTPS, với các chứng chỉ hợp lệ.
+                            </li>
+
+                        </ul>
+
+                        </p>
+                        <p>
+                            Kẻ tấn công trình độ cao sẽ có thể thiết lập các bản ghi DNS trỏ đến IP riêng, do đó, việc
+                            chỉ xác thực URL có tên miền thường không đủ an toàn.
+                        </p>
+
+                        <p><span class="red-bold">Keep A Blocklist (Danh sách đen)</span></p>
+                        <p>
+                            Ae nên duy trì "danh sách đen" để chặn các tên miền mà ae sẽ không bao giờ truy cập trong các yêu
+                            cầu phía máy chủ, trong các tệp cấu hình hoặc trong cơ sở dữ liệu. Điều này sẽ giúp ae ngắt
+                            các yêu cầu gây hại do kẻ tấn công kích hoạt và ngăn chặn mọi nỗ lực tấn công từ chối dịch
+                            vụ của chúng.
+                        </p>
+                    </div>
+
+
+
+
+
+                    <br>
+
+                    <div class="moreinfo">
+                        <h2> <i class="fa-solid fa-info"></i> Thông tin thêm</h2>
+                        <p>
+                            Đây là một số bài viết hay ho mà mình thấy nên đọc thêm:
+                        </p>
+                        <ul class="styled-list">
+
+                            <li><i class="fa-solid fa-link"></i><a href="https://portswigger.net/web-security/ssrf" target="_blank">Server-Side Request
+                                    Forgery (SSRF)</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://owasp.org/www-community/attacks/Server_Side_Request_Forgery" target="_blank">OWASP SSRF</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://www.acunetix.com/blog/articles/server-side-request-forgery-vulnerability/" target="_blank">Server-Side Request Forgery (SSRF) Vulnerability</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://www.cloudflare.com/learning/security/threats/server-side-request-forgery/" target="_blank">Server-Side Request Forgery (SSRF)</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <footer class="bg-dark text-white text-center py-3">
+        <script>
+
+        </script>
+        <p>&copy; Clone lại thằng Hacksplaining | <a href="https://github.com/Baodeptraii"
+                class="text-white text-decoration-none">By Re3on</a></p>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"></script>
+    </footer>
+
+    <!-- Thêm Bootstrap JS và Popper.js -->
+
+</body>
+
+</html>

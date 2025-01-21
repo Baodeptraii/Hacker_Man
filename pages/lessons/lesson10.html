@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Broken Access Control
+
+
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/lessonstyle.css">
+    <style>
+        .access-control-guidelines {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            color: #333;
+        }
+
+        .access-control-guidelines h2 {
+            font-size: 24px;
+            color: #4CAF50;
+            margin-bottom: 15px;
+        }
+
+        .access-control-guidelines h3 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 10px;
+            margin-top: 20px;
+        }
+
+        .access-control-guidelines p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .styled-list {
+            list-style-type: disc;
+            margin: 10px 0 10px 20px;
+            padding: 0;
+            color: #555;
+        }
+
+        .nested-list {
+            list-style-type: circle;
+            margin: 10px 0 10px 40px;
+            padding: 0;
+            color: #666;
+        }
+
+        .styled-list li,
+        .nested-list li {
+            margin-bottom: 8px;
+        }
+
+      
+       
+     
+
+       
+        .how h2 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .how h2 i {
+            color: #4CAF50;
+        }
+
+        .how p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #444;
+            margin-bottom: 1.5rem;
+        }
+
+        .how .bold {
+            color: #2c3e50;
+            font-weight: 600;
+            background-color: #f8f9fa;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            display: inline-block;
+            margin: 0.3rem 0;
+        }
+
+        .access-control-guidelines {
+            background-color: #f8f9fa;
+            margin: 2rem 0;
+            border-left: 4px solid #4CAF50;
+        }
+
+      
+     
+
+        /* Enhance nested content readability */
+      
+        
+    </style>
+</head>
+
+<body>
+
+    <header class="bg-success text-white py-5 text-center">
+        <div class="container text-center">
+            <h1 class="display-4">Broken Access Control
+
+
+            </h1>
+            <a href="../../index.html" class="btn btn-light btn-lg mt-3">Back to Home</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Hiếm - Thỉnh thoảng - Thường xuyên -->
+        <!-- Khó - Trung bình - Dễ -->
+        <!-- Nhẹ - Trung bình - Nghiêm trọng -->
+
+        <div class="row row-box">
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Độ phổ biến</h3>
+                    <p>Thỉnh thoảng</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Khả năng khai thác</h3>
+                    <p>Trung bình</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Ảnh hưởng</h3>
+                    <p>Trung bình</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Nội dung chính -->
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-16">
+
+                <div class="lesson-list p-4 shadow-sm bg-white rounded">
+
+                    <div class="what">
+                        <h2> <i class="fa-solid fa-magnifying-glass"></i>Broken Access Control
+
+                            là gì ?</h2>
+                        <p>
+                            Broken Access Control (Lỗ hổng kiểm soát truy cập) là một trong những lỗ hổng bảo mật phổ
+                            biến nhất mà các nhà phát triển
+                            thường mắc phải. Lỗ hổng này xảy ra khi một ứng dụng web không kiểm tra hoặc kiểm tra không
+                            đúng các quyền truy cập của người dùng. Điều này có thể cho phép kẻ tấn công truy cập vào
+                            các
+                            tài nguyên mà họ không được phép truy cập, thậm chí có thể thực hiện các hành động mà họ
+                            không
+                            được phép thực hiện.
+                        </p>
+
+                        <p>
+                            Đây là một ví dụ về lỗ hổng Broken Access Control: Một ứng dụng web cho phép người dùng
+                            chỉnh
+                            sửa thông tin cá nhân của họ thông qua một trang web. Khi người dùng chỉnh sửa thông tin cá
+                            nhân,
+                            ứng dụng web sẽ gửi một yêu cầu đến máy chủ để cập nhật thông tin cá nhân của người dùng.
+                            Tuy
+                            nhiên, ứng dụng web không kiểm tra xem người dùng có quyền chỉnh sửa thông tin cá nhân của
+                            người
+                            khác không. Điều này có nghĩa là bất kỳ người dùng nào cũng có thể chỉnh sửa thông tin cá
+                            nhân
+                            của bất kỳ người dùng nào khác thông qua ứng dụng web. Điều này có thể dẫn đến việc người
+                            dùng
+                            không được phép chỉnh sửa thông tin cá nhân của họ, hoặc thậm chí là người dùng không được
+                            phép
+                            truy cập vào ứng dụng web.
+                        </p>
+                        <p>
+                            Tùy thuộc vào mức độ nhạy cảm của dữ liệu mà ứng dụng của ae đang xử lý, hậu quả của lỗ hổng
+                            này có thể rất nghiêm trọng.
+                            Việc rỏ rỉ dữ liệu có thể gây tổn hạn lớn đến uy tín, khiến doanh nghiệp ae mất khách hàng
+                            và tiền bạc và thậm chí
+                            ảnh hưởng đến an ninh quốc gia (nếu ae làm cho một cơ quan chính phủ :v ).
+                        </p>
+
+                    </div>
+
+                    <br>
+
+                    <div class="how">
+                        <h2> <i class="fa-solid fa-shield-halved"></i>Cách để ngăn chặn Broken Access Control
+                        </h2>
+                        <p>
+                            Không có một giải pháp nào phù hợp với tất cả các trường hợp để đảm bảo an toàn. Nhưng thông
+                            thường
+                            các biện pháp sẽ xoay quanh 3 yếu tố cốt lõi sau:
+                            <br>
+                            <span class="bold">Authentication (Xác thực)</span> - xác định xem người dùng là ai.<br>
+                            <span class="bold">Authorization (Ủy quyền)</span> - xác định xem người dùng có quyền truy
+                            cập vào tài nguyên nào. <br>
+                            <span class="bold">Permission Checking (Kiểm tra)</span> - kiểm tra xem người dùng có quyền
+                            truy cập vào tài nguyên đó không.
+                            <br>
+                        </p>
+                        <p>
+                            Quyền truy cập (Authorization) thường được thực hiện bằng cách gán cho mỗi người dùng một
+                            vai trò cụ thể, ví dụ: phân biệt giữa người dùng quản trị (Admin) và người dùng thông
+                            thường. Nếu cần thiết lập quyền riêng biệt cho từng tài liệu hoặc dữ liệu cụ thể, bạn sẽ cần
+                            xây dựng một hệ thống phân quyền chi tiết hơn.
+                            <br>
+                            <span class="bold">Quyền sở hữu (Ownership):</span> một số tài có thể thuộc quyền sở hữu của
+                            một người dùng hoặc nhóm người dùng. Chỉ những người được cấp phép mới có thể truy cập tài
+                            nguyên đó.
+                            <br>
+                            <span class="bold">Danh sách kiểm soát truy cập (Access Control Lists):</span> Các chính
+                            sách (Policy) được áp dụng cho từng tài nguyên cụ thể, xác định ai được phép truy cập vào
+                            tài nguyên đó. Danh sách trắng (Whitelist): Chỉ định rõ ai được phép thực hiện hành động
+                            nào. Danh sách đen (Blacklist): Ngăn chặn những ai không được phép thực hiện hành động nào.
+                        </p>
+
+                        <div class="access-control-guidelines">
+                            <h2>Hướng dẫn xây dựng hệ thống phân quyền truy cập hiệu quả</h2>
+                            <p>Sau đây là các bước mà bạn có thể tham khảo:</p>
+
+                            <h3>1. Xác định rủi ro lớn nhất đối với tổ chức</h3>
+                            <ul class="styled-list">
+                                <li>Tập trung vào việc giảm thiểu những rủi ro quan trọng nhất.</li>
+                            </ul>
+
+                            <h3>2. Thiết kế và tài liệu hóa hệ thống phân quyền</h3>
+                            <ul class="styled-list">
+                                <li>Hệ thống phân quyền cần được áp dụng chính xác trên toàn bộ hệ thống.</li>
+                                <li>Khi có một bộ quy tắc được thống nhất, bạn sẽ dễ dàng định nghĩa thế nào là "đúng"
+                                    khi triển khai.</li>
+                            </ul>
+
+                            <h3>3. Tập trung hóa các quyết định phân quyền trong mã nguồn</h3>
+                            <ul class="styled-list">
+                                <li>Không cần tất cả quyết định phải đi qua một đoạn mã duy nhất, nhưng nên có một
+                                    phương pháp chuẩn hóa để xử lý các quyết định này.</li>
+                                <li>Ví dụ:</li>
+                                <ul class="nested-list">
+                                    <li>Sử dụng decorator trong mã nguồn.</li>
+                                    <li>Kiểm tra quyền truy cập trên các đường dẫn web.</li>
+                                    <li>Sử dụng các thủ tục lưu trữ (stored procedures) trong cơ sở dữ liệu.</li>
+                                    <li>Sử dụng một API nội bộ hoặc thành phần chuyên trách để xử lý quyền.</li>
+                                </ul>
+                            </ul>
+
+                            <h3>4. Kiểm tra hệ thống phân quyền kỹ lưỡng</h3>
+                            <ul class="styled-list">
+                                <li>Quy trình kiểm tra cần nghiêm túc tìm kiếm các lỗ hổng.</li>
+                                <li>Hãy nghĩ như một kẻ tấn công để sẵn sàng đối mặt với các cuộc tấn công thực tế.</li>
+                                <li>Nếu có thời gian và ngân sách, cân nhắc thuê đội ngũ kiểm thử xâm nhập (penetration
+                                    testing) từ bên ngoài để đảm bảo an toàn.</li>
+                            </ul>
+                        </div>
+
+                        <p>Dưới dây là một số thư viện và công cụ hữu ích mà một số ngôn ngữ lập trình đã cũng cấp để
+                            quản lý quyền truy cập một cách hiệu quả.
+                            <br>
+                        <div class="div-1" style="margin: 1rem;">
+                            <span class="red-bold">Python</span><br> Hầu hết các framework web trong
+                            Python (như Django, Flask, Tornado, v.v.) đều định tuyến các yêu cầu web đến từng hàm hoặc
+                            lớp cụ thể. Ví dụ như Django sử dụng Decorators để kiểm tra quyền truy cập. Decorators là
+                            công cụ rất hữu ích để kiểm tra quyền truy cập trước khi một hàm được gọi. Chúng có thể được
+                            thêm vào mã một cách dễ dàng và không làm xáo trộn logic chính. Điều này giúp việc kiểm tra
+                            quyền trở nên rõ ràng và mang tính khai báo (declarative).
+                            <br>
+                            <span class="red-bold">Java</span><br>
+                            Java có một chuẩn công nghiệp về kiểm soát quyền truy cập gọi là JAAS (Java Authentication
+                            and Authorization Service). JAAS cung cấp một cách tiếp cận mạnh mẽ và linh hoạt để kiểm
+                            soát quyền truy cập trong ứng dụng Java. Nó cho phép bạn xác định quyền truy cập dựa trên
+                            người dùng, nhóm người dùng, và các vai trò. Nó cũng hỗ trợ các cơ chế xác thực khác nhau
+                            như LDAP, Kerberos, và các cơ chế xác thực tùy chỉnh.
+                            <br>
+                            <span class="red-bold">Node.js</span><br>
+                            Node.js có một số thư viện trưởng thành hỗ trợ kiểm soát quyền truy cập như :
+                            MustBe - Tập trung vào quản lý logic định tuyến trên máy chủ;
+                            ACL - Chuyên dùng để đánh giá và áp dụng các quy tắc kiểm soát truy cập.
+                            <br>
+                            <span class="red-bold">Hệ thống Quản lý Nội dung (CMS)</span><br>
+                            Nếu trang web của bạn xử lý nhiều tài liệu (như bài viết, báo cáo, v.v.), hãy cân nhắc sử
+                            dụng Hệ thống Quản lý Nội dung (Content Management System).
+                            Ưu điểm của CMS là nó thường cho phép áp dụng các quy tắc phức tạp, chẳng hạn như:
+                            Đặt lệnh cấm truy cập (embargo) cho một tài liệu cho đến thời điểm xác định hay
+                            quản lý quyền truy cập linh hoạt theo vai trò hoặc nhóm người dùng.
+                            <br>
+                            <span class="red-bold">LDAP</span><br>
+                            LDAP (Lightweight Directory Access Protocol) là một giao thức mạng dùng để truy cập và quản
+                            lý dữ liệu trong một thư mục phân cấp. LDAP thường được sử dụng để xác thực và ủy quyền
+                            người dùng trong một hệ thống mạng. Nó cung cấp một cách tiếp cận mạnh mẽ và linh hoạt để
+                            xác định quyền truy cập dựa trên người dùng, nhóm người dùng, và các vai trò. Hãy cân nhắc
+                            sử dụng LDAP
+                            mà Microsoft cung cấp như Active Directory hoặc các LDAP khác như Oracle và IBM để quản lý
+                            quyền truy cập
+                            một cách ổn định và mạnh mẽ nhé ae.
+                        </div>
+                        </p>
+
+                    </div>
+
+                    <br>
+
+                    <div class="moreinfo">
+                        <h2> <i class="fa-solid fa-info"></i> Thông tin thêm</h2>
+                        <p>
+                            Đây là một số bài viết hay ho mà mình thấy nên đọc thêm:
+                        </p>
+                        <ul class="styled-list">
+                            <li><i class="fa-solid fa-link"></i><a
+                                    href="https://owasp.org/www-project-top-ten/OWASP_Top_Ten_2017/Top_10-2017_A4-Broken_Access_Control"
+                                    target="_blank">OWASP Top 10 - Broken Access Control</a></li>
+                            <li><i class="fa-solid fa-link"></i><a
+                                    href="https://portswigger.net/web-security/access-control"
+                                    target="_blank">PortSwigger
+                                    - Access Control</a></li>
+                            <li><i class="fa-solid fa-link"></i><a
+                                    href="https://www.acunetix.com/blog/articles/what-is-access-control/"
+                                    target="_blank">Acunetix
+                                    - What is Access Control?</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <footer class="bg-dark text-white text-center py-3">
+        <script>
+
+        </script>
+        <p>&copy; Clone lại thằng Hacksplaining | <a href="https://github.com/Baodeptraii"
+                class="text-white text-decoration-none">By Re3on</a></p>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"></script>
+    </footer>
+
+    <!-- Thêm Bootstrap JS và Popper.js -->
+
+</body>
+
+</html>

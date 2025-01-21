@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ransomware Simulation</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: red;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            font-size: 3rem;
+            margin-top: 20vh;
+        }
+        p {
+            font-size: 1.5rem;
+            margin: 20px 0;
+        }
+        .container {
+            width: 90%;
+            max-width: 600px;
+            margin: auto;
+            background-color: #222;
+            padding: 20px;
+            border-radius: 10px;
+            border: 3px solid red;
+            box-shadow: 0 0 20px red;
+        }
+        .countdown {
+            font-size: 2rem;
+            font-weight: bold;
+            color: yellow;
+        }
+        .pay-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 15px 30px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            background-color: red;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .pay-button:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Oops! Your files have been encrypted!</h1>
+        <p>All your important files are encrypted with military-grade encryption.</p>
+        <p>To recover your files, you need to pay a ransom.</p>
+        <p>Time remaining to pay:</p>
+        <div class="countdown" id="countdown">24:00:00</div>
+        <a href="https://drive.google.com/file/d/1HF-PLhSdbttO9tDogJ-eKFRnNnCMb0O6/view?usp=sharing" class="pay-button">Pay Ransom</a>
+    </div>
+
+    <script>
+        // Countdown timer
+        const countdownElement = document.getElementById('countdown');
+        let timeLeft = 24 * 60 * 60; // 24 hours in seconds
+
+        function updateCountdown() {
+            const hours = Math.floor(timeLeft / 3600);
+            const minutes = Math.floor((timeLeft % 3600) / 60);
+            const seconds = timeLeft % 60;
+            countdownElement.textContent = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            if (timeLeft > 0) {
+                timeLeft--;
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>

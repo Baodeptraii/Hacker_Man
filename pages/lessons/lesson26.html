@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logging and Monitoring
+
+
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/lessonstyle.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <header class="bg-success text-white py-5 text-center">
+        <div class="container text-center">
+            <h1 class="display-4">Logging and Monitoring
+
+
+            </h1>
+            <a href="../../index.html" class="btn btn-light btn-lg mt-3">Back to Home</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Hiếm - Thỉnh thoảng - Thường xuyên -->
+        <!-- Khó - Trung bình - Dễ -->
+        <!-- Nhẹ - Trung bình - Nghiêm trọng -->
+
+        <div class="row row-box">
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Độ phổ biến</h3>
+                    <p>Thường xuyên</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Khả năng khai thác</h3>
+                    <p>Trung bình</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Ảnh hưởng</h3>
+                    <p>Trung bình</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Nội dung chính -->
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-16">
+
+                <div class="lesson-list p-4 shadow-sm bg-white rounded">
+
+                    <div class="what">
+                        <h2> <i class="fa-solid fa-magnifying-glass"></i>Logging and Monitoring
+
+
+                            là gì ?</h2>
+                        <p>
+                            Ghi log (<a href="../stuff/glossary.html">logging</a>) và theo dõi (monitoring) là cách tốt
+                            nhất để biết ứng dụng của ae đang
+                            hoạt động thế nào khi chạy. Nếu không làm đúng cách, ae sẽ không phát hiện được khi hệ
+                            thống bị tấn công và có thể bị xâm phạm mà không hề hay biết.
+
+                        </p>
+                        <p>
+                            Đây không phải là một lỗ hổng bảo mật, nên sẽ không có phần ngăn chặn nhé ae. Tuy nhiên, nó
+                            là một phần quan trọng trong việc bảo vệ hệ thống của ae khỏi các cuộc tấn công nên mình vẫn
+                            sẽ
+                            cung cấp một số thông tin quan trọng về nó.
+                        </p>
+
+                    </div>
+
+                    <br>
+
+                    <div class="how">
+                        <h2> <i class="fa-solid fa-shield-halved"></i>Thông tin về Logging and Monitoring
+
+                        </h2>
+
+                        <p><span class="red-bold">Logging in Code (Ghi log trong mã nguồn)</span></p>
+                        <p>
+                            Các ngôn ngữ lập trình hiện đại đều cung cấp thư viện ghi log, cho phép thêm dòng ghi chú
+                            vào tệp log khi ứng dụng chạy. Việc tận dụng log giúp ae có thể:
+                        <ul class="styled-list-2">
+                            <li>Theo dõi hoạt động của ứng dụng.</li>
+                            <li>Phát hiện lỗi và hành vi bất thường.</li>
+                            <li>Xử lý các vấn đề của người dùng.</li>
+                            <li>Cảnh báo khi có tấn công mạng.</li>
+                        </ul>
+
+
+                        </p>
+                        <p>
+                            Trong một bản ghi log, có nhiều yếu tố cấu thành, mỗi yếu tố lại có mục đích cung cấp
+                            thông tin khác nhau. Một số yếu tố cơ bản mà mọi bản ghi log cần có như:
+                            <span class="bold">timestamp </span>(thời gian khi sự kiện xảy ra), <span
+                                class="bold">message </span>(thông điệp, nội dung của sự kiện),
+                            <span class="bold">code file and line number</span> (vị trí trong mã nguồn, tên file và dòng
+                            lệnh đã tạo ra log) <br>
+                            Vào tùy trường hợp, ae có thể thêm: tên máy chủ (nếu nhiều máy cùng ghi log) ; URL, mã trạng
+                            thái HTTP, địa chỉ IP (nếu xử lý yêu cầu HTTP),
+                            tên người dùng (nếu liên quan đến hành động của người dùng) ; thời gian xử lý, thông tin
+                            chẩn đoán, lỗi, hoặc thông báo từ hệ thống.
+                        </p>
+                        <p>
+                            <span class="bold">Những sự kiện cần ghi log</span>
+
+                        </p>
+                        <p>
+                            Ae nên ghi lại mọi yêu cầu HTTP và phản hồi kèm thông tin như URL, mã HTTP, thời gian xử
+                            lý.<br>
+                            Các sự kiện quan trọng khác bao gồm:
+                        <ul class="styled-list-2">
+                            <li>Input validation failures (Lỗi khi kiểm tra đầu vào)</li>
+                            <li>Authentication successes and failures. (Đăng nhập thành công hoặc thất bại)</li>
+                            <li>Authorization (access control) failures (Lỗi phân quyền)</li>
+                            <li>Session management failures (Lỗi phiên)</li>
+                            <li>Application errors and system events. (Lỗi ứng dụng, sự kiện hệ thống)</li>
+                            <li>User events (Hoạt động người dùng)</li>
+                            <li>Administrative events (Hoạt động quản trị viên)</li>
+                            <li>Calls to third-party services or APIs (Gọi APIs từ bên thứ ba)</li>
+                        </ul>
+                        </p>
+                        <p>
+                            <span class="bold">Những sự kiện không nên ghi log</span>
+
+                        </p>
+                        <p>
+                            Một số sự kiện chứa những thông tin nhạy cảm, để đảm bảo an toàn khi chẳng may rơi vào tay
+                            kẻ xấu, ae không nên ghi log những thông tin như:
+                        <ul class="styled-list-3">
+                            <li>User or system passwords. (Mật khẩu)</li>
+                            <li>Encryption keys. (Khóa mã hóa)</li>
+                            <li>Database connection strings. (Chuỗi kết nối tới cơ sở dữ liệu)</li>
+                            <li><a href="../stuff/glossary.html">API</a> keys for third-party services (Khóa API)</li>
+                            <li>Personally identifiable information about users (Thông tin cá nhân người dùng)</li>
+                            <li>Payment information like credit card numbers. (Thông tin thanh toán)</li>
+                            <li>Sensitive HTTP headers (Tiêu đề HTTP nhạy cảm)</li>
+                            <li>Session IDs or session <a href="../stuff/glossary.html">cookies</a>. (Khóa phiên)</li>
+                            <li>Access tokens (Tokey truy nhập)</li>
+                            <li>Information a user has opted out of collection (Những thông tin người dùng không cho
+                                phép thu thập)</li>
+                        </ul>
+                        </p>
+                        <p>
+                            <span class="bold">Mức độ log (Log level)</span>
+
+                        </p>
+                        <p>
+                            Có các mức độ sử dụng cho việc ghi log, mỗi mức độ sẽ ghi lại các thông tin khác nhau. Các
+                            mức độ thông dụng nhất bao gồm:
+                        <ul class="styled-list-4">
+                            <li>Debug: Ghi log tất cả các thông tin, thường dùng trong quá trình phát triển và kiểm thử.
+                            </li>
+                            <li>Info: Ghi log các thông tin quan trọng, thông báo hoạt động bình thường của ứng dụng.
+                            </li>
+                            <li>Warning: Ghi log các thông tin cảnh báo, những vấn đề có thể gây ra lỗi trong tương lai.
+                            </li>
+                            <li>Error: Ghi log các lỗi nghiêm trọng, những vấn đề cần được xử lý ngay lập tức.</li>
+                        </ul>
+                        </p>
+
+                        <p>
+                            Ngoài các log từ mã nguồn, trong hệ thống còn có các log như: log từ máy chủ web (Apache,
+                            Nginx),
+                            log từ cơ sở dữ liệu, log từ các thành phần trong stack, v.v. Hãy đảm bảo ae cũng ghi log từ
+                            các
+                            nguồn này để có cái nhìn toàn diện về hoạt động của hệ thống hoặc cần chuẩn đoán sự cố.
+                            Hơn nữa ae nên lưu trữ log ở một nơi tập trung, bảo mật, như các dịch vụ: LogStash, Splunk,
+                            hoặc PaperTrail. Các dịch vụ này sẽ giúp ae tìm kiếm và phân tích log dễ dàng hơn.
+                        </p>
+
+                        <p>
+                            <span class="red-bold">Theo dõi và giám sát (Monitoring)</span>
+                        </p>
+                        <p>
+                            Việc ghi nhật ký (logging) nên được kết hợp với việc giám sát - quá trình đánh giá liên tục
+                            xem trang
+                            web của ae có đang chạy như mong đợi hay không. Phần mềm giám sát thường lấy các "số liệu"
+                            chính từ các tệp nhật ký để chẩn đoán tình trạng hoạt động của ứng dụng web. Chúng ta hãy
+                            thảo luận về các cách khác nhau mà ae có thể giám sát cho ứng dụng của mình.
+                        </p>
+                        <p><span class="bold">Uptime Monitoring (Giám sát thời gian hoạt động)</span></p>
+                        <p>
+                            Hình thức giám sát cơ bản nhất là kiểm tra xem trang web của ae có khả dụng hay không.
+                            Các trình giám sát như Uptime Robot và Pingdom là các dịch vụ miễn phí sẽ
+                            kiểm tra xem URL có phản hồi thành công các yêu cầu HTTP hay không. Đây là một cách đơn
+                            giản để đạt được sự an toàn: nếu trang web của ae không khả dụng, phần mềm giám sát sẽ gửi
+                            email hoặc cảnh báo văn bản cho nhóm của ae.
+                        </p>
+                        <p><span class="bold">Error Reporting (Báo cáo lỗi)</span></p>
+                        <p>
+                            Việc ghi lại các lỗi xảy ra trên trang web của ae là chìa khóa để phát hiện các
+                            cuộc tấn công mạng và đảm bảo chất lượng phần mềm. Các lỗi có thể được phát hiện nhờ trích
+                            xuất
+                            từ ​​tệp nhật ký hoặc được ghi lại bằng các plug-in do các dịch vụ như Rollbar hoặc Airbrake
+                            cung cấp. Các dịch vụ báo cáo lỗi thậm chí còn cho phép ae ghi lại các điều kiện lỗi xảy ra
+                            trong JavaScript trên trình duyệt (thường sẽ không xuất hiện trong nhật ký phía máy chủ của
+                            ae).
+                        </p>
+                        <p><span class="bold">Performance Metrics (Số liệu hiệu suất)</span></p>
+                        <p>
+                            Việc ghi lại số liệu hiệu suất sẽ cung cấp cho ae thông tin chi tiết về trạng thái của ứng
+                            dụng web. Hoạt động giám sát của ae sẽ theo dõi:
+                        <ul class="styled-list-4">
+                            <li>Độ phản hồi (thời gian trả lời).</li>
+                            <li>Lượng yêu cầu xử lý mỗi giây.</li>
+                            <li>Sử dụng tài nguyên (RAM, CPU).</li>
+                            <li>Hiệu suất cơ sở dữ liệu.</li>
+                        </ul>
+                        </p>
+
+                        <p><span class="bold">Alerting (Cảnh báo)</span></p>
+                        <p>Ae nên cấu hình phần mềm giám sát của mình để cảnh báo khi xảy ra lỗi bất
+                            thường hoặc khi số liệu hiệu suất đạt đến điều kiện nào đó. Cảnh báo có thể được gửi qua
+                            email, tin nhắn, hoặc văn bản. Các tổ chức lớn thường sẽ có các ca trực hỗ trợ, vì vậy luôn
+                            có ít nhất
+                            một kỹ sư có thể phản hồi cảnh báo mọi lúc.</p>
+
+                        <p><span class="bold">Response Plans (Kế hoạch ứng phó)</span></p>
+                        <p>
+                            Hãy đảm bảo ae luôn lập một kế hoạch khắc phục sự cố để
+                            giảm thiểu thời gian gián đoạn dịch vụ khi có trục trặc xảy ra.
+
+                            Các bước khắc phục sự cố có thể bao gồm khởi động lại máy chủ, thêm máy chủ bổ sung vào thời
+                            điểm tải cao, chặn địa chỉ IP khi ae thấy lưu lượng truy cập độc hại hoặc báo cáo lên các
+                            chuyên gia trong nhóm (như kỹ sư mạng và quản trị viên cơ sở dữ liệu). Nếu sự cố ảnh hưởng
+                            đến người dùng,
+                            hãy cung cấp thông tin cập nhật về tình hình và thời gian dự kiến khắc phục.
+                        </p>
+
+                    </div>
+
+
+
+
+
+                    <br>
+
+                    <div class="moreinfo">
+                        <h2> <i class="fa-solid fa-info"></i> Thông tin thêm</h2>
+                        <p>
+                            Đây là một số bài viết hay ho mà mình thấy nên đọc thêm:
+                        </p>
+                        <ul class="styled-list">
+
+                            <li><i class="fa-solid fa-link"></i><a
+                                    href="https://www.loggly.com/ultimate-guide/what-is-logging/" target="_blank">The
+                                    Ultimate Guide to Logging</a></li>
+                            <li><i class="fa-solid fa-link"></i><a
+                                    href="https://www.loggly.com/ultimate-guide/what-is-monitoring/" target="_blank">The
+                                    Ultimate Guide to Monitoring</a></li>
+
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <footer class="bg-dark text-white text-center py-3">
+        <script>
+
+        </script>
+        <p>&copy; Clone lại thằng Hacksplaining | <a href="https://github.com/Baodeptraii"
+                class="text-white text-decoration-none">By Re3on</a></p>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"></script>
+    </footer>
+
+    <!-- Thêm Bootstrap JS và Popper.js -->
+
+</body>
+
+</html>

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remote Code Execution
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/lessonstyle.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <header class="bg-success text-white py-5 text-center">
+        <div class="container text-center">
+            <h1 class="display-4">Remote Code Execution
+
+
+
+
+            </h1>
+            <a href="../../index.html" class="btn btn-light btn-lg mt-3">Back to Home</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Hiếm - Thỉnh thoảng - Thường xuyên -->
+        <!-- Khó - Trung bình - Dễ -->
+        <!-- Nhẹ - Trung bình - Nghiêm trọng -->
+
+        <div class="row row-box">
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Độ phổ biến</h3>
+                    <p>Thỉnh thoảng</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Khả năng khai thác</h3>
+                    <p>Dễ</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Ảnh hưởng</h3>
+                    <p>Nhẹ</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Nội dung chính -->
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-16">
+
+                <div class="lesson-list p-4 shadow-sm bg-white rounded">
+
+                    <div class="what">
+                        <h2> <i class="fa-solid fa-magnifying-glass"></i>Remote Code Execution
+                            là gì ?</h2>
+                        <p>
+
+
+                            Remote Code Execution (RCE) là một loại tấn công mà kẻ tấn công có thể thực thi mã từ xa
+                            trên máy chủ của ae. Điều này có thể dẫn đến việc kẻ tấn công kiểm soát máy chủ của ae
+                            và thực thi các hành động không mong muốn, như cài đặt phần mềm độc hại, xóa dữ liệu hoặc
+                            thậm chí là kiểm soát máy tính của ae. RCE thường xảy ra khi máy chủ web của ae không kiểm
+                            tra đầu vào một cách cẩn thận từ các yêu cầu HTTP, cho phép kẻ tấn công thực thi mã từ xa
+                            thông qua các đầu vào
+                            không đáng tin cậy.
+
+                        </p>
+
+
+
+                    </div>
+
+                    <br>
+
+                    <div class="how">
+                        <h2> <i class="fa-solid fa-shield-halved"></i>Cách ngăn chặn Remote Code Execution
+                        </h2>
+
+                        <p> <span class="red-bold">Dynamic Code Execution (Thực thi mã động)</span></p>
+                        <p>
+
+                            Hầu hết các ngôn ngữ lập trình đều cho phép ae thực thi một chuỗi ký tự trong bộ nhớ như
+                            thể nó là mã chương trình. Dưới đây là một số ví dụ về cách thực thi mã động trong các ngôn
+                            ngữ lập trình phổ biến:
+
+                        <div class="div-1">
+                            <span class="red-bold">Python</span>
+                            <p>
+                                Trong Python, mã có thể được thực thi động bằng các hàm toàn cục <span
+                                    class="bold">eval(...)</span> và <span class="bold">exec(...)</span>.
+                            <ul class="styled-list-4">
+                                <li>eval(...): Thực thi một chuỗi ký tự chứa một biểu thức Python hợp lệ.</li>
+                                <li>exec(...): Có thể thực thi nhiều biểu thức, bao gồm cả việc định nghĩa module,
+                                    lớp, và hàm mới.</li>
+
+                            </ul>
+                            <p> Cả hai hàm này đều có quyền truy cập vào trạng thái toàn cục và cục bộ tại thời điểm
+                                gọi.</p>
+
+                            </p>
+                            <span class="red-bold">Node.js</span>
+                            <p>
+                                Trong JavaScript, ae có thể thực thi mã động bằng hàm <span
+                                    class="bold">eval(...)</span>. Ví dụ:
+                            <pre class="code-block">
+<span class="variable">eval</span>(' <span class="string">console.log("Hello, world!")</span> '); </pre>
+                            <p>Đoạn mã trên sẽ in ra "CẢNH BÁO" trên console.
+
+                                Ngoài ra, trong môi trường Node.js, các chuỗi ký tự cũng có thể được thực thi như mã
+                                bằng
+                                cách sử dụng các hàm tạo <span class="bold">Function(...)</span> hoặc <span
+                                    class="bold">Script(...)</span>. Ví dụ:</p>
+                            <pre class="code-block">
+<span class="keyword">const </span>arbitraryObject = {},
+    a = <span class="string">'constructor'</span>,
+    b = <span class="string">'constructor'</span>,
+    c = <span class="string">'console.log("Hacked!")'</span>;
+<span class="comment">// Nó sẽ in ra "Hacked!" trên console</span>
+arbitraryObject[a][b](s)()</pre>
+                            <p>Cách làm này cho thấy lỗ hổng RCE (Remote Code Execution - thực thi mã từ xa). Nếu các
+                                tham số được kiểm soát bởi kẻ tấn công, đoạn mã sau sẽ cho phép thực thi mã từ xa:</p>
+                            <pre class="code-block">
+arbitraryObject[parameterA][parameterB](parameterC)() </pre>
+
+                            <span class="red-bold">Ruby</span>
+                            <p>
+                                Ruby cho phép thực thi mã động bằng hàm <span class="bold">eval(...)</span> của module
+                                <span class="bold">Kernel</span> (mặc định có sẵn
+                                trên mọi đối tượng). Chuỗi ký tự được truyền vào <span class="bold">eval(...)</span> có
+                                thể thay đổi các phương
+                                thức, lớp, và module trong mã nguồn.
+                            </p>
+                            <span class="red-bold">Java</span>
+                            <p>
+                                Trong Java, có nhiều cách để thực thi mã động: <br>
+
+                                <span class="bold">API Java Scripting</span>: Gói javax.script cho phép ae thực thi mã
+                                từ các ngôn ngữ kịch bản
+                                khác, thông qua lớp ScriptEngineManager. Ví dụ: ae có thể chạy Python (Jython) hoặc
+                                Ruby (JRuby) nếu tải chúng dưới dạng thư viện .jar. <br>
+
+                                <span class="bold">Trình biên dịch Java động</span>: Ae có thể gọi trình biên dịch Java
+                                bằng lập trình thông qua
+                                giao diện javax.tools.JavaCompiler. Cách này thường được sử dụng trong các công cụ build
+                                để chuyển đổi mã nguồn thành mã chạy được. <br>
+
+                                <span class="bold">Thư viện chuyên dụng</span>: Các thư viện như Apache Bean Scripting
+                                Framework hỗ trợ nhiều ngôn
+                                ngữ kịch bản. Ae cũng có thể thêm các ngôn ngữ động như Groovy vào runtime của Java
+                                bằng cách thêm file .jar vào classpath.
+                            </p>
+
+
+                            </p>
+
+
+                        </div>
+                        <p><span class="red-bold">Ngôn ngữ chuyên biệt (Domain-Specific Languages - DSL)</span></p>
+                        <p>
+                            Thực thi mã động thường được sử dụng trong các tình huống cần xây dựng một ngôn ngữ
+                            chuyên biệt (DSL) để phục vụ người dùng chuyên môn. Trong những trường hợp như vậy, nên
+                            thực thi các câu lệnh DSL trong một môi trường an toàn (sandbox) với các quyền hạn bị
+                            giới hạn.
+                            (Ví dụ: Nếu ae chỉ cần đánh giá các biểu thức toán học, ae nên hạn chế quyền truy cập
+                            vào ổ đĩa và mạng.)
+
+
+                        </p>
+                        <p>
+                            Một số cách để tiếp cận an toàn phương pháp này : <br>
+
+                           <span class="bold"> Xác định ngữ pháp DSL:</span>
+                            Ae cần định nghĩa chính xác ngữ pháp của DSL, đảm bảo rằng chỉ các lệnh hoặc hàm được phép
+                            mới có thể thực thi. <br>
+
+                            <span class="bold">Tạo trình phân tích cú pháp (parser):</span>
+                            Sử dụng công cụ để tạo một trình phân tích cú pháp từ ngữ pháp đã định nghĩa. Trình phân
+                            tích này sẽ đánh giá các script DSL trong thời gian thực.
+
+                           <br>
+                           Đây là một vài đoạn code mẫu để thực thi mã động trong một môi trường an toàn:
+                           <div class="div-1">
+                                <span class="red-bold">Java</span>
+                                <pre class="code-block">
+<span class="keyword">protected void</span> <span class="class-name">doPost</span>(<span class="variable">HttpServletRequest</span> <span class="variable">request</span>, <span class="variable">HttpServletResponse</span> <span class="variable">response</span>) <span class="keyword">throws</span> <span class="variable">IOException</span> 
+{
+    <span class="variable">String</span> <span class="variable">code</span> = <span class="variable">request</span>.getParameter(<span class="string">"script"</span>);
+
+    <span class="comment">// Vì chúng ta đang cho thực thi code từ HTTP</span>
+    <span class="comment">//  chúng ta *phải* xác thực theo danh sách các tập lệnh được phép. </span>
+    <span class="keyword">if</span> (!<span class="variable">allowedCommands</span>.contains(<span class="variable">code</span>))
+        <span class="keyword">throw new</span> <span class="variable">IOException</span>(<span class="string">"Not permitted"</span>);
+
+    <span class="variable">ScriptEngineManager</span> <span class="variable">manager</span> = <span class="keyword">new</span> <span class="variable">ScriptEngineManager</span>();
+    <span class="variable">ScriptEngine</span>        <span class="variable">engine</span>  = <span class="variable">manager</span>.getEngineByName(<span class="string">"JavaScript"</span>);
+    <span class="variable">engine</span>.eval(<span class="variable">input</span>);
+    
+    <span class="variable">response</span>.setStatus(<span class="variable">200</span>);
+    }
+                                </pre>
+
+                                <span class="red-bold">Python</span>
+                                Mô-đun Abstract Syntax Tree (ast) giúp xử lý ngữ pháp cú pháp trừu tượng một cách an toàn. Dưới đây là ví dụ về cách sử dụng mô-đun này:
+                                <pre class="code-block">
+<span class="keyword">import</span> ast, operator, math
+<span class="keyword">def</span> <span class="variable">safe_eval</span>(<span class="variable">expression</span>):
+    <span class="comment">"""Tính toán một hàm toán học đơn giản bằng cách phân tích một biểu thức thành một</span>
+    <span class="comment">cây cú pháp trừu tượng và đánh giá an toàn từng nút theo lượt."""</span>
+
+    <span class="keyword">def</span> <span class="variable">find_math_function</span>(<span class="variable">x</span>, <span class="variable">*args</span>):
+        <span class="keyword">if</span> <span class="variable">x</span> <span class="keyword">not in</span> [<span class="variable">x</span> <span class="keyword">for</span> <span class="variable">x</span> <span class="keyword">in</span> <span class="variable">dir</span>(<span class="variable">math</span>) <span class="keyword">if</span> <span class="variable">not</span> <span class="string">"__"</span> <span class="keyword">in</span> <span class="variable">x</span>]:
+            <span class="keyword">raise</span> <span class="variable">SyntaxError</span>(<span class="string">f"Unknown function {x}()"</span>)
+
+        <span class="keyword">return</span> <span class="variable">getattr</span>(<span class="variable">math</span>, <span class="variable">x</span>)
+
+    <span class="variable">binary_operations</span> = {
+        <span class="variable">ast.Add</span>:   <span class="variable">operator.add</span>,
+        <span class="variable">ast.Sub</span>:   <span class="variable">operator.sub</span>,
+        <span class="variable">ast.Mult</span>:  <span class="variable">operator.mul</span>,
+        <span class="variable">ast.Div</span>:   <span class="variable">operator.truediv</span>,
+        <span class="variable">ast.Mod</span>:   <span class="variable">operator.mod</span>,
+        <span class="variable">ast.Pow</span>:   <span class="variable">operator.pow</span>,
+        <span class="variable">ast.Call</span>:  <span class="variable">find_math_function</span>,
+        <span class="variable">ast.BinOp</span>: <span class="variable">ast.BinOp</span>,
+    }
+
+    <span class="variable">unary_operations</span> = {
+        <span class="variable">ast.USub</span>:    <span class="variable">operator.neg</span>,
+        <span class="variable">ast.UAdd</span>:    <span class="variable">operator.pos</span>,
+        <span class="variable">ast.UnaryOp</span>: <span class="variable">ast.UnaryOp</span>,
+    }
+
+    <span class="variable">operations</span> = <span class="keyword">tuple</span>(<span class="variable">binary_operations</span>) + <span class="keyword">tuple</span>(<span class="variable">unary_operations</span>)
+
+    <span class="variable">syntax_tree</span> = <span class="variable">ast.parse</span>(<span class="variable">expression</span>, <span class="keyword">mode</span>=<span class="string">'eval'</span>)
+
+    <span class="keyword">def</span> <span class="variable">_eval</span>(<span class="variable">node</span>):
+        <span class="keyword">if</span> <span class="variable">isinstance</span>(<span class="variable">node</span>, <span class="variable">ast.Expression</span>):
+            <span class="keyword">return</span> <span class="variable">_eval</span>(<span class="variable">node.body</span>)
+        <span class="keyword">elif</span> <span class="variable">isinstance</span>(<span class="variable">node</span>, <span class="variable">ast.Str</span>):
+            <span class="keyword">return</span> <span class="variable">node.s</span>
+        <span class="keyword">elif</span> <span class="variable">isinstance</span>(<span class="variable">node</span>, <span class="variable">ast.Num</span>):
+            <span class="keyword">return</span> <span class="variable">node.value</span>
+        <span class="keyword">elif</span> <span class="variable">isinstance</span>(<span class="variable">node</span>, <span class="variable">ast.Constant</span>):
+            <span class="keyword">return</span> <span class="variable">node.value</span>
+        <span class="keyword">elif</span> <span class="variable">isinstance</span>(<span class="variable">node</span>, <span class="variable">ast.BinOp</span>):
+            <span class="keyword">if</span> <span class="variable">isinstance</span>(<span class="variable">node.left</span>, <span class="variable">operations</span>):
+                <span class="variable">left</span> = <span class="variable">_eval</span>(<span class="variable">node.left</span>)
+            <span class="keyword">else</span>:
+                <span class="variable">left</span> = <span class="variable">node.left.value</span>
+            <span class="keyword">if</span> <span class="variable">isinstance</span>(<span class="variable">node.right</span>, <span class="variable">operations</span>):
+                <span class="variable">right</span> = <span class="variable">_eval</span>(<span class="variable">node.right</span>)
+            <span class="keyword">else</span>:
+                <span class="variable">right</span> = <span class="variable">node.right.value</span>
+            <span class="keyword">return</span> <span class="variable">binary_operations</span>[<span class="variable">type</span>(<span class="variable">node.op</span>)](<span class="variable">left</span>, <span class="variable">right</span>)
+        <span class="keyword">elif</span> <span class="variable">isinstance</span>(<span class="variable">node</span>, <span class="variable">ast.UnaryOp</span>):
+            <span class="keyword">if</span> <span class="variable">isinstance</span>(<span class="variable">node.operand</span>, <span class="variable">operations</span>):
+                <span class="variable">operand</span> = <span class="variable">_eval</span>(<span class="variable">node.operand</span>)
+            <span class="keyword">else</span>:
+                <span class="variable">operand</span> = <span class="variable">node.operand.value</span>
+            <span class="keyword">return</span> <span class="variable">unary_operations</span>[<span class="variable">type</span>(<span class="variable">node.op</span>)](<span class="variable">operand</span>)
+        <span class="keyword">elif</span> <span class="variable">isinstance</span>(<span class="variable">node</span>, <span class="variable">ast.Call</span>):
+            <span class="variable">args</span> = [<span class="variable">_eval</span>(<span class="variable">x</span>) <span class="keyword">for</span> <span class="variable">x</span> <span class="keyword">in</span> <span class="variable">node.args</span>]
+            <span class="variable">function</span> = <span class="variable">find_math_function</span>(<span class="variable">node.func.id</span>)
+            <span class="keyword">return</span> <span class="variable">function</span>(*<span class="variable">args</span>)
+        <span class="keyword">else</span>:
+            <span class="keyword">raise</span> <span class="variable">SyntaxError</span>(<span class="string">f"Bad syntax, {type(node)}"</span>)
+
+    <span class="keyword">return</span> <span class="variable">_eval</span>(<span class="variable">syntax_tree</span>)
+
+<span class="variable">safe_eval</span>(<span class="string">"1 + 1"</span>)       <span class="comment"># Kết quả return 2</span>
+<span class="variable">safe_eval</span>(<span class="string">"(100*10)+6"</span>)  <span class="comment"># Kết quả return 1006</span>
+<span class="variable">safe_eval</span>(<span class="string">"sqrt(16)+1"</span>)  <span class="comment"># Kết quả return 5.0</span>
+                                </pre>
+                                
+                           </div>
+                        </p>
+                        </p>
+
+
+
+
+
+                    </div>
+
+
+
+
+
+                    <br>
+
+                    <div class="moreinfo">
+                        <h2> <i class="fa-solid fa-info"></i> Thông tin thêm</h2>
+                        <p>
+                            Đây là một số bài viết hay ho mà mình thấy nên đọc thêm:
+                        </p>
+                        <ul class="styled-list">
+
+                            <li><i class="fa-solid fa-link"></i><a href="https://owasp.org/www-community/attacks/Remote_Code_Execution" target="_blank">OWASP: Remote Code Execution</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://www.acunetix.com/blog/articles/remote-code-execution-rce/" target="_blank">Acunetix: Remote Code Execution (RCE)</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://portswigger.net/web-security/os-command-injection" target="_blank">PortSwigger: OS Command Injection</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://www.veracode.com/security/remote-code-execution" target="_blank">Veracode: Remote Code Execution</a></li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <footer class="bg-dark text-white text-center py-3">
+        <script>
+
+        </script>
+        <p>&copy; Clone lại thằng Hacksplaining | <a href="https://github.com/Baodeptraii"
+                class="text-white text-decoration-none">By Re3on</a></p>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"></script>
+    </footer>
+
+    <!-- Thêm Bootstrap JS và Popper.js -->
+
+</body>
+
+</html>

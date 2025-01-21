@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buffer Overflow Demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/demo.css">
+    <style>
+        .input-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .input-field {
+            width: 300px;
+            padding: 10px;
+            margin: 10px auto;
+            font-size: 1em;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .overflow-message {
+            margin-top: 20px;
+            padding: 10px;
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            border-radius: 5px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slider-container">
+        <div class="slides">
+            <div class="slide active">
+                <h2>Buffer Overflow Demo</h2>
+                <p>Tràn bộ đệm (Buffer Overflow) xảy ra khi dữ liệu được ghi vào vùng bộ nhớ vượt quá dung lượng đã được cấp phát, dẫn đến ghi đè lên các vùng bộ nhớ khác.</p>
+            </div>
+            <div class="slide">
+                <h2>Simulate a Buffer Overflow</h2>
+                <p>Hãy thử nhập một chuỗi dài hơn giới hạn để quan sát lỗi xảy ra:</p>
+                <div class="input-container">
+                    <input type="text" id="userInput" class="input-field"  placeholder="Enter text (max 20 characters)">
+                    <button class="btn btn-danger" onclick="simulateBufferOverflow()">Submit</button>
+                    <div class="overflow-message" id="overflowMessage">Buffer Overflow Detected! Input exceeded limit! <br> Thực 
+                    tế thì hệ thống gặp lỗi không đơn giản chỉ là thông báo như vậy đâu ae ạ !</div>
+                </div>
+            </div>
+            <div class="slide">
+                <h2>What Happened?</h2>
+                <p>Khi bạn nhập một chuỗi dài hơn giới hạn, dữ liệu đã ghi đè lên vùng bộ nhớ khác, gây ra lỗi tràn bộ đệm.</p>
+                <p><strong>Kết luận:</strong> Để bảo vệ khỏi tấn công tràn bộ đệm:</p>
+                <ul>
+                    <li>Xác thực và giới hạn độ dài dữ liệu đầu vào.</li>
+                    <li>Sử dụng ngôn ngữ lập trình hoặc thư viện an toàn với bộ nhớ.</li>
+                    <li>Áp dụng cơ chế bảo vệ địa chỉ bộ nhớ (ASLR) trong hệ thống.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="dots-container"></div>
+
+        <div class="navigation">
+            <button class="nav-button" id="prevBtn">Back</button>
+            <button id="backToHomeBtn"
+                style="display: none; padding: 12px 20px; background-color: #2563eb; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 1em; transition: background-color 0.3s;">
+                Back to lesson
+            </button>
+            <button class="nav-button" id="nextBtn">Next</button>
+        </div>
+    </div>
+
+    <script src="../../assets/js/demo.js"></script>
+
+    <script>
+        function simulateBufferOverflow() {
+            const input = document.getElementById('userInput').value;
+            const overflowMessage = document.getElementById('overflowMessage');
+
+            // Simulating buffer overflow detection
+            if (input.length > 20) {
+                overflowMessage.style.display = 'block';
+            } else {
+                overflowMessage.style.display = 'none';
+            }
+        }
+
+        // Handle back to lesson button
+        document.getElementById('backToHomeBtn').addEventListener('click', () => {
+            window.location.href = '../lessons/lesson27.html'; // Replace with your lesson URL
+        });
+    </script>
+</body>
+
+</html>

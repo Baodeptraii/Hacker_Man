@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clickjacking Demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/demo.css">
+    <style>
+        
+
+        .login-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .login-form {
+            margin-top: 20px;
+        }
+
+        .login-form input {
+            margin: 10px 0;
+            padding: 12px;
+            width: 250px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+
+        .login-form input:focus {
+            border-color: #2563eb;
+            outline: none;
+        }
+
+        .login-form button {
+            padding: 8px 16px;
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+
+        .login-form button:hover {
+            background-color: #1e40af;
+        }
+
+        .error {
+            color: red;
+            margin-top: 15px;
+            font-size: 1.1em;
+        }
+
+        .container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            z-index: 10;
+            border: none;
+        }
+
+        .container .hidden-image {
+            width: 100%;
+            max-width: 600px;
+            display: block;
+            margin: 50px auto;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slider-container">
+        <div class="slides">
+            <div class="slide active">
+                <h2>Clickjacking Demo</h2>
+                <p>Clickjacking là một cuộc tấn công lừa người dùng nhấp vào thứ gì đó khác với thứ họ tin rằng họ đang
+                    nhấp. Nó thường liên quan đến một iframe vô hình được xếp lớp trên một phần tử trang web hợp lệ.</p>
+            </div>
+            <div class="slide">
+                <h2>Invisible Image Overlay</h2>
+                <p>Đây là một demo về một cuộc tấn công clickjacking. Hình ảnh mà bạn nghĩ rằng bạn đang nhấp vào thực
+                    sự đã được phủ lên một iframe ẩn. Hãy thử nhấp vào hình ảnh bên dưới:</p>
+                <p>Hot pussy 🔥🔥🔥</p>
+                <img src="https://i.pinimg.com/originals/61/2c/6b/612c6b7e336db3782c227753940644dd.jpg"
+                    class="hidden-image" alt="Click Me" id="clickable-image">
+            </div>
+            <div class="slide">
+                <h2>What Happened?</h2>
+                <p>Iframe vô hình lừa bạn nhấp vào liên kết ẩn đằng sau hình ảnh, thay vì hình ảnh mà bạn nghĩ mình đã
+                    nhấp. Điều này có thể được sử dụng cho mục đích xấu, chẳng hạn như chuyển hướng người dùng đến một
+                    trang không mong muốn.</p>
+                <pre><code>iframe src="hidden_link.html" onclick="window.location.href='http://example.com';"></code></pre>
+                <p><strong>Ngăn chặn:</strong> Sử dụng the `X-Frame-Options` HTTP header hoặc Content Security Policy
+                    (CSP).</p>
+            </div>
+        </div>
+
+        <div class="dots-container"></div>
+
+        <div class="navigation">
+            <button class="nav-button" id="prevBtn">Back</button>
+            <button id="backToHomeBtn"
+                style="display: none; padding: 12px 20px; background-color: #2563eb; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 1em; transition: background-color 0.3s;">
+                Back to lesson
+            </button>
+            <button class="nav-button" id="nextBtn">Next</button>
+        </div>
+    </div>
+
+    <script src="../../assets/js/demo.js" defer></script>
+
+
+    <script>
+
+        backToHomeBtn.addEventListener('click', () => {
+            window.location.href = '../lessons/lesson4.html'; // Change to your homepage URL
+        });
+
+        document.getElementById('clickable-image').addEventListener('click', function () {
+            window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';  // The link you want to redirect to
+        });
+    </script>
+
+</body>
+
+</html>

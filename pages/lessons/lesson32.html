@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prototype Pollution
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/lessonstyle.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <header class="bg-success text-white py-5 text-center">
+        <div class="container text-center">
+            <h1 class="display-4">Prototype Pollution
+
+
+
+
+            </h1>
+            <a href="../../index.html" class="btn btn-light btn-lg mt-3">Back to Home</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Hiếm - Thỉnh thoảng - Thường xuyên -->
+        <!-- Khó - Trung bình - Dễ -->
+        <!-- Nhẹ - Trung bình - Nghiêm trọng -->
+
+        <div class="row row-box">
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Độ phổ biến</h3>
+                    <p>Thường xuyên</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Khả năng khai thác</h3>
+                    <p>Trung bình</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Ảnh hưởng</h3>
+                    <p>Trung bình</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Nội dung chính -->
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-16">
+
+                <div class="lesson-list p-4 shadow-sm bg-white rounded">
+
+                    <div class="what">
+                        <h2> <i class="fa-solid fa-magnifying-glass"></i>Prototype Pollution
+                            là gì ?</h2>
+                        <p>
+                            Prototype Pollution ( Tấn công Prototype ) là một lỗ hổng bảo mật mà kẻ tấn công có thể sửa
+                            đổi các đối tượng
+                            JavaScript đã được tạo ra trong ứng dụng web. Điều này có thể dẫn đến việc thay đổi hành vi
+                            của
+                            ứng dụng, thậm chí là việc thực thi mã độc hại.
+                        </p>
+                        <p>
+                            JavaScript là ngôn ngữ lập trình duy nhất sử dụng kế thừa dựa trên đối tượng (object-based
+                            inheritance). Thay vì được
+                            khởi tạo từ các lớp, hầu hết các đối tượng là các mảng liên kết kế thừa các thuộc tính từ
+                            một đối tượng hiện có (nguyên mẫu - Prototype). Mỗi đối tượng có một tham chiếu ngược đến
+                            đối tượng
+                            nguyên mẫu thông qua thuộc tính __proto__.
+
+                        </p>
+                        <p>
+                            Điều này mở ra cơ hội cho những kẻ tấn công: nếu chúng có thể sửa đổi đối tượng nguyên mẫu,
+                            chúng có khả năng chèn mã vào tất cả các đối tượng trong bộ nhớ được tạo theo cùng một cách.
+                        </p>
+                        <p>
+                            Nếu kẻ tấn công thay thế một hàm thường được gọi trên các đối tượng, chúng có thể thực thi
+                            bất kỳ đoạn mã nào chúng muốn trong môi trường đó. Điều này cho phép các cuộc tấn công tập
+                            lệnh
+                            chéo trang (XSS) trong trình duyệt hoặc thực thi mã từ xa (RCE) trong các ứng dụng Node.js.
+                        </p>
+
+
+                    </div>
+
+                    <br>
+
+                    <div class="how">
+                        <h2> <i class="fa-solid fa-shield-halved"></i>Cách ngăn chặn Prototype Pollution
+                        </h2>
+
+                        <p><span class="red-bold">Cách Prototype Pollution hoạt động</span></p>
+                        <p>
+                            Đoạn code dưới đây là một trong những phiên bản đầu tiên của module <span
+                                class="bold">express-fileupload</span>
+                            trong Node.js. Nó cho phép người dùng tải lên các tệp tin và lưu trữ chúng trong thư mục
+                            <span class="bold">uploads</span> :
+                        <pre class="code-block">
+<span class="keyword">function</span> <span class="class-name">processNested</span>(<span class="variable">data</span>) {
+    <span class="keyword">if</span> (!<span class="variable">data</span> || <span class="variable">data.length</span> < 1) <span class="keyword">return</span> <span class="class-name">{}</span>
+
+    <span class="keyword">let</span> <span class="variable">d</span> = <span class="class-name">{}</span>, <span class="variable">keys</span> = <span class="class-name">Object.keys</span>(<span class="variable">data</span>)
+
+    <span class="keyword">for</span> (<span class="keyword">let</span> <span class="variable">i</span> = 0; <span class="variable">i</span> < <span class="variable">keys.length</span>; <span class="variable">i</span>++) {
+    <span class="keyword">let</span> <span class="variable">key</span> = <span class="variable">keys</span>[<span class="variable">i</span>],
+        <span class="variable">value</span> = <span class="variable">data</span>[<span class="variable">key</span>],
+        <span class="variable">current</span> = <span class="variable">d</span>,
+        <span class="variable">keyParts</span> = <span class="variable">key</span>
+            .<span class="class-name">replace</span>(<span class="keyword">new</span> <span class="class-name">RegExp</span>(/<span class="string">\[</span>/g), <span class="string">'.'</span>)
+            .<span class="class-name">replace</span>(<span class="keyword">new</span> <span class="class-name">RegExp</span>(/<span class="string">\]</span>/g), <span class="string">''</span>)
+            .<span class="class-name">split</span>(<span class="string">'.'</span>)
+
+        <span class="keyword">for</span> (<span class="keyword">let</span> <span class="variable">index</span> = 0; <span class="variable">index</span> < <span class="variable">keyParts.length</span>; <span class="variable">index</span>++) {
+            <span class="keyword">let</span> <span class="variable">k</span> = <span class="variable">keyParts</span>[<span class="variable">index</span>]
+            <span class="keyword">if</span> (<span class="variable">index</span> >= <span class="variable">keyParts.length</span> - 1){
+            <span class="variable">current</span>[<span class="variable">k</span>] = <span class="variable">value</span>
+            } <span class="keyword">else</span> {
+            <span class="keyword">if</span> (!<span class="variable">current</span>[<span class="variable">k</span>]) <span class="variable">current</span>[<span class="variable">k</span>] = !<span class="class-name">isNaN</span>(<span class="variable">keyParts</span>[<span class="variable">index</span> + 1]) ? <span class="class-name">[]</span> : <span class="class-name">{}</span>
+            <span class="variable">current</span> = <span class="variable">current</span>[<span class="variable">k</span>]
+                }
+            }
+        }
+    <span class="keyword">return</span> <span class="variable">d</span> 
+}</pre>
+
+                        Hàm này được thiết kế để biến các đối tượng meta-data như:
+                        <pre class="code-block">
+{
+    <span class="variable">"a.b.c"</span>: <span class="string">"value"</span>
+}</pre>
+
+                        Thành các đối tượng được lồng nhau như:
+                        <pre class="code-block">
+{
+    <span class="variable">"a"</span>: {
+        <span class="variable">"b"</span>: {
+            <span class="variable">"c"</span>: <span class="string">"value"</span>
+        }
+    }
+}</pre>
+                        Tuy nhiên, đoạn code này quá "dễ dãi" - nó cho phép thiết lập các trường trên đối tượng
+                        __proto__ tích hợp theo cách sau:
+                        <pre class="code-block">
+<span class="keyword">if</span> <span class="variable">payload</span> = <span class="class-name">JSON.parse</span>(
+    <span class="string">'{"__proto__": {"admin": true}}'</span>
+)
+<span class="class-name">processNested</span>(payload)
+
+<span class="comment">//Câu lệnh này sẽ in ra "Biến này tồn tại trên tất cả các đối tượng", vì
+//chúng ta đã đưa một thuộc tính vào không gian tên toàn cục. </span>
+<span class="keyword">console</span><span class="string">.log</span>(injected)
+
+<span class="comment">// Câu lệnh này sẽ in ra "Biến này tồn tại trên tất cả các đối tượng", vì
+// tất cả các đối tượng mới cũng sẽ có thuộc tính này!</span>
+<span class="keyword">console</span><span class="string">.log</span>(<span class="string">Object</span>().injected)
+ </pre>
+
+                        </p>
+
+                        <p>
+                            Để giảm thiểu các cuộc tấn công Prototype Pollution, hãy đảm bảo ae liệt kê rõ ràng các
+                            thuộc tính mà ae đặt trên các đối tượng để phản hồi lại các hành động của người dùng. Đặc
+                            biệt, hãy đảm bảo không ghi đè bất kỳ thuộc tính nội bộ nào bắt đầu bằng ký tự "_". Khi xử
+                            lý
+                            các đối tượng lồng nhau, hãy đưa ra các khẳng định trong mã của ae về các loại đối tượng
+                            ae đang xử lý khi ae kéo chúng từ các thuộc tính.
+
+                            Có một số phương pháp mã hóa khác sẽ giúp tránh các lỗ hổng trên như :
+                        <div class="div-1">
+                            <span class="red-bold">Freeze Your Objects ( Đóng băng đối tượng)</span>
+                            Sử dụng hàm Object.freeze() để ngăn chặn việc thêm hoặc xóa các thuộc tính từ đối tượng.
+                            <pre class="code-block">
+<span class="keyword">const</span> obj = {
+    <span class="keyword">prop</span>: 42
+}
+<span class="comment">// Làm cho đối tượng không bị thay đổi</span>
+<span class="string">Object.freeze</span>(obj)
+<span class="comment">// Đối tượng đã bị đóng băng, do đó trả về true</span>
+<span class="string">Object.isFrozen</span>(obj)
+<span class="comment">// Khi cố gắng sửa đối tượng sẽ gây ra lỗi</span>
+obj.prop = <span class="string">33</span>
+                                     </pre>
+
+                            <span class="red-bold">Use Prototypeless Object (Sử dụng các đối tượng không nguyên
+                                mẫu)</span>
+                            <p>Đối tượng JavaScript có thể được tạo mà không cần bất kỳ nguyên mẫu nào. Đối tượng được
+                                tạo từ <span class="bold">Object.create(null)</span> sẽ không có thuộc tính <span
+                                    class="bold">__proto__</span> và <span class="bold">constructor</span>. Theo cách
+                                này, ae chắc chắn sẽ không bị tấn công.</p>
+
+                            <span class="red-bold">Use Maps Instead of Objects (Sự dụng Map thay vì Object )</span>
+                            <p>
+                                Map là một cấu trúc dữ liệu trong JavaScript giữa các cặp key/value được giới thiệu trong ES6. Map không có
+                                nguyên mẫu và không thừa kế từ Object.prototype. Điều này giúp tránh được các cuộc tấn
+                                công Prototype Pollution.
+                                <pre class="code-block">
+<span class="keyword">const </span>map1 = <span class="keyword">new </span> <span class="string">Map</span>();
+
+map1.set(<span class="string">'a'</span>, 1);
+map1.set(<span class="string">'b'</span>, 2);
+map1.set(<span class="string">'c'</span>, 3);
+
+<span class="class-name">console</span>.log(map1.get(<span class="string">'a'</span>));
+</pre>
+                                
+                            </p>
+                        </div>
+                        </p>
+
+
+                    </div>
+
+
+
+
+
+                    <br>
+
+                    <div class="moreinfo">
+                        <h2> <i class="fa-solid fa-info"></i> Thông tin thêm</h2>
+                        <p>
+                            Đây là một số bài viết hay ho mà mình thấy nên đọc thêm:
+                        </p>
+                        <ul class="styled-list">
+
+                            <li><i class="fa-solid fa-link"></i><a href="https://www.acunetix.com/blog/articles/what-is-prototype-pollution/" target="_blank">What is Prototype Pollution?</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://portswigger.net/web-security/cross-site-scripting/prototype-pollution" target="_blank">Prototype Pollution</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://www.hacksplaining.com/lessons/prototype-pollution" target="_blank">Prototype Pollution</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <footer class="bg-dark text-white text-center py-3">
+        <script>
+
+        </script>
+        <p>&copy; Clone lại thằng Hacksplaining | <a href="https://github.com/Baodeptraii"
+                class="text-white text-decoration-none">By Re3on</a></p>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"></script>
+    </footer>
+
+    <!-- Thêm Bootstrap JS và Popper.js -->
+
+</body>
+
+</html>

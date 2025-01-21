@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Redirects
+
+
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/lessonstyle.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <header class="bg-success text-white py-5 text-center">
+        <div class="container text-center">
+            <h1 class="display-4">Open Redirects
+
+
+            </h1>
+            <a href="../../index.html" class="btn btn-light btn-lg mt-3">Back to Home</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Hiếm - Thỉnh thoảng - Thường xuyên -->
+        <!-- Khó - Trung bình - Dễ -->
+        <!-- Nhẹ - Trung bình - Nghiêm trọng -->
+
+        <div class="row row-box">
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Độ phổ biến</h3>
+                    <p>Thường xuyên</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Khả năng khai thác</h3>
+                    <p>Dễ</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Ảnh hưởng</h3>
+                    <p>Nhẹ</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Nội dung chính -->
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-16">
+
+                <div class="lesson-list p-4 shadow-sm bg-white rounded">
+
+                    <div class="what">
+                        <h2> <i class="fa-solid fa-magnifying-glass"></i>Open Redirects
+                            là gì ?</h2>
+                        <p>
+                            Open Redirects là một lỗ hổng bảo mật phổ biến trong ứng dụng web. Lỗ hổng này cho phép
+                            kẻ tấn công tạo ra các liên kết độc hại mà khi người dùng nhấp vào, họ sẽ bị chuyển hướng
+                            đến một trang web khác mà kẻ tấn công kiểm soát. Điều này có thể dẫn đến việc lừa đảo
+                            người dùng, đánh cắp thông tin cá nhân hoặc tài khoản, hoặc thậm chí là tấn công phần mềm
+                            của họ.
+                        </p>
+
+
+                        <p>
+                            Các dịch vụ gửi thư điện tử hiện đại đã rất hoàn thiện trong việc phát hiện thư rác và các
+                            loại
+                            tin nhắn độc hại khác. Một trong những phương pháp mà các dịch vụ này sử dụng để phát hiện
+                            đó
+                            chính là phân tích cú pháp các liên kết được gửi đi trong email HTML. Các liên kết này
+                            sẽ được so sánh với danh sách đen (chứa các tên miền bị cấm), nếu tên miền được coi là độc
+                            hại
+                            thì ngay lập tức sẽ được chuyển hướng đến thư mục rác.
+                        </p>
+                        <p>
+                            Open Redirects là phương thức mà những kẻ <span class="bold">Spammer</span> (gửi thư rác) và
+                            <a href="../stuff/glossary.html"><span class="bold">Phisher</span> (lừa đảo)</a> ưa thích, vì khi
+                            có thể "dẫn" người dùng qua trang web của ae (một trang web legit), các email và tin nhắn
+                            của họ sẽ ít có
+                            khả năng bị đánh dấu là độc hại. Khi người dùng bấm vào đường liên kết, họ sẽ thấy tên miền
+                            của
+                            trang web của ae, nhưng lại bị chuyển đến một trang web khác mà kẻ tấn công muốn. Người dùng
+                            có thể
+                            vô tình tải xuống phần mềm độc tại hoặc rơi vào các tình huống nguy hiểm khác, hơn nữa độ uy
+                            tín của ae
+                            cũng bị ảnh hưởng.
+
+                        </p>
+
+                    </div>
+
+                    <br>
+
+                    <div class="how">
+                        <h2> <i class="fa-solid fa-shield-halved"></i>Cách để ngăn chặn Open Redirects
+                        </h2>
+                        <p><span class="red-bold">Disallow Offsite Redirects (Không cho phép chuyển hướng ra ngoài)
+                            </span> </p>
+                        <p>
+                            Ae có thể ngăn chặn Open Redirects bằng cách kiểm tra những URL có được truyền đến các
+                            hàm chuyển hướng trong code.
+                            Hãy đảm bảo rằng tất cả các URL được truyền đến là những đường dẫn tương đối - tức là chúng
+                            chỉ bắt đầu bằng một kí tự "/"
+                            duy nhất (Hãy lưu ý rằng các URL bắt đầu bằng "//" sẽ được trình duyệt hiểu là URL tuyệt
+                            đối, không phụ thuộc vào các giao thức, nên do
+                            đó chúng cũng nên bị từ chối ).
+                            <br>
+                            Ví dụ về một URL tương đối: <span class="bold">"/redirect.php?to=example.com"</span>
+                            <br>
+                            Ví dụ về một URL tuyệt đối: <span
+                                class="bold">"https://example.com/redirect.php?to=example.com"</span>
+                            <br>
+                            Nếu ae cần thực hiện chuyển hướng ra bên ngoài, hãy cố gắng hạn chế nhất có thể những trang
+                            web riêng lẻ mà ae muốn chuyển hướng đến.
+                        </p>
+                        <p>
+                            <span class="red-bold">Check the Referrer When Doing Redirects ( Kiểm tra nguồn gốc khi thực
+                                hiện chuyển hướng) </span>
+                        </p>
+                        <p>
+                            Khi chuyển hướng (redirect) đến các URL được truyền qua tham số truy vấn, hãy đảm bảo rằng
+                            chỉ những trang thuộc website của bạn mới có quyền kích hoạt chuyển hướng. Nếu bất kỳ trang
+                            web nào khác cố gắng kích hoạt chuyển hướng, hãy xử lý điều đó một cách hết sức cẩn thận.
+
+                            Ngoài ra, để tăng cường bảo vệ, hãy kiểm tra tiêu đề Referer trong yêu cầu HTTP. Chỉ thực
+                            hiện chuyển hướng nếu tiêu đề này khớp với tên miền của ae. Đây là một lớp phòng thủ bổ
+                            sung giúp giảm nguy cơ bị lạm dụng.
+
+                        </p>
+                        <p>
+                            <span class="red-bold">Một số đoạn code ae có thể tham khảo</span>
+                        </p>
+                        <p>Những đoạn code dưới đây sẽ kiểm tra xem URL có phải là đường dẫn tương đối hay không.</p>
+                        <div class="div-1" style="margin: 1rem;">
+                            <span class="red-bold">Python</span>
+                            <pre class="code-block">
+<span class="variable">import</span> re
+<span class="variable">def</span> <span class="class-name">is_relative</span>(url):
+    <span class="variable">return</span> re.match(<span class="string">r"^\/[^\/\\]" </span>, url)</pre>
+
+                            <span class="red-bold">Ruby</span>
+                            <pre class="code-block">
+<span class="variable">def</span> <span class="class-name">is_relative</span>(url):
+    url =~ /^\/[^\/\\]/
+<span class="variable">end</span></pre>
+
+                            <span class="red-bold">Java</span>
+                            <pre class="code-block">
+<span class="comment">// Đoạn mã dưới đây có thể gặp nguy hiểm</span>
+<span class="variable">protected void </span><span class="class-name">doGet</span>(HttpServletRequest request, HttpServletResponse response) {
+    <span class="class-name">String </span><span class="string">url </span>= request.getParameter("<span class="string">url</span>");
+    <span class="class-name">if </span>(url != <span class="variable">null</span>) {
+        response.sendRedirect(url);
+      }
+    }
+
+
+<span class="comment">// Đảm bảo ae đã xác thực tham số url bất cứ khi nào sử dụng phương thức sendRedirect</span>
+<span class="variable">protected void </span><span class="class-name">doGet</span>(HttpServletRequest request, HttpServletResponse response) {
+    <span class="class-name">String </span><span class="string">url </span>= request.getParameter("<span class="string">url</span>");
+    <span class="class-name">if </span>(url != <span class="variable">null</span> && is_relative(url)) {
+        response.sendRedirect(url);
+      }
+    }
+<span class="comment">// Chỉ cho phép url bắt đầu bằng "/", loại trừ tất cả "//" hoặc "/\"</span>
+<span class="variable">private </span><span class="class-name">boolean isRelative</span>(String url) {
+    <span class="variable">return </span>url.matches(<span class="string">"/[^/\\]?.*"</span>);
+}
+</pre>
+
+                        </div>
+                        <p><span class="red-bold">Interstitial Pages (Trang trung gian)</span></p>
+                        <p>
+                            Một số trang web chèn các trang xen giữa khi người dùng rời khỏi trang, ví dụ: <span
+                                class="bold"> "Bạn đang rời
+                                khỏi tinyrobotninjas.com, bạn sẽ được tự động chuyển hướng trong 5 giây"</span> . Đây là
+                            một biện
+                            pháp tốt để bảo vệ người dùng khỏi các "doppelganger domains" – những trang web có tên miền
+                            gần giống nhằm lừa người dùng tin tưởng.
+
+                            Tuy nhiên, nếu ae tạo một trang xen giữa mà URL đích được truyền qua tham số truy vấn, hãy
+                            đảm bảo kiểm tra Referer header trong yêu cầu HTTP. Nếu không kiểm tra, trang của ae có thể
+                            dễ dàng bị lạm dụng.
+
+
+                        </p>
+                        <p><span class="red-bold">Aggregator Sites (Trang tổng hợp)</span></p>
+                        <p>Các trang tổng hợp nội dung thường sử dụng chuyển hướng (redirects) để đếm số lượt nhấp chuột
+                            (click-counting). Trong trường hợp này, URL được cộng đồng chọn, và khi người dùng nhấp vào
+                            liên kết, số lượt nhấp được tăng lên, sau đó người dùng được chuyển hướng đến trang đích.
+
+                            Nếu trang của ae có chức năng này, việc chuyển hướng đến các trang web bên ngoài là điều
+                            không thể tránh khỏi. Tuy nhiên, ae nên kiểm tra tiêu đề Referer mỗi lần thực hiện chuyển
+                            hướng để tránh bị lợi dụng!</p>
+                    </div>
+
+                    <br>
+
+                    <div class="moreinfo">
+                        <h2> <i class="fa-solid fa-info"></i> Thông tin thêm</h2>
+                        <p>
+                            Đây là một số bài viết hay ho mà mình thấy nên đọc thêm:
+                        </p>
+                        <ul class="styled-list">
+                            <li><i class="fa-solid fa-link"></i><a href="https://www.acunetix.com/blog/articles/open-redirect-vulnerability/">Open
+                                    Redirect Vulnerability</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://portswigger.net/web-security/open-redirect">Open Redirect 01</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://owasp.org/www-community/attacks/Open_redirect">Open Redirect 02</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <footer class="bg-dark text-white text-center py-3">
+        <script>
+
+        </script>
+        <p>&copy; Clone lại thằng Hacksplaining | <a href="https://github.com/Baodeptraii"
+                class="text-white text-decoration-none">By Re3on</a></p>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"></script>
+    </footer>
+
+    <!-- Thêm Bootstrap JS và Popper.js -->
+
+</body>
+
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XML External Entities
+
+
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/lessonstyle.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <header class="bg-success text-white py-5 text-center">
+        <div class="container text-center">
+            <h1 class="display-4">XML External Entities
+
+
+            </h1>
+            <a href="../../index.html" class="btn btn-light btn-lg mt-3">Back to Home</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Hiếm - Thỉnh thoảng - Thường xuyên -->
+        <!-- Khó - Trung bình - Dễ -->
+        <!-- Nhẹ - Trung bình - Nghiêm trọng -->
+
+        <div class="row row-box">
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Độ phổ biến</h3>
+                    <p>Hiếm</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Khả năng khai thác</h3>
+                    <p>Khó</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Ảnh hưởng</h3>
+                    <p>Nghiêm trọng</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Nội dung chính -->
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-16">
+
+                <div class="lesson-list p-4 shadow-sm bg-white rounded">
+
+                    <div class="what">
+                        <h2> <i class="fa-solid fa-magnifying-glass"></i>XML External Entities
+
+
+                            là gì ?</h2>
+                        <p>
+                            XML External Entities (XXE) là một lỗ hổng bảo mật trong ứng dụng web, cho phép kẻ tấn công
+                            đọc dữ liệu từ máy chủ hoặc thậm chí thực thi mã từ xa. Lỗ hổng này xảy ra khi ứng dụng web
+                            phân tích tài liệu XML mà chứa các tham chiếu đến các tài nguyên bên ngoài, như tệp tin hoặc
+                            URL hay đơn giản là do việc xử lí cú pháp của XML không an toàn.
+                        </p>
+                        <p>
+                            Cố gắng truy cập vào hệ thống tệp của máy chủ thường sẽ là bước đầu tiên mà kẻ tấn công thực
+                            hiện
+                            xâm nhập hệ thống của ae. Trừ khi ae đã triển khai các hệ thống phát hiện xâm nhập (IDS)
+                            mạnh mẽ,
+                            nếu không ae thường sẽ không biết điều đó đã xảy ra hay chưa cho đến khi mọi thứ đã quá
+                            muộn.
+                            Đừng lo lắng, ngay cả công ty lớn như Facebook đã từng gặp phải lỗ hổng này mà ;)
+                        </p>
+
+                    </div>
+
+                    <br>
+
+                    <div class="how">
+                        <h2> <i class="fa-solid fa-shield-halved"></i>Cách để ngăn chặn XML External Entities
+
+                        </h2>
+                        <p>Phần này khá giống với XML Bombs ở bài trước nhé ae.</p>
+
+                        <p><span class="red-bold">Disable Parsing of Inline DTDs (Tắt phân tích cú pháp DTD)</span></p>
+
+
+                        <p>
+                            DTD (Document Type Definition) là một phần của tài liệu XML mà định nghĩa cấu trúc của tài
+                            liệu. Khi máy chủ phân tích tài liệu XML, nó sẽ phân tích cú pháp DTD để xác định cấu trúc
+                            của tài liệu. Kẻ tấn công có thể sử dụng DTD để tạo ra một tài liệu XML rất lớn nhưng không
+                            nén được. Để ngăn chặn kẻ tấn công sử dụng DTD để tạo ra XML External Entities, ae cần tắt
+                            phân tích cú
+                            pháp DTD trên máy chủ của mình. Xem code mẫu bên dưới để biết cách tắt mặc định của DTD.
+                        </p>
+
+                        <p><span class="red-bold">Limit the Permissions of Your Web Server Process (Hạn chế quyền của
+                                quy trình máy chủ web)</span></p>
+
+
+                        <p>
+                            Đảm bảo rằng quy trình máy chủ web chỉ có quyền truy cập vào các tệp và tài nguyên cần thiết
+                            để hoạt động - nguyên tắc đặc quyền tối thiểu (least privilege). Điều này giúp giảm thiểu
+                            thiệt hại nếu kẻ tấn công có thể thực thi mã từ xa
+                            thông qua lỗ hổng XXE.
+                        </p>
+                        <p>
+                            Phương pháp này không phải ngăn chặn hoàn toàn, mà có nghĩa là nếu kẻ tấn công có thể thực
+                            hiện tấn công thành công, thiệt hại chúng gây ra sẽ bị hạn chế. <a href="../stuff/glossary.html">( "Defend in depth")</a>
+                        </p>
+
+
+
+                        </p>
+
+                        <p><span class="red-bold"> Code tham khảo </span></p>
+                        <div class="div-1">
+                            <span class="red-bold">Python</span>
+                            <p>Sử dụng thư viện <span class="bold">defusedxml</span> để xử lí XML. </p>
+
+                            <span class="red-bold">Ruby - Nokogiri</span>
+                            <pre class="code-block">
+doc = <span class="string">Nokogiri</span><span class="class-name">::XML</span>(<span class="string">File</span>.open(<span class="class-name">"data.xml"</span>)) <span class="keyword">do </span>|config|
+    config.strict.noent
+<span class="keyword">end</span> </pre>
+
+                            <span class="red-bold">Java</span>
+                            <pre class="code-block">
+<span class="string">DocumentBuilderFactory</span> <span class="class-name">dbf </span>= DocumentBuilderFactory.newInstance();
+dbf.setFeature(<span class="string">"http://apache.org/xml/features/disallow-doctype-decl"</span>, <span class="keyword">true</span>);
+                            </pre>
+
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <br>
+
+                    <div class="moreinfo">
+                        <h2> <i class="fa-solid fa-info"></i> Thông tin thêm</h2>
+                        <p>
+                            Đây là một số bài viết hay ho mà mình thấy nên đọc thêm:
+                        </p>
+                        <ul class="styled-list">
+
+                            <li><i class="fa-solid fa-link"></i><a
+                                    href="https://owasp.org/www-community/vulnerabilities/XML_External_Entity_(XXE)_Processing"
+                                    target="_blank">OWASP - XML External Entity (XXE) Processing</a></li>
+                            <li><i class="fa-solid fa-link"></i><a
+                                    href="https://owasp.org/www-community/vulnerabilities/XML_Bomb"
+                                    target="_blank">OWASP - XML Bomb</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://portswigger.net/web-security/xml-bomb"
+                                    target="_blank">PortSwigger - XML Bomb</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <footer class="bg-dark text-white text-center py-3">
+        <script>
+
+        </script>
+        <p>&copy; Clone lại thằng Hacksplaining | <a href="https://github.com/Baodeptraii"
+                class="text-white text-decoration-none">By Re3on</a></p>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"></script>
+    </footer>
+
+    <!-- Thêm Bootstrap JS và Popper.js -->
+
+</body>
+
+</html>

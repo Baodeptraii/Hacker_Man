@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Denial of Service Attacks
+
+
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/lessonstyle.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <header class="bg-success text-white py-5 text-center">
+        <div class="container text-center">
+            <h1 class="display-4">Denial of Service Attacks
+
+
+            </h1>
+            <a href="../../index.html" class="btn btn-light btn-lg mt-3">Back to Home</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Hiếm - Thỉnh thoảng - Thường xuyên -->
+        <!-- Khó - Trung bình - Dễ -->
+        <!-- Nhẹ - Trung bình - Nghiêm trọng -->
+
+        <div class="row row-box">
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Độ phổ biến</h3>
+                    <p>Thỉnh thoảng</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Khả năng khai thác</h3>
+                    <p>Trung bình</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Ảnh hưởng</h3>
+                    <p>Trung bình</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Nội dung chính -->
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-16">
+
+                <div class="lesson-list p-4 shadow-sm bg-white rounded">
+
+                    <div class="what">
+                        <h2> <i class="fa-solid fa-magnifying-glass"></i>Denial of Service Attacks
+
+
+                            là gì ?<a href="../demos/demo4.html">Demo</a ></h2>
+                        <p>
+                            Denial of Service Attacks (DoS Attacks - Tấn công từ chối dịch vụ) là một loại tấn công mà
+                            kẻ tấn công cố gắng làm cho
+                            một dịch vụ trở nên không khả dụng cho người dùng bằng cách gửi một lượng lớn yêu cầu đến
+                            máy chủ. Khi máy chủ nhận được một lượng lớn yêu cầu, nó sẽ không thể xử lý hết và dẫn đến
+                            việc máy chủ trở nên quá tải và không thể phục vụ yêu cầu của người dùng.
+                        </p>
+                        <p>
+                            <span class="bold">The best and worst aspect of the how the internet is designed is that
+                                every website it accessible to anyone with an internet connection.</span><br>
+                            Tạm dịch: "Điều tốt nhất và tồi tệ nhất mà Internet được thiết kế ra đó chính là bất cứ
+                            trang web nào cũng có thể truy cập bởi bất cứ ai có kết nối Internet."
+                        </p>
+                        <p>
+                            Các cuộc tấn công Dos được thực hiện để khiến một trang web không khả dụng với người dùng
+                            thông thường.
+                            Những kẻ tấn công tinh vi sẽ sử dụng các ứng dụng phân tán dể đảm bảo lưu lượng truy cập độc
+                            hại đến máy chủ từ nhiều địa chỉ IP
+                            khác nhau, điều này gây khó khăn cho việc phát hiện và ngăn chặn cuộc tấn công.
+                        </p>
+
+                    </div>
+
+                    <br>
+
+                    <div class="how">
+                        <h2> <i class="fa-solid fa-shield-halved"></i>Cách để ngăn chặn Denial of Service Attacks
+
+                        </h2>
+                        <p>
+                            Có nhiều công cụ và dịch vụ thương mại giúp ae bảo vệ chống lại các cuộc tấn công từ chối
+                            dịch vụ (DDoS). Hãy kiểm tra với nhà cung cấp dịch vụ lưu trữ của ae để biết các tùy chọn
+                            có sẵn. Nhiều nền tảng điện toán đám mây cung cấp các dịch vụ bảo vệ cơ bản và cảnh báo miễn
+                            phí, trong khi các công cụ quản lý băng thông nâng cao thường có chi phí thêm.
+
+                            
+                        </p>
+                        <p>Nếu trang web của ae được thiết kế để có thể mở rộng (scalable), nó sẽ xử lý tốt hơn các
+                            tình huống lưu lượng truy cập cao. Một số cách phổ biến để tăng khả năng mở rộng bao gồm:</p>
+                        <div class="div-1">
+                            <ul class="styled-list-2">
+                                <li>Sử dụng mạng phân phối nội dung (CDN) để phục vụ hình ảnh, tệp stylesheet và các tài nguyên khác.</li>
+                                <li>Lưu trữ tạm thời (caching) các tài nguyên thường xuyên được truy cập trong bộ nhớ hoặc trên ổ đĩa để giảm số lần truy cập cơ sở dữ liệu.</li>
+                                <li>Thiết lập tiêu đề Cache-Control cho các tài nguyên ít thay đổi, giúp trình duyệt không tải lại chúng mỗi khi người dùng truy cập trang.</li>
+                                <li>Thực thi các quy trình dài (như truy cập API hoặc gửi email) trong hàng đợi công việc không đồng bộ, thay vì chạy trực tiếp trong quy trình chính của web.</li>
+                                <li>Tự động triển khai máy chủ web, cho phép tăng số lượng máy chủ khi cần mà không ảnh hưởng đến trải nghiệm người dùng.</li>
+                                <li>Chia ứng dụng phức tạp thành các micro-service, giúp từng thành phần có thể mở rộng độc lập.</li>
+                                <li>Cài đặt phân tích lưu lượng truy cập để phát hiện các giai đoạn có lượng truy cập cao và điều chỉnh kịp thời</li>
+                            </ul>
+                        </div>
+
+
+
+                    </div>
+
+
+
+
+
+                <br>
+
+                <div class="moreinfo">
+                    <h2> <i class="fa-solid fa-info"></i> Thông tin thêm</h2>
+                    <p>
+                        Đây là một số bài viết hay ho mà mình thấy nên đọc thêm:
+                    </p>
+                    <ul class="styled-list">
+
+                        <li><i class="fa-solid fa-link"></i><a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/" target="_blank">What is a DDoS Attack? | Cloudflare</a></li>
+                        <li><i class="fa-solid fa-link"></i><a href="https://www.cloudflare.com/learning/ddos/glossary/denial-of-service/" target="_blank">Denial of Service (DoS) | Cloudflare</a></li>
+                        <li><i class="fa-solid fa-link"></i><a href="https://www.cloudflare.com/learning/ddos/glossary/distributed-denial-of-service-ddos/" target="_blank">Distributed Denial of Service (DDoS) | Cloudflare</a></li>
+                        <li><i class="fa-solid fa-link"></i><a href="https://www.cloudflare.com/learning/ddos/ddos-attack-tools/" target="_blank">DDoS Attack Tools | Cloudflare</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+
+
+
+    <footer class="bg-dark text-white text-center py-3">
+        <script>
+
+        </script>
+        <p>&copy; Clone lại thằng Hacksplaining | <a href="https://github.com/Baodeptraii"
+                class="text-white text-decoration-none">By Re3on</a></p>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"></script>
+    </footer>
+
+    <!-- Thêm Bootstrap JS và Popper.js -->
+
+</body>
+
+</html>

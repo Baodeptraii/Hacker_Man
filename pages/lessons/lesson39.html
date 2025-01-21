@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subdomain Squatting
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/lessonstyle.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <header class="bg-success text-white py-5 text-center">
+        <div class="container text-center">
+            <h1 class="display-4">Subdomain Squatting
+
+
+
+
+            </h1>
+            <a href="../../index.html" class="btn btn-light btn-lg mt-3">Back to Home</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Hiếm - Thỉnh thoảng - Thường xuyên -->
+        <!-- Khó - Trung bình - Dễ -->
+        <!-- Nhẹ - Trung bình - Nghiêm trọng -->
+
+        <div class="row row-box">
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Độ phổ biến</h3>
+                    <p>Thỉnh thoảng</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Khả năng khai thác</h3>
+                    <p>Dễ</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Ảnh hưởng</h3>
+                    <p>Nghiêm trọng</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Nội dung chính -->
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-16">
+
+                <div class="lesson-list p-4 shadow-sm bg-white rounded">
+
+                    <div class="what">
+                        <h2> <i class="fa-solid fa-magnifying-glass"></i>Subdomain Squatting
+                            là gì ?</h2>
+                        <p>
+                            Subdomain Squatting (Chiếm đoạt tên miền phụ) là một kỹ thuật tấn công mà kẻ tấn công tạo ra
+                            các tên miền giả mạo
+                            giống như tên miền của ae, nhưng với một số thay đổi nhỏ. Khi ae hoặc nhân viên của ae
+                            nhập
+                            một tên miền giả mạo này vào trình duyệt, chúng sẽ được định tuyến đến trang web giả mạo
+                            của
+                            kẻ tấn công thay vì trang web thật của ae.
+                        </p>
+                        <p>
+                            Việc chiếm đoạt tên miền phụ xảy ra khi kẻ tấn công giành được quyền kiểm soát tên miền phụ
+                            của tên miền chính của trang web của ae. Điều này thường xảy ra khi các mục nhập DNS có mục
+                            nhập tên chính tắc (CNAME) trỏ đến một tài nguyên không tồn tại. Kẻ tấn công chỉ cần tuyên
+                            bố tài nguyên đó là của riêng chúng và bắt đầu cung cấp nội dung theo tên miền của ae.
+                        </p>
+                        <p>
+                            Việc chiếm đoạt tên miền phụ có khả năng cho phép kẻ tấn công:
+                        <ul class="styled-list-3">
+                            <li>Đọc cookie được đặt từ tên miền chính.</li>
+                            <li>Thực hiện các cuộc tấn công mã lệnh chéo trang (XSS) (bằng cách lưu trữ JavaScript độc
+                                hại trên tên miền phụ).</li>
+                            <li>Vượt qua các Chính sách bảo mật nội dung (CSP), cho phép chúng nắm bắt thông tin nhạy
+                                cảm như thông tin đăng nhập.</li>
+                            <li>Các tên miền phụ bị đánh cắp thường được sử dụng trong các cuộc tấn công <a
+                                    href="../stuff/glossary.html">lừa đảo
+                                    (phishing)</a>, vì
+                                trình quét thư web ít có khả năng đánh dấu URL là độc hại nếu chúng nằm trong một tên
+                                miền đáng tin cậy.</li>
+                        </ul>
+                        </p>
+
+
+
+                    </div>
+
+                    <br>
+
+                    <div class="how">
+                        <h2> <i class="fa-solid fa-shield-halved"></i>Cách ngăn chặn Subdomain Squatting
+                        </h2>
+                        <p>
+                            Có một số cách tiếp cận để ngăn chặn việc chiếm đoạt tên miền phụ. Ae nên cẩn thận xóa các
+                            mục nhập tên miền phụ trước khi hủy cung cấp bất kỳ tài nguyên nào (có nghĩa là ghi lại các
+                            quy trình cần tuân thủ nội bộ!). <br>
+                            Một số nguyên tắc chung có thể là:
+                        <ul class="styled-list-2">
+                            <li>Xác định quy trình chuẩn để cung cấp và hủy cung cấp máy chủ.</li>
+                            <li>Thực hiện tất cả các bước càng gần nhau càng tốt.</li>
+                            <li>Bắt đầu cung cấp bằng cách yêu cầu máy chủ ảo; tạo bản ghi DNS sau cùng.</li>
+                            <li>Bắt đầu hủy cung cấp bằng cách xóa bản ghi DNS trước.</li>
+                            <li>Giữ một bản kiểm kê tất cả các tên miền của tổ chức ae và nhà cung cấp dịch vụ lưu trữ
+                                của họ, và cập nhật khi có thay đổi, để đảm bảo không có gì bị bỏ sót.</li>
+
+                        </ul>
+                        </p>
+                        <p><span class="red-bold">Scan Periodically for Dangling Subdomains (Quét định kỳ cho các tên
+                                miền phụ treo)</span></p>
+                        <p>
+                            Nếu ae triển khai nhiều tên miền phụ, hãy cân nhắc quét định kỳ để tìm các tên miền phụ bị
+                            bỏ sót bằng các công cụ liệt kê tên miền tự động như <span class="bold">Amass</span> hoặc
+                            <span class="bold">Sublist3r</span>. (Đây là những
+                            công cụ mà tin tặc sử dụng, vì vậy chúng được khuyến nghị sử dụng!)
+                        </p>
+                        <p><span class="red-bold">Restrict Cookie Access By Subdomain (Hạn chế truy cập cookie theo tên
+                                miền phụ)</span></p>
+                        <p>
+                            Hãy thận trọng về việc tên miền phụ nào (nếu có) có thể đọc cookie. Hai tên miền khác nhau —
+                            ví dụ: <span class="bold">example.com</span> và <span class="bold">blog.example.com
+                            </span>hoặc <span class="bold">blog.example.com </span>và <span
+                                class="bold">support.example.com</span> — chỉ có
+                            thể chia sẻ cookie nếu thuộc tính tên miền có trong tiêu đề:
+                        <pre class="code-block">Set-Cookie: session_id=273819272819191; domain=example.com</pre>
+                        </p>
+                        <p>
+                            Nếu ae không cần đọc cookie trên các miền phụ, hãy bỏ thuộc tính miền:
+                        <pre class="code-block">Set-Cookie: session_id=273819272819191</pre>
+                        </p>
+
+                        <p><span class="red-bold">Avoid Wildcard Certificates If You Don't Need Them (Tránh chứng chỉ
+                                đại diện nếu không cần thiết)</span></p>
+                        <p>
+
+                            Khi ae đăng ký chứng chỉ kỹ thuật số, ae sẽ được hỏi chứng chỉ này áp dụng cho miền nào
+                            (bao gồm cả miền phụ). Chứng chỉ Wildcard có thể được sử dụng trên tất cả các miền phụ cho
+                            một miền nhất định (và có xu hướng tốn kém). Tránh sử dụng chúng nếu ae không cần, vì sẽ an
+                            toàn hơn khi liệt kê rõ ràng các miền phụ của ae khi tạo chứng chỉ!</p>
+
+                    </div>
+
+
+
+
+
+                    <br>
+
+                    <div class="moreinfo">
+                        <h2> <i class="fa-solid fa-info"></i> Thông tin thêm</h2>
+                        <p>
+                            Đây là một số bài viết hay ho mà mình thấy nên đọc thêm:
+                        </p>
+                        <ul class="styled-list">
+
+
+                            <li><i class="fa-solid fa-link"></i><a
+                                    href="https://www.hackerone.com/blog/Guide-Subdomain-Takeovers"
+                                    target="_blank">Guide to Subdomain Takeovers</a></li>
+                            <li><i class="fa-solid fa-link"></i><a
+                                    href="https://portswigger.net/web-security/host-header/exploiting"
+                                    target="_blank">Exploiting Host Header Attacks</a></li>
+                            <li><i class="fa-solid fa-link"></i><a
+                                    href="https://www.owasp.org/index.php/Testing_for_Subdomain_Takeover"
+                                    target="_blank">OWASP Testing for Subdomain Takeover</a></li>
+                        </ul>
+
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <footer class="bg-dark text-white text-center py-3">
+        <script>
+
+        </script>
+        <p>&copy; Clone lại thằng Hacksplaining | <a href="https://github.com/Baodeptraii"
+                class="text-white text-decoration-none">By Re3on</a></p>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"></script>
+    </footer>
+
+    <!-- Thêm Bootstrap JS và Popper.js -->
+
+</body>
+
+</html>

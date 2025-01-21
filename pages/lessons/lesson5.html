@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cross-Site Request Forgery (CSRF)
+</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/lessonstyle.css">
+    <style>
+        
+    </style>
+</head>
+
+<body>
+
+    <header class="bg-success text-white py-5 text-center">
+        <div class="container text-center">
+            <h1 class="display-4">Cross-Site Request Forgery (CSRF)
+</h1>
+            <a href="../../index.html" class="btn btn-light btn-lg mt-3">Back to Home</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Hiếm - Thỉnh thoảng - Thường xuyên -->
+        <!-- Khó - Trung bình - Dễ -->
+        <!-- Nhẹ - Trung bình - Nghiêm trọng -->
+
+        <div class="row row-box">
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Độ phổ biến</h3>
+                    <p>Thường xuyên</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Khả năng khai thác</h3>
+                    <p>Dễ</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Ảnh hưởng</h3>
+                    <p>Trung bình</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Nội dung chính -->
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-16">
+
+                <div class="lesson-list p-4 shadow-sm bg-white rounded">
+
+                    <div class="what">
+                        <h2> <i class="fa-solid fa-magnifying-glass"></i>Cross-Site Request Forgery (CSRF) là gì ?</h2>
+                        <p>
+                            Cross-Site Request Forgery (CSRF - giả mạo yêu cầu liên trang) là một kỹ thuật tấn công mà kẻ tấn công có thể lừa trình duyệt người dùng dùng thực hiện các hành động mà họ không muốn.
+                            Bất kỳ chức năng nào mà người dùng có thể thực hiện thông qua trình duyệt, như thay đổi cài đặt, thay đổi mật khẩu, hoặc thậm chí thực hiện các giao dịch tài chính, đều có thể bị tấn công CSRF.
+                            Các cuộc tấn công CSRF là ví dụ điển hình cho cách mà <a href="../stuff/glossary.html">sâu (worms)</a> có thể lây lan.<br>
+                            Các cuộc tấn công CSRF thường nhằm mục đích để:
+                            <ul style="list-style-type: decimal;">
+                                <li>Đánh cắp thông tin nhạy cảm</li>
+                                <li>Phát tán sâu qua các mạng xã hội</li>
+                                <li>Cài đặt các phần mềm độc hại trên điện thoại di động</li>
+                            </ul>
+                            
+                        </p>
+                        <p>Rất khó để ước tính thiệt hại và mức độ phổ biến của CSRF vì nó thường không được báo cáo hoặc phát hiện. Dẫu vậy <a href="../stuff/glossary.html">OWASP</a> vẫn đánh giá CSRF trong top 10 lỗ hổng bảo mật phổ biến nhất.
+                        </p>
+                       
+
+                    </div>
+
+                    <br>
+
+                    <div class="how">
+                        <h2> <i class="fa-solid fa-shield-halved"></i>Cách để ngăn chặn Cross-Site Request Forgery</h2>
+                        <p>Thông thường một website sẽ là sự kết hợp giữa 2 bên client (máy khách) và server (máy chủ). 
+                            Các đoạn mã HTML và Javascript sẽ được hiển thị và thực thi trên trình duyệt, điều này cho phép người dùng có thể điều hướng đến các URL khác trên trang web của ae, gửi biểu mẫu HTML 
+                            đến server và yêu cầu <a href="../stuff/glossary.html">AJAX</a> thông qua Javascript. Bên máy chủ sẽ tiếp nhận yêu cầu <a href="../stuff/glossary.html">HTTP</a> và xử lí dữ liệu đó một cách phù hợp.<br>
+                            Các hành động của phía máy chủ có thể được thực hiện bởi một yêu cầu HTTP giả mạo. Một cuộc tấn công CSRF thường bắt đầu bằng việc kẻ tấn công tạo ra một trang web giả mạo chứa các yêu cầu HTTP giả mạo trên một tên miền giả mạo :v 
+                            (Đó là lí do nó có tên gọi là "cross-site").
+                            Để ngăn chặn CSRF, ae cần phải thực hiện các biện pháp bảo vệ ở cả hai phía và cũng phải đảm bảo hai điều: 
+                            Đảm bảo các yêu cầu GET không gây ra tác dụng phụ (side-effect) và các yêu cầu <span class="bold">không phải GET</span> chỉ có thể được gọi từ phía máy chủ của ae.
+                        </p> 
+                       
+                        <p class="red-bold">
+                            REST
+
+                        </p>
+                        <p>
+                            Representation State Transfer (REST - Chuyển trạng thái biểu diễn) là một kiến trúc phần mềm dựa trên web mà các yêu cầu HTTP được sử dụng để thực hiện các thao tác CRUD (Create, Read, Update, Delete) trên dữ liệu.
+                            Việc tuân thủ theo thiết kế này sẽ giúp code ae "sạch" hơn và giảm thiểu rủi ro CSRF. Hơn nữa REST nhấn mạnh rằng các yêu cầu GET chỉ được sử dụng để xem tài nguyên. Giữ cho các yêu cầu GET của ae không có vấn đề gì 
+                            có thể hạn chế tác hại của các URL độc hại - nếu nắc cơ muốn tấn công thì chúng phải chăm chỉ hơn nhiều trong việc tạo ra yêu cầu POST gây hại.
+                        </p>
+
+                        
+
+                        <p class="red-bold">
+                            Anti-Forgery Tokens (CSRF Tokens - Token chống giả mạo)
+
+                        </p>
+                        <p>
+                            Thực thế các yêu cầu POST vẫn có thể được gửi đến trang web của ae từ các tập lệnh và trang được lưu trữ trên các miền khác. Vì thế để đảm bảo ae cần xử lí đúng yêu cầu POST hợp lệ, ae cần phải sử dụng CSRF Tokens, một loại mã bí mật và duy nhất
+                            cho mỗi phản hồi từ máy chủ. Khi máy chủ nhận được yêu cầu POST, nó sẽ kiểm tra xem CSRF Token (thường được lưu ở cookie hoặc trên máy chủ) có khớp với yêu cầu hay không. Nếu không, máy chủ sẽ từ chối yêu cầu đó.
+                            Thông thường các tokens này sẽ được chèn bí mật vào các form HTML hoặc yêu cầu AJAX, hơn nữa các framework ngày nay cũng đã hỗ trợ sẵn cho ae.
+                        </p>
+
+                        <p class="red-bold">
+                            Ensure Cookies are sent with the SameSite Cookie Attribute
+
+                        </p>
+                        <p>
+                            Cấu hình cho <a href="../stuff/glossary.html">cookies</a> của ae với SameSite Cookie Attribute sẽ giúp giảm thiểu rủi ro CSRF. SameSite Cookie Attribute cho phép ae kiểm soát xem cookies ở trình duyệt có được gửi cùng với yêu cầu từ các trang khác không.
+                            Cách thiết lập thuộc tính này cũng khá đơn giản như sau:
+                            </p>
+                            <pre class="code-block">
+<span class="comment">// Giá trị Lax cho phép yêu cầu GET từ bên thứ 3 tới trình duyệt của ae mà có cookie đính kèm - nhưng chỉ yêu cầu GET thôi</span>
+<span class="comment">// Chính là cái này mà khi chuyển hướng từ trang web khác, ae không phải đăng nhập nữa đấy </span>
+Set-Cookie: <span class="class-name">CookieName</span>=CookieValue; <span class="class-name">SameSite</span>=Lax;
+
+<span class="comment">// Giá trị Strict thì sẽ ngăn bất kỳ cookie vào được gửi từ bên thứ 3 tới trình duyệt ae</span>
+<span class="comment">// Max ping bảo mật luôn nhé ;3 </span>
+Set-Cookie: <span class="class-name">CookieName</span>=CookieValue; <span class="class-name">SameSite</span>=Strict;</pre>
+                            
+                                
+                        <p class="red-bold">
+                            Include Addition Authentication for Sensitive Actions (Bổ sung xác thực cho các hành động nhạy cảm)
+                        </p>
+                        <p>
+                            Để đảm bảo an toàn cho các hành động nhạy cảm như thay đổi mật khẩu, thực hiện giao dịch tài chính, ae cần phải yêu cầu người dùng xác thực thêm một lần nữa trước khi thực hiện hành động đó (ví dụ phải nhập thêm mật khẩu cũ / một lần nữa ...). 
+                            Điều này sẽ giúp giảm thiểu rủi ro CSRF, hơn nữa cũng bảo vệ cho cả người dùng.
+                        </p>
+                        
+                    </div>
+
+                    <br>
+
+                    <div class="moreinfo">
+                        <h2> <i class="fa-solid fa-info"></i> Thông tin thêm</h2>
+                        <p>
+                            Đây là một số bài viết hay ho mà mình thấy nên đọc thêm:
+                        </p>
+                        <ul class="styled-list">
+                            <li><i class="fa-solid fa-link"></i><a href="https://owasp.org/www-community/attacks/csrf">OWASP - Cross-Site Request Forgery (CSRF)</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://portswigger.net/web-security/csrf">PortSwigger - Cross-Site Request Forgery (CSRF)</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://www.acunetix.com/blog/articles/preventing-csrf-attacks/">Acunetix - Preventing CSRF Attacks</a></li>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <footer class="bg-dark text-white text-center py-3">
+        <script>
+            function saveInput() {
+                const userInput = document.getElementById('userInput').value;
+                const output = document.getElementById('output');
+
+                // Lưu và hiển thị nội dung mà không mã hóa (raw HTML) => dễ bị XSS
+                output.innerHTML = userInput;
+
+                // Ngăn chặn reload form
+                return false;
+            }
+        </script>
+        <p>&copy; Clone lại thằng Hacksplaining | <a href="https://github.com/Baodeptraii"
+                class="text-white text-decoration-none">By Re3on</a></p>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"></script>
+    </footer>
+
+    <!-- Thêm Bootstrap JS và Popper.js -->
+
+</body>
+
+</html>

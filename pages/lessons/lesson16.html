@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privilege Escalation
+
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/lessonstyle.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <header class="bg-success text-white py-5 text-center">
+        <div class="container text-center">
+            <h1 class="display-4">Privilege Escalation
+
+            </h1>
+            <a href="../../index.html" class="btn btn-light btn-lg mt-3">Back to Home</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Hiếm - Thỉnh thoảng - Thường xuyên -->
+        <!-- Khó - Trung bình - Dễ -->
+        <!-- Nhẹ - Trung bình - Nghiêm trọng -->
+
+        <div class="row row-box">
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Độ phổ biến</h3>
+                    <p>Thỉnh thoảng</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Khả năng khai thác</h3>
+                    <p>Trung bình</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Ảnh hưởng</h3>
+                    <p> Nghiêm trọng</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Nội dung chính -->
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-16">
+
+                <div class="lesson-list p-4 shadow-sm bg-white rounded">
+
+                    <div class="what">
+                        <h2> <i class="fa-solid fa-magnifying-glass"></i>Privilege Escalation
+
+                            là gì ? </h2>
+                        <p>
+                            Privilege Escalation (leo thang đặc quyền) là một kỹ thuật tấn công mà kẻ tấn công sử dụng
+                            để tăng cấp độ quyền truy cập của mình trong hệ thống. Kẻ tấn công có thể leo thang theo
+                            chiều ngang ( <span class="bold">horizontal escalation</span>) - để truy cập vào dữ liệu
+                            người dùng khác hoặc leo thang theo
+                            chiều dọc ( <span class="bold">vertical escalation</span>) - để chiếm đoạt nhiều quyền hạn
+                            hơn.
+                        </p>
+                        <p>
+                            Lỗ hổng leo thang đặc quyền xảy ra khi một ứng dụng không kiểm tra đúng đắn quyền hạn của
+                            người dùng hoặc xử lí truy cập dữ liệu đầu vào không đúng cách. Kẻ tấn công có thể lợi dụng
+                            để đánh cắp thông tin nhạy cảm, thay đổi dữ liệu hoặc thậm chí kiểm soát toàn bộ hệ thống.
+                        </p>
+
+
+                    </div>
+
+                    <br>
+
+                    <div class="how">
+                        <h2> <i class="fa-solid fa-shield-halved"></i>Cách để ngăn chặn Privilege Escalation
+                        </h2>
+                        <p>
+                            Lỗ hổng leo thang đặc quyền là lỗi hệ thống cấp cho người dùng độc hại quyền hạn quá mức cho
+                            phép hoặc sai
+                            sau khi đã xác thực (authentication). Lỗ hổng này khác với lỗ hổng chiếm quyền điều khiển
+                            phiên (session hijacking),
+                            nơi kẻ tấn công chiếm quyền điều khiển phiên của người dùng khác.
+
+                        </p>
+                        <p>
+                            Lỗ hổng leo thang quyền xảy ra khi các quyết định kiểm soát truy cập dựa trên dữ liệu đầu
+                            vào không đáng tin cậy.
+                            Do giao thức HTTP là stateless (không duy trì trạng thái giữa các yêu cầu), các website cần
+                            một cách để "ghi nhớ" và tiếp tục tương tác với người dùng sau khi họ đăng nhập. Điều này
+                            thường được thực hiện bằng cách gửi thông tin trong phản hồi HTTP, sau đó thông tin này sẽ
+                            được gửi lại trong các yêu cầu HTTP tiếp theo. Kẻ tấn công có thể chỉnh sửa dữ liệu được
+                            truyền lại này để lừa hệ thống, từ đó chiếm được quyền truy cập hoặc khả năng mà họ không
+                            được phép có.
+                        </p>
+
+                        <p><span class="red-bold">Keep critical information on the server side (Giữ dữ liệu quan trọng ở
+                                phía máy chủ)</span></p>
+                        <p>
+                            Một cách tiếp cận đơn giản nhất là không truyền bất kì dữ liệu quan trọng hay nhạy cảm nào
+                            tới phía máy khách.
+                            Điều này có nghĩa là chỉ có ID phiên (session ID hay token) được truyền qua lại giữa máy
+                            khách và máy chủ, còn tất cả dữ liệu
+                            liên quan đến phiên làm việc sẽ được lưu ở phía máy chủ. Điều này có thể loại bỏ khả năng bị
+                            giả mạo, bởi vì người dùng có mục đích xấu không thể
+                            thay đổi dữ liệu mà họ không thể truy cập.
+                        </p>
+                        <p>
+                            Mặc dù an toàn, nhưng cách này lại đặt ra một số yêu cầu lớn hơn cho máy chủ : Trạng thái
+                            của phiên
+                            phải được duy trì và tra cứu cho mỗi yêu cầu HTTP. Điều này có thể tạo ra một số vấn đề về
+                            hiệu suất
+                            nếu không được thực hiện đúng cách.
+                        </p>
+
+                        <p><span class="red-bold">Tamper-Proofing Cookies (Sử dụng cookies chống giả mạo)</span></p>
+                        <p>
+                            Nếu ae muốn gửi dữ liệu trở về phía máy khách, và đảm bảo dữ liệu đó không bị thay đổi, thì
+                            ae phải ký <a href="../stuff/glossary.html">chữ ký số (digital signature)</a> cho dữ liệu đó. Nhiều framework web cung cấp cơ
+                            chế để tạo chữ ký số cho dữ liệu, và kiểm tra chữ ký số đó khi dữ liệu được gửi trở lại.
+                            Bất cứ sửa đổi nào cũng sẽ làm thay đổi chữ ký số, và dữ liệu sẽ không được chấp nhận.
+                        </p>
+                        <p>
+                            Phương pháp này đảm bảo tính toàn vẹn của dữ liệu (data integrity), nhưng không đảm bảo tính
+                            bảo mật của dữ liệu (data confidentiality). Người dùng vẫn có thể đọc dữ liệu, nhưng họ
+                            không thể thay đổi dữ liệu đó mà không bị phát hiện. Điều này sẽ không phù hợp cho một số dữ liệu 
+                            mà ae không mong muốn người dùng biết như điểm số, thông tin cá nhân, ...
+                        </p>
+                        <p>
+                            Chú ý, với cách tiếp cận này, toàn bộ phản hồi và yêu cầu HTTP sẽ mang toàn bộ phiên làm việc. Tránh 
+                            lưu trữ quá nhiều dữ liệu trong phiên làm việc của ae để tránh ảnh hưởng khả năng phản hồi của trang web.
+                        </p>
+
+                        <p><span class="red-bold">Encrypting Data (Mã hóa dữ liệu)</span></p>
+                        <p>
+                            Ae có thể mã hóa dữ liệu trước khi gửi nó tới máy khách, và giải mã nó khi nhận được. Điều này
+                            đảm bảo rằng dữ liệu không thể bị đọc, thậm chí khi bị đánh cắp. Tuy nhiên, mã hóa dữ liệu
+                            có thể tạo ra một số vấn đề về hiệu suất, và không phải lúc nào cũng là cần thiết. 
+                        </p>
+
+
+
+
+                    </div>
+
+
+
+                    <br>
+
+                    <div class="moreinfo">
+                        <h2> <i class="fa-solid fa-info"></i> Thông tin thêm</h2>
+                        <p>
+                            Đây là một số bài viết hay ho mà mình thấy nên đọc thêm:
+                        </p>
+                        <ul class="styled-list">
+                            
+                            <li><i class="fa-solid fa-link"></i><a href="https://owasp.org/www-community/attacks/Session_fixation">Session Fixation</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://owasp.org/www-community/attacks/Session_hijacking">Session Hijacking</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://owasp.org/www-community/attacks/Session_Management">Session Management</a></li>
+
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <footer class="bg-dark text-white text-center py-3">
+        <script>
+
+        </script>
+        <p>&copy; Clone lại thằng Hacksplaining | <a href="https://github.com/Baodeptraii"
+                class="text-white text-decoration-none">By Re3on</a></p>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"></script>
+    </footer>
+
+    <!-- Thêm Bootstrap JS và Popper.js -->
+
+</body>
+
+</html>

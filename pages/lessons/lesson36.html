@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cross-Site Script Inclusion
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/lessonstyle.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <header class="bg-success text-white py-5 text-center">
+        <div class="container text-center">
+            <h1 class="display-4">Cross-Site Script Inclusion
+
+
+
+
+            </h1>
+            <a href="../../index.html" class="btn btn-light btn-lg mt-3">Back to Home</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Hiếm - Thỉnh thoảng - Thường xuyên -->
+        <!-- Khó - Trung bình - Dễ -->
+        <!-- Nhẹ - Trung bình - Nghiêm trọng -->
+
+        <div class="row row-box">
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Độ phổ biến</h3>
+                    <p>Thỉnh thoảng</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Khả năng khai thác</h3>
+                    <p>Dễ</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Ảnh hưởng</h3>
+                    <p>Trung bình</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Nội dung chính -->
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-16">
+
+                <div class="lesson-list p-4 shadow-sm bg-white rounded">
+
+                    <div class="what">
+                        <h2> <i class="fa-solid fa-magnifying-glass"></i>Cross-Site Script Inclusion
+                            là gì ?</h2>
+                        <p>
+
+
+                            Cross-Site Script Inclusion (XSSI) là một lỗ hổng bảo mật cho phép kẻ tấn công thực thi mã
+                            JavaScript từ xa trên trang web của nạn nhân. Lỗ hổng này xảy ra khi trang web chứa một tập
+                            tin JavaScript từ một nguồn không đáng tin cậy, cho phép kẻ tấn công thực thi mã JavaScript
+                            từ xa trên trình duyệt của nạn nhân.
+                        </p>
+                        <p>
+                            Nếu trang web của ae lưu trữ dữ liệu nhạy cảm trong tệp JavaScript, kẻ tấn công có thể lừa
+                            người dùng truy cập một trang độc hại. Trang này sẽ nhập tệp JavaScript từ trang của ae, từ
+                            đó kẻ tấn công có thể đánh cắp bất kỳ dữ liệu nhạy cảm nào được chứa trong tệp đó.
+
+
+                        </p>
+
+
+
+                    </div>
+
+                    <br>
+
+                    <div class="how">
+                        <h2> <i class="fa-solid fa-shield-halved"></i>Cách ngăn chặn Cross-Site Script Inclusion
+                        </h2>
+
+                        <p><span class="red-bold">Cách hoạt động của XSSI</span></p>
+                        <div class="div-1">
+                            <p>
+                                <span class="bold">Không bị hạn chế bởi Same-Origin Policy:</span> <br>
+                                Không giống các nội dung khác như JSON hoặc HTML, tệp JavaScript không bị giới hạn bởi
+                                chính
+                                sách cùng nguồn gốc (Same-Origin Policy) của trình duyệt. Điều này cho phép tệp
+                                JavaScript
+                                được tải từ các miền khác, tạo cơ hội để kẻ tấn công đánh cắp dữ liệu nhạy cảm trong
+                                tệp.
+                            </p>
+                            <p>
+                                <span class="bold">Ứng dụng Single Page Apps (SPAs):</span><br>
+                                Trong các ứng dụng SPA, JavaScript thường được dùng để cập nhật giao diện động (DOM) dựa
+                                trên tương tác của người dùng. Đôi khi, dữ liệu trạng thái (state) được nhúng trực tiếp
+                                trong tệp JavaScript để cải thiện hiệu suất, tránh tải từ máy chủ.
+                            </p>
+                            <p>
+                                <span class="bold">Khai thác tệp JavaScript:</span>
+                                Vì bất kỳ trang web nào cũng có thể nhập tệp JavaScript của ae bằng thẻ
+                                <span class="bold">&lt;script&gt;</span>, kẻ tấn công có thể xây dựng một trang độc hại,
+                                nhập tệp của ae và thu thập dữ liệu nhạy cảm.Họ thậm chí có thể chèn liên kết dẫn đến
+                                trang độc hại vào phần bình luận trên trang của ae để thu hút nạn nhân.
+                            </p>
+                        </div>
+                        <p><span class="red-bold">Cách ngăn chặn XSSI</span></p>
+                        <p>
+                            Để tránh các cuộc tấn công XSSI, đừng chèn dữ liệu nhạy cảm vào các tệp JavaScript - hãy sử
+                            dụng URL JSON thay thế hoặc mã hóa dữ liệu trong HTML của chính trang. Các kiểu nội dung
+                            JSON và HTML phải tuân theo chính sách cùng nguồn gốc của trình duyệt, do đó không thể sử
+                            dụng chúng trong các cuộc tấn công XSSI.
+
+                            Sau đây là cách khởi tạo trạng thái trang một cách an toàn trong React và Angular, bằng cách
+                            tải dữ liệu từ URL JSON khi trang được hiển thị.
+                            <div class="div-1">
+                                <span class="red-bold">React</span>
+                                <pre class="code-block">
+<span class="comment">// Lấy thông tin cấu hình từ máy chủ.</span>  
+<span class="keyword">async</span> <span class="variable">componentDidMount</span>() {
+    <span class="keyword">const</span> <span class="variable">response</span> = <span class="keyword">await</span> <span class="variable">fetch</span>(<span class="string">'/api/config'</span>);
+    <span class="keyword">const</span> <span class="variable">data</span> = <span class="keyword">await</span> <span class="variable">response.json</span>();
+
+    <span class="variable">this.setState</span>({
+    <span class="variable">loading</span>     : <span class="keyword">false</span>,
+    <span class="variable">user</span>        : <span class="variable">data.user</span>,
+    <span class="variable">accessToken</span> : <span class="variable">data.accessToken</span>
+    });
+}
+                                  </pre>
+
+                                  <span class="red-bold">Angular JS</span>
+                                  <pre class="code-block">
+<span class="comment">// Thông tin cấu hình từ máy chủ.</span>
+<span class="keyword">export</span> <span class="keyword">interface</span> <span class="class-name">Config</span> {
+    <span class="variable">username</span>     : <span class="class-name">string</span>;
+    <span class="variable">accessToken</span>  : <span class="class-name">string</span>;
+    <span class="variable">role</span>         : <span class="class-name">string</span>;
+}
+
+<span class="keyword">@Injectable</span>()
+<span class="keyword">export</span> <span class="keyword">class</span> <span class="class-name">ConfigService</span> {
+    <span class="keyword">constructor</span>(<span class="keyword">private</span> <span class="variable">http</span>: <span class="class-name">HttpClient</span>) {}
+
+    <span class="variable">getConfig</span>() {
+    <span class="keyword">return</span> <span class="variable">this.http.get</span>&lt;<span class="class-name">Config</span>&gt;(<span class="string">'api/config'</span>)
+        .<span class="variable">pipe</span>(
+        <span class="variable">catchError</span>(<span class="variable">this.handleError</span>)
+        );
+    }
+
+    <span class="keyword">private</span> <span class="variable">handleError</span>(<span class="variable">error</span>: <span class="class-name">HttpErrorResponse</span>) {
+    <span class="keyword">if</span> (<span class="variable">error.status</span> === <span class="number">0</span>) {
+        <span class="comment">// Xảy ra lỗi phía máy khách hoặc lỗi mạng. Xử lý theo quy định.</span>
+        <span class="variable">log.error</span>(<span class="string">'An error occurred:'</span>, <span class="variable">error.error</span>);
+    } <span class="keyword">else</span> {
+        <span class="comment">// Máy chủ trả về mã phản hồi không thành công.</span>
+        <span class="variable">log.error</span>(<span class="string">`Backend returned code ${error.status}, body was: `</span>, <span class="variable">error.error</span>);
+    }
+    
+    <span class="keyword">return</span> <span class="variable">throwError</span>(<span class="string">'An unexpected error occurred loading configuration.'</span>);
+    }
+}</pre>
+                                  
+                                  
+                                  
+                            </div>
+                        </p>
+
+
+                    </div>
+
+
+
+
+
+                    <br>
+
+                    <div class="moreinfo">
+                        <h2> <i class="fa-solid fa-info"></i> Thông tin thêm</h2>
+                        <p>
+                            Đây là một số bài viết hay ho mà mình thấy nên đọc thêm:
+                        </p>
+                        <ul class="styled-list">
+
+                            <li><i class="fa-solid fa-link"></i><a href="https://portswigger.net/web-security/cross-site-script-inclusion" target="_blank">Cross-Site Script Inclusion</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://www.acunetix.com/blog/articles/cross-site-script-inclusion-xssi/" target="_blank">Cross-Site Script Inclusion (XSSI)</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <footer class="bg-dark text-white text-center py-3">
+        <script>
+
+        </script>
+        <p>&copy; Clone lại thằng Hacksplaining | <a href="https://github.com/Baodeptraii"
+                class="text-white text-decoration-none">By Re3on</a></p>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"></script>
+    </footer>
+
+    <!-- Thêm Bootstrap JS và Popper.js -->
+
+</body>
+
+</html>

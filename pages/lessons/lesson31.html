@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mass Assignment
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/lessonstyle.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <header class="bg-success text-white py-5 text-center">
+        <div class="container text-center">
+            <h1 class="display-4">Mass Assignment
+
+
+
+
+            </h1>
+            <a href="../../index.html" class="btn btn-light btn-lg mt-3">Back to Home</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Hiếm - Thỉnh thoảng - Thường xuyên -->
+        <!-- Khó - Trung bình - Dễ -->
+        <!-- Nhẹ - Trung bình - Nghiêm trọng -->
+
+        <div class="row row-box">
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Độ phổ biến</h3>
+                    <p>Thỉnh thoảng</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Khả năng khai thác</h3>
+                    <p>Dễ</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Ảnh hưởng</h3>
+                    <p>Trung bình</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Nội dung chính -->
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-16">
+
+                <div class="lesson-list p-4 shadow-sm bg-white rounded">
+
+                    <div class="what">
+                        <h2> <i class="fa-solid fa-magnifying-glass"></i>Mass Assignment
+                            là gì ?</h2>
+                        <p>
+                            Mass Assignment (Gán hàng loạt) là một lỗ hổng bảo mật xảy ra khi dữ liệu từ người dùng được
+                            gán trực tiếp
+                            vào các thuộc tính của đối tượng mà không có sự kiểm tra hoặc xác thực. Điều này có thể dẫn
+                            đến việc người dùng không đáng tin cậy có thể thay đổi các thuộc tính mà họ không được phép,
+                            gây ra các vấn đề bảo mật nghiêm trọng. Ví dụ, nếu một ứng dụng web cho phép người dùng cập
+                            nhật thông tin cá nhân của họ và không kiểm tra kỹ lưỡng dữ liệu đầu vào, kẻ tấn công có thể
+                            gửi dữ liệu độc hại để thay đổi quyền truy cập hoặc thông tin nhạy cảm khác.
+                        </p>
+                        <p>
+                            Lỗ hổng này thường xảy ra khi các ứng dụng web sử dụng các framework như Ruby on Rails hoặc
+                            Laravel, nơi mà dữ liệu người dùng được gán trực tiếp vào các đối tượng mà không cần xác
+                            thực. Điều này có thể dẫn đến việc kẻ tấn công có thể thay đổi các thuộc tính của đối tượng
+                            mà họ không được phép truy cập, như quyền truy cập hoặc thông tin nhạy cảm khác.
+
+                        </p>
+
+
+                    </div>
+
+                    <br>
+
+                    <div class="how">
+                        <h2> <i class="fa-solid fa-shield-halved"></i>Cách ngăn chặn Mass Assignment
+                        </h2>
+
+                        <p><span class="bold">Anatomy of a Mass Assignment Attack ( Cấu trúc của một cuộc tấn công Mass
+                                Assignment)</span></p>
+                        <p>
+                            Một ví dụ phổ biến là lấy dữ liệu từ yêu cầu HTTP - hoặc là các tham số HTTP hoặc từ
+                            JSON trong nội dung của yêu cầu - và cập nhật nội dung của đối tượng trong bộ nhớ hoặc trong
+                            cơ sở dữ liệu. Sử dụng các framework web hiện đại, nó có thể dễ dàng viết mã lấy dữ liệu đầu
+                            vào không đáng tin cậy và cho phép kẻ tấn công ghi đè lên các thuộc tính không mong muốn.
+                        </p>
+                        <p>
+                            Một số đoạn code dưới dây cho phép người dùng cập nhật thông tin cá nhân, nhưng không kiểm
+                            tra dữ liệu đầu vào:
+
+                        <div class="div-1">
+                            <span class="red-bold">Python</span>
+                            <pre class="code-block">
+<span class="comment"># Ví dụ này minh họa cách cập nhật một đối tượng model của Django từ JSON</span>
+<span class="comment"># atrong một yêu cầu HTTP. Việc sử dụng hàm setattr(...) khiến việc tạo ra</span>
+<span class="comment"># lỗ hổng gán hàng loạt (mass assignment vulnerability) trở nên dễ dàng.</span>
+
+<span class="keyword">class</span> <span class="class-name">User</span>(<span class="class-name">models.Model</span>):
+    <span class="variable">ROLES</span> = (
+        (<span class="string">'G'</span>, <span class="string">'Guest'</span>),
+        (<span class="string">'U'</span>, <span class="string">'User'</span>),
+        (<span class="string">'A'</span>, <span class="string">'Admin'</span>),
+        (<span class="string">'S'</span>, <span class="string">'Superuser'</span>)
+    )
+
+    <span class="variable">id</span>       = <span class="class-name">models.IntegerField</span>()
+    <span class="variable">username</span> = <span class="class-name">models.CharField</span>(<span class="variable">max_length</span>=100)
+    <span class="variable">email</span>    = <span class="class-name">models.CharField</span>(<span class="variable">max_length</span>=100)
+    <span class="variable">password</span> = <span class="class-name">models.CharField</span>(<span class="variable">max_length</span>=100)
+    <span class="variable">role</span>     = <span class="class-name">models.CharField</span>(<span class="variable">max_length</span>=1, <span class="variable">choices</span>=<span class="variable">ROLES</span>)
+    <span class="variable">updated</span>  = <span class="class-name">models.DateTimeField</span>()
+
+<span class="keyword">def</span> <span class="class-name">profile</span>(<span class="variable">request</span>):
+    <span class="comment">"""Xem hoặc cập nhật thông tin người dùng."""</span>
+    <span class="variable">user</span> = <span class="class-name">get_current_user</span>()
+
+    <span class="keyword">if</span> <span class="variable">user</span> <span class="keyword">is</span> <span class="variable">None</span>:
+        <span class="keyword">return</span> <span class="class-name">HttpResponseRedirect</span>(<span class="string">'/login'</span>)
+
+    <span class="keyword">if</span> <span class="variable">request</span>.<span class="variable">method</span> == <span class="string">'POST'</span>:
+        <span class="variable">data</span> = <span class="class-name">json.loads</span>(<span class="variable">request</span>.<span class="variable">body</span>)
+
+        <span class="comment"># Nguy hiểm: Cập nhật các trường tùy ý trên đối tượng người dùng</span>
+        <span class="comment"># từ JSON đầu vào là rất nguy hiểm!</span>
+        <span class="keyword">for</span> <span class="variable">key</span>, <span class="variable">value</span> <span class="keyword">in</span> <span class="variable">data</span>.<span class="variable">items</span>():
+            <span class="class-name">setattr</span>(<span class="variable">user</span>, <span class="variable">key</span>, <span class="variable">value</span>)
+
+        <span class="variable">user</span>.<span class="variable">updated</span> = <span class="class-name">datetime.now</span>()
+        <span class="variable">user</span>.<span class="variable">save</span>()
+
+        <span class="keyword">return</span> <span class="class-name">HttpResponse</span>(<span class="string">"Profile updated"</span>, <span class="number">202</span>)
+
+    <span class="keyword">elif</span> <span class="variable">request</span>.<span class="variable">method</span> == <span class="string">'GET'</span>:
+        <span class="keyword">return</span> <span class="class-name">render</span>(<span class="variable">request</span>, <span class="string">'profile.html'</span>, { <span class="string">'user'</span>: <span class="variable">user</span> })
+
+    <span class="keyword">return</span> <span class="class-name">HttpResponseNotAllowed</span>((<span class="string">'GET'</span>, <span class="string">'POST'</span>))
+</pre>
+
+                            <pre class="code-block">
+Hàm setattr(user, key, value) cho phép cập nhật bất kỳ trường nào trong mô hình User 
+bằng dữ liệu từ JSON mà không có kiểm tra hoặc giới hạn.
+Kẻ tấn công có thể gửi một yêu cầu POST với nội dung JSON chứa các trường không hợp lệ hoặc nhạy cảm, ví dụ:
+
+{
+"role": "S", -> chuyển quyền thành Superuser
+"password": "newpassword123",
+"id": 1
+}
+</pre>
+                            <span class="red-bold">Ruby</span>
+                            <pre class="code-block">
+<span class="keyword">class</span> <span class="class-name">PeopleController</span> &lt; <span class="class-name">ActionController::Base</span>
+    <span class="comment"># Nguy hiểm: điều này sẽ tạo một đối tượng Person với bất kỳ tham số nào mà</span>
+    <span class="comment"># kẻ tấn công muốn truyền vào.</span>
+    <span class="keyword">def</span> <span class="class-name">create</span>
+    <span class="class-name">Person</span>.<span class="class-name">create</span>(<span class="variable">params</span>[:<span class="variable">person</span>])
+    <span class="keyword">end</span>
+
+    <span class="comment"># Nguy hiểm: điều này cho phép một cuộc tấn công cập nhật tham số trên bất kỳ</span>
+    <span class="comment"># đối tượng Person nào mà họ muốn.</span>
+    <span class="keyword">def</span> <span class="class-name">update</span>
+    <span class="keyword">redirect_to</span> <span class="class-name">current_account.people.find</span>(<span class="variable">params</span>[:<span class="variable">id</span>]).<span class="class-name">tap</span> { |<span class="variable">person</span>|
+        <span class="variable">person</span>.<span class="class-name">update!</span>(<span class="variable">params</span>[:<span class="variable">person</span>])
+    }
+    <span class="keyword">end</span>
+<span class="keyword">end</span></pre>
+                            
+                            
+
+                            <span class="red-bold">Java</span>
+                            <pre class="code-block">
+<span class="keyword">@Controller</span>
+<span class="keyword">@RequestMapping</span>(<span class="string">"/profile"</span>)
+<span class="keyword">public class</span> <span class="class-name">UserController</span> 
+{
+    <span class="comment">/**
+        * Sử dụng liên kết tự động (auto-binding) trong fw Spring mà không liệt kê
+        * các trường cần thiết có thể dẫn đến lỗ hổng Mass Assignment.
+        */</span>
+    <span class="keyword">@PostMapping</span>
+    <span class="keyword">public String</span> <span class="class-name">update</span>(<span class="keyword">@RequestBody</span> <span class="class-name">User</span> <span class="variable">user</span>)
+    {
+        <span class="class-name">saveUser</span>(<span class="variable">user</span>);
+        <span class="keyword">return</span> <span class="string">"redirect:/profile"</span>;
+    }
+
+    <span class="keyword">private void</span> <span class="class-name">saveUser</span>(<span class="class-name">User</span> <span class="variable">user</span>) {
+        <span class="class-name">getDatabase</span>().<span class="class-name">updateUser</span>(<span class="variable">user</span>);
+    }
+                            }</pre>
+                        </div>
+
+
+
+                        </p>
+
+                        <p><span class="bold">Cách ngăn chặn Mass Assignment</span></p>
+                        <p>
+                            Những ví dụ trên dễ bị tấn công gán hàng loạt vì các thuộc tính không được liệt kê cụ thể
+                            trong mã phía máy chủ. Kẻ tấn công có thể chỉ cần sửa đổi tên của các trường biểu mẫu (hoặc
+                            thêm thông tin bổ sung) và trực tiếp thao tác hồ sơ của chúng trong cơ sở dữ liệu, đặt cờ
+                            quản trị theo ý muốn.
+                        </p>
+                        <p>
+                            Khi lấy dữ liệu từ yêu cầu HTTP, các thuộc tính của đối tượng dữ liệu đang được cập nhật
+                            phải được nêu rõ trong mã phía máy chủ:
+                        <div class="div-1">
+                            <span class="red-bold">Python</span>
+                            <pre class="code-block">
+<span class="keyword">if</span> <span class="variable">request</span>.<span class="variable">method</span> == <span class="string">'POST'</span>:
+    <span class="variable">data</span> = <span class="class-name">json.loads</span>(<span class="variable">request</span>.<span class="variable">body</span>)
+
+    <span class="comment"># Việc liệt kê rõ ràng các trường cần cập nhật sẽ bảo vệ khỏi mass-assignment</span>
+    <span class="variable">user</span>.<span class="variable">email</span>    = <span class="variable">data</span>.<span class="variable">get</span>(<span class="string">'email'</span>,    <span class="variable">user</span>.<span class="variable">email</span>)
+    <span class="variable">user</span>.<span class="variable">username</span> = <span class="variable">data</span>.<span class="variable">get</span>(<span class="string">'username'</span>, <span class="variable">user</span>.<span class="variable">username</span>)
+
+    <span class="variable">user</span>.<span class="variable">updated</span> = <span class="class-name">datetime.now</span>()
+    <span class="variable">user</span>.<span class="variable">save</span>()
+
+    <span class="keyword">return</span> <span class="class-name">HttpResponse</span>(<span class="string">"Profile updated"</span>, <span class="number">202</span>)
+                                </pre>
+
+                            <span class="red-bold">Ruby</span>
+                            <pre class="code-block">
+<span class="keyword">class</span> <span class="class-name">PeopleController</span> &lt; <span class="class-name">ActionController::Base</span>
+    <span class="comment"># Sử dụng "Person.create(params[:person])" sẽ gây ra ngoại lệ</span>
+    <span class="comment"># ActiveModel::ForbiddenAttributesError vì nó sử dụng gán hàng loạt</span>
+    <span class="comment"># mà không có bước cho phép rõ ràng. Đây là dạng được khuyến nghị:</span>
+    <span class="keyword">def</span> <span class="class-name">create</span>
+    <span class="class-name">Person</span>.<span class="class-name">create</span>(<span class="variable">person_params</span>)
+    <span class="keyword">end</span>
+
+    <span class="comment"># Điều này sẽ hoạt động tốt miễn là có một khoá "person" trong các tham số,</span>
+    <span class="comment"># nếu không sẽ gây ra ngoại lệ ActionController::ParameterMissing,</span>
+    <span class="comment"># ngoại lệ này sẽ được ActionController::Base xử lý và chuyển</span>
+    <span class="comment"># thành phản hồi lỗi 400 Bad Request.</span>
+    <span class="keyword">def</span> <span class="class-name">update</span>
+    <span class="keyword">redirect_to</span> <span class="class-name">current_account.people.find</span>(<span class="variable">params</span>[:<span class="variable">id</span>]).<span class="class-name">tap</span> { |<span class="variable">person</span>|
+        <span class="variable">person</span>.<span class="class-name">update!</span>(<span class="variable">person_params</span>)
+    }
+    <span class="keyword">end</span>
+
+    <span class="keyword">private</span>
+    <span class="comment"># Sử dụng phương thức private để đóng gói các tham số được phép là</span>
+    <span class="comment"># một mẫu tốt vì bạn có thể tái sử dụng danh sách cho phép</span>
+    <span class="comment"># này giữa các phương thức create và update. Ngoài ra, bạn có thể</span>
+    <span class="comment"># tuỳ chỉnh phương thức này với kiểm tra đặc quyền người dùng</span>
+    <span class="comment"># trên các thuộc tính được phép.</span>
+    <span class="keyword">def</span> <span class="class-name">person_params</span>
+        <span class="variable">params</span>.<span class="class-name">require</span>(<span class="string">:person</span>).<span class="class-name">permit</span>(<span class="string">:name</span>, <span class="string">:age</span>)
+    <span class="keyword">end</span>
+<span class="keyword">end</span></pre>
+                            
+                            
+
+                            <span class="red-bold">Java</span>
+                            <pre class="code-block">
+<span class="keyword">@Controller</span>
+<span class="keyword">@RequestMapping</span>(<span class="string">"/profile"</span>)
+<span class="keyword">public class</span> <span class="class-name">UserController</span> 
+{
+    <span class="keyword">@InitBinder</span>
+    <span class="keyword">public void</span> <span class="class-name">initBinder</span>(<span class="class-name">WebDataBinder</span> <span class="variable">binder</span>, <span class="class-name">WebRequest</span> <span class="variable">request</span>)
+    {
+        <span class="comment">// Chỉ rõ các trường nào cần auto-binding.</span>
+        <span class="variable">binder</span>.<span class="class-name">setAllowedFields</span>(<span class="string">"password"</span>, <span class="string">"address"</span>, <span class="string">"phone"</span>);
+    }
+    
+    <span class="keyword">@PostMapping</span>
+    <span class="keyword">public String</span> <span class="class-name">update</span>(<span class="keyword">@RequestBody</span> <span class="class-name">User</span> <span class="variable">user</span>)
+    {
+        <span class="class-name">saveUser</span>(<span class="variable">user</span>);
+        <span class="keyword">return</span> <span class="string">"redirect:/profile"</span>;
+    }
+
+    <span class="keyword">private void</span> <span class="class-name">saveUser</span>(<span class="class-name">User</span> <span class="variable">user</span>) {
+        <span class="class-name">getDatabase</span>().<span class="class-name">updateUser</span>(<span class="variable">user</span>);
+    }
+}</pre>
+                                
+
+
+                        </div>
+                        </p>
+
+                    </div>
+
+
+
+
+
+                    <br>
+
+                    <div class="moreinfo">
+                        <h2> <i class="fa-solid fa-info"></i> Thông tin thêm</h2>
+                        <p>
+                            Đây là một số bài viết hay ho mà mình thấy nên đọc thêm:
+                        </p>
+                        <ul class="styled-list">
+
+                            <li><i class="fa-solid fa-link"></i><a href="https://owasp.org/www-community/vulnerabilities/Mass_Assignment_Cheat_Sheet"
+                                    target="_blank">OWASP Mass Assignment Cheat Sheet</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://www.acunetix.com/blog/articles/mass-assignment-vulnerabilities-automated-detection-prevention/"
+                                    target="_blank">Mass Assignment Vulnerabilities: Automated Detection and Prevention</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <footer class="bg-dark text-white text-center py-3">
+        <script>
+
+        </script>
+        <p>&copy; Clone lại thằng Hacksplaining | <a href="https://github.com/Baodeptraii"
+                class="text-white text-decoration-none">By Re3on</a></p>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"></script>
+    </footer>
+
+    <!-- Thêm Bootstrap JS và Popper.js -->
+
+</body>
+
+</html>

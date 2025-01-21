@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Command Execution</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/lessonstyle.css">
+    <style>
+        
+    </style>
+</head>
+
+<body>
+
+    <header class="bg-success text-white py-5 text-center">
+        <div class="container text-center">
+            <h1 class="display-4">Command Execution</h1>
+            <a href="../../index.html" class="btn btn-light btn-lg mt-3">Back to Home</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Hiếm - Thỉnh thoảng - Thường xuyên -->
+        <!-- Khó - Trung bình - Dễ -->
+        <!-- Nhẹ - Trung bình - Nghiêm trọng -->
+
+        <div class="row row-box">
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Độ phổ biến</h3>
+                    <p>Thường xuyên</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Khả năng khai thác</h3>
+                    <p>Trung bình</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Ảnh hưởng</h3>
+                    <p>Nghiêm trọng</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Nội dung chính -->
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-16">
+
+                <div class="lesson-list p-4 shadow-sm bg-white rounded">
+
+                    <div class="what">
+                        <h2> <i class="fa-solid fa-magnifying-glass"></i>Command Execution là gì ?</h2>
+                        <p>
+                            Command Execution ( hay còn gọi là Code Injection - "chèn mã") là một lỗ hổng bảo mật mà kẻ tấn công có thể chèn các đoạn mã thực thi vào ứng dụng web của bạn.
+                            Điều này cho phép họ thực thi các lệnh trên máy chủ của bạn, thường là với quyền hạn của ứng dụng web đó để chiếm quyền kiểm soát hay còn gọi là
+                            leo thang đặc quyền (Privilege escalation).<br>
+                            Sau khi đã chiếm được quyền kiểm soát, kẻ tấn công có thể thực thi các lệnh khác nhau, từ việc đọc dữ liệu nhạy cảm trên máy chủ, thay đổi dữ liệu, thậm chí là xóa dữ liệu hay
+                            biến máy chủ của ae trở thành "robot" một phần của mạng <a href="../stuff/glossary.html">botnet</a> sau này.
+                        </p>
+                        <p class="bold">
+                            Command injection vulnerabilities often occur in older, legacy code, such as CGI scripts.
+
+
+                        </p>
+                        <p>
+                            Tạm dịch: "Lỗ hổng chèn lệnh thường xảy ra ở các mã nguồn cũ, như các CGI scripts."
+                        </p>
+                        
+
+                    </div>
+
+                    <br>
+
+                    <div class="how">
+                        <h2> <i class="fa-solid fa-shield-halved"></i>Cách để ngăn chặn Command Execution</h2>
+                        <p>Nếu ứng dụng của ae gọi yêu cầu ra ngoài hệ điều hành, phải đảm bảo các câu lệnh được xây dựng một cách an toàn vì ở đoạn này rất 
+                            dễ bị tấn công. Đây là một số cách để ngăn chặn Command Execution:
+                        </p>
+                       
+                        <p class="red-bold">
+                            Try to Avoid Command Line Calls Altogether ( Tránh gọi các dòng lệnh hoàn toàn)
+
+                        </p>
+                        <p>
+                            Các ngôn ngữ bậc cao hiện nay thường cung cấp đầy đủ các <a href="../stuff/glossary.html">giao diện (APIs)</a> để thực hiện các tác vụ mà ae không cần phải gọi trực tiếp các dòng lệnh.
+                            <span class="bold">Hãy sử dụng APIs bất cứ khi nào có thể</span> và chỉ sử dụng các lệnh shell khi thực sự cần thiết. Nó sẽ giúp phòng tránh việc bị hacker tìm
+                            ra lỗ hổng và một phần giúp code ae trở nên dễ đọc hơn.
+                        </p>
+
+                        
+
+                        <p class="red-bold">
+                            Escape Inputs Correctly (Thoát đầu vào một cách chính xác)
+
+                        </p>
+                        <p>Lỗ hổng dạng injection thường xảy ra khi đầu vào dữ liệu của ae không được xử lý đúng cách. Nếu ae sử dụng các dòng lệnh shell, hãy đảm 
+                            bảo kiểm tra kĩ các giá trị đầu vào để tìm ra các kí tự thường xuất hiện trong đoạn mã gây hại như ";", "|", "&", "&&", "||" v.v.<br>
+                            Một cách tốt hơn nữa là hạn chế đầu vào bằng cách áp dụng <a href="../stuff/glossary.html">biểu thức chính quy (Regex)</a> để chỉ cho phép các giá trị hợp lệ.
+                        </p>
+
+                        <p class="red-bold">
+                            Restrict the Permitted Commands ( Hạn chế các lệnh được phép)
+                        </p>
+                        <p>
+                            Hãy cố gắng tự xây dụng hầu hết các lệnh shell của ae bằng chuỗi cố định, không nên sử dụng các giá trị đầu vào từ người dùng.
+                            Nếu phải xử lí các giá trị đầu vào từ người dùng, hãy đảm bảo rằng chúng nằm trong danh sách cho phép.
+                        </p>
+                        <p class="red-bold">
+                            Perform Thorough Code Reviews ( Thực hiện kiểm tra mã nguồn kỹ lưỡng)
+                        </p>
+                        <p>
+                            Code càng cũ càng nhiều lỗi và lỗ hổng, ae hãy kiểm tra và thường xuyên cập nhật các bản vá nhé !
+                        </p>
+                        <p class="red-bold">
+                            Run with Restricted Permissions ( Chạy với quyền hạn chế)
+                        </p>
+                        <p>
+                            Đảm bảo rằng ứng dụng của ae chạy với <span class="bold">quyền hạn tối thiểu</span> cần thiết, không nên chạy với quyền root hay quyền hạn cao hơn cần thiết.
+                            Mỗi tiến trình của máy chủ chỉ có thể truy cập các thư mục với đặc quyền của nó và hạn chế việc ghi và thực thi các tệp khác.
+                            Điều này sẽ hạn chế mã đọc hại "leo thang" ra khỏi ứng dụng của ae.
+                        </p>
+                    </div>
+
+                    <br>
+
+                    <div class="moreinfo">
+                        <h2> <i class="fa-solid fa-info"></i> Thông tin thêm</h2>
+                        <p>
+                            Đây là một số bài viết hay ho mà mình thấy nên đọc thêm:
+                        </p>
+                        <ul class="styled-list">
+                            <li><i class="fa-solid fa-link"></i><a href="https://owasp.org/www-community/attacks/Command_Injection" class="text-decoration-none">OWASP Command Injection</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://portswigger.net/web-security/os-command-injection" class="text-decoration-none">PortSwigger Command Injection</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://www.acunetix.com/blog/articles/command-injection/" class="text-decoration-none">Acunetix Command Injection</a></li>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <footer class="bg-dark text-white text-center py-3">
+        <script>
+            function saveInput() {
+                const userInput = document.getElementById('userInput').value;
+                const output = document.getElementById('output');
+
+                // Lưu và hiển thị nội dung mà không mã hóa (raw HTML) => dễ bị XSS
+                output.innerHTML = userInput;
+
+                // Ngăn chặn reload form
+                return false;
+            }
+        </script>
+        <p>&copy; Clone lại thằng Hacksplaining | <a href="https://github.com/Baodeptraii"
+                class="text-white text-decoration-none">By Re3on</a></p>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"></script>
+    </footer>
+
+    <!-- Thêm Bootstrap JS và Popper.js -->
+
+</body>
+
+</html>

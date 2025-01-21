@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Enumeration Demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/demo.css">
+    <style>
+        .register-container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+
+        .input-box {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        .input-box input {
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .result-box {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #eef;
+            border-radius: 5px;
+            font-size: 1.2em;
+        }
+
+        .error-message {
+            color: red;
+            background-color: #f8d7da;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #f5c6cb;
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slider-container">
+        <div class="slides">
+            <div class="slide active">
+                <h2>User Enumeration Demo</h2>
+                <p>User Enumeration là một lỗ hổng bảo mật xảy ra khi một ứng dụng trả về các thông báo lỗi chi tiết khác nhau tùy vào lý do xác thực người dùng không thành công. Kẻ tấn công có thể lợi dụng các thông báo này để xác định tên người dùng hoặc email hợp lệ trong hệ thống.</p>
+            </div>
+            <div class="slide">
+                <h2>Registration Page - Error Examples</h2>
+                <p>Hãy thử đăng ký với các tên người dùng và email đã cung cấp bên dưới để xem cách hệ thống phản hồi:
+                    
+                </p>
+                <p>
+                    Các thông tin đã được sử dụng như sau:
+                    <ul>
+                        <li><strong>Tên người dùng:</strong>  test_user</li>
+                        <li><strong>Email:</strong>  user@gmail.com</li>
+
+                </p>
+
+                <div class="register-container">
+                    <form id="registerForm">
+                        <div class="input-box">
+                            <label for="username">Tên người dùng:</label>
+                            <input type="text" id="username" placeholder="Nhập tên người dùng..." required>
+                        </div>
+                        <div class="input-box">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" placeholder="Nhập email..." required>
+                        </div>
+                        <div class="input-box">
+                            <label for="password">Mật khẩu:</label>
+                            <input type="password" id="password" placeholder="Nhập mật khẩu..." required>
+                        </div>
+                        <div class="input-box">
+                            <label for="confirmPassword">Xác nhận mật khẩu:</label>
+                            <input type="password" id="confirmPassword" placeholder="Xác nhận mật khẩu..." required>
+                        </div>
+                        <button type="button" onclick="registerUser()">Đăng ký</button>
+                    </form>
+                    <div id="result" class="result-box"></div>
+                    <div id="errorMessage" class="error-message" style="display:none;">
+                        <strong>Error:</strong> Đã có lỗi xảy ra trong quá trình đăng ký. Xin vui lòng thử lại.
+                    </div>
+                </div>
+            </div>
+            <div class="slide">
+                <h2>What Happened?</h2>
+                <p>Trong một số trường hợp, hệ thống trả về các lỗi chi tiết có thể giúp kẻ tấn công xác định tên người dùng hợp lệ hoặc email đã được sử dụng. Ví dụ:</p>
+                <ul>
+                    <li><strong>Tên người dùng đã tồn tại:</strong> Hệ thống thông báo rõ rằng tên người dùng đã có người sử dụng.</li>
+                    <li><strong>Email đã được sử dụng:</strong> Hệ thống cho biết email này đã được đăng ký.</li>
+                    <li><strong>Tên người dùng không đúng hoặc mật khẩu không đúng:</strong> Hệ thống trả về thông báo riêng biệt cho các lỗi này.</li>
+                </ul>
+                <p>Kẻ tấn công có thể thử hàng loạt tên người dùng hoặc email để xác định những thông tin hợp lệ, từ đó cố gắng khai thác hệ thống.</p>
+            </div>
+            <div class="slide">
+                <h2>Safe Handling of User Enumeration</h2>
+                <p>Để ngăn chặn lỗ hổng User Enumeration, chúng ta cần phải xử lý các thông báo lỗi một cách an toàn:</p>
+                <ul>
+                    <li>Thông báo lỗi phải chung chung, không tiết lộ thông tin chi tiết về lý do thất bại. Ví dụ, thay vì thông báo "Tên người dùng không tồn tại" hoặc "Mật khẩu không đúng", chúng ta chỉ nên trả về "Thông tin đăng nhập không hợp lệ".</li>
+                    <li>Hệ thống phải xử lý các lỗi của tên người dùng và mật khẩu một cách đồng nhất, không phân biệt loại lỗi nào.</li>
+                </ul>
+                <p><strong>Kết luận:</strong> Để bảo vệ khỏi User Enumeration, hãy đảm bảo thông báo lỗi chỉ cho người dùng biết rằng thông tin đăng nhập của họ không hợp lệ, mà không làm lộ thông tin chi tiết về tên người dùng hay email.</p>
+            </div>
+        </div>
+
+        <div class="dots-container"></div>
+
+        <div class="navigation">
+            <button class="nav-button" id="prevBtn">Back</button>
+            <button id="backToHomeBtn"
+                style="display: none; padding: 12px 20px; background-color: #2563eb; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 1em; transition: background-color 0.3s;">
+                Back to lesson
+            </button>
+            <button class="nav-button" id="nextBtn">Next</button>
+        </div>
+    </div>
+
+    <script src="../../assets/js/demo.js"></script>
+    <script>
+        // Function to simulate a registration attempt and show different error messages
+        function registerUser() {
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const resultDiv = document.getElementById('result');
+            const errorMessage = document.getElementById('errorMessage');
+
+            // Simulate errors for user enumeration
+            if (username === "test_user") {
+                resultDiv.innerHTML = '';
+                errorMessage.style.display = 'block';
+                errorMessage.innerHTML = "<strong>Error:</strong> Tên người dùng đã tồn tại.";
+            } else if (email === "user@gmail.com") {
+                resultDiv.innerHTML = '';
+                errorMessage.style.display = 'block';
+                errorMessage.innerHTML = "<strong>Error:</strong> Email đã được sử dụng.";
+            } else if (password !== confirmPassword) {
+                resultDiv.innerHTML = '';
+                errorMessage.style.display = 'block';
+                errorMessage.innerHTML = "<strong>Error:</strong> Mật khẩu không khớp.";
+            } else {
+                resultDiv.innerHTML = 'Chúc mừng, bạn đã đăng ký thành công!';
+                errorMessage.style.display = 'none';
+            }
+        }
+
+        // Handle back to lesson button
+        document.getElementById('backToHomeBtn').addEventListener('click', () => {
+            window.location.href = '../lessons/lesson13.html'; // Replace with your lesson URL
+        });
+    </script>
+</body>
+
+</html>

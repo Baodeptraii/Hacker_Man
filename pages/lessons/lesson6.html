@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Directory Traversal
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/lessonstyle.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <header class="bg-success text-white py-5 text-center">
+        <div class="container text-center">
+            <h1 class="display-4">Directory Traversal
+            </h1>
+            <a href="../../index.html" class="btn btn-light btn-lg mt-3">Back to Home</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Hiếm - Thỉnh thoảng - Thường xuyên -->
+        <!-- Khó - Trung bình - Dễ -->
+        <!-- Nhẹ - Trung bình - Nghiêm trọng -->
+
+        <div class="row row-box">
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Độ phổ biến</h3>
+                    <p>Thường xuyên</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Khả năng khai thác</h3>
+                    <p>Trung bình</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Ảnh hưởng</h3>
+                    <p>Nghiêm trọng</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Nội dung chính -->
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-16">
+
+                <div class="lesson-list p-4 shadow-sm bg-white rounded">
+
+                    <div class="what">
+                        <h2> <i class="fa-solid fa-magnifying-glass"></i>Directory Traversal là gì ?</h2>
+                        <p>
+                            Directory Traversal hay Pathn Traversal là một kỹ thuật tấn công mà kẻ tấn công sử dụng để
+                            truy cập vào các thư mục và tập tin mà họ không được phép truy cập thông qua ứng dụng web.
+                            Lỗ hổng này được phát hiện nhiều trên những ứng dụng có Tech stack ( tập hợp các công nghệ
+                            để phát triển ứng dụng ) cũ hoặc không được bảo trì đúng cách.
+                            Nếu hacker phát hiển ra lỗ hổng này, vấn đề chỉ là thời gian, sớm hay muộn gì thì hệ thống
+                            của ae cũng sẽ bị tấn công. <br>
+                            <span class="bold"> Ae hay thấy phần URLs trên thanh tìm kiếm ấy, đó chính là nơi mà hacker
+                                sẽ thực hiện tấn công. Họ sẽ thay đổi URL để truy cập vào các thư mục và tập tin mà họ
+                                không được phép truy cập.
+                            </span>
+                        </p>
+
+
+                    </div>
+
+                    <br>
+
+                    <div class="how">
+                        <h2> <i class="fa-solid fa-shield-halved"></i>Cách để ngăn chặn Directory Traversal</h2>
+
+
+                        <p class="red-bold">
+                            Use a Content Management System (CMS) or Framework (Sử dụng hệ thống quản lý nội dung hoặc
+                            Framework)
+                        </p>
+                        <p>
+                            Nhiều ae không phải Fullstack nên đôi khi việc quản lý 1 đống tệp hay thư mục, xử lí, lưu
+                            trữ chúng khá là phức tạp. Vì vậy, việc sử dụng <a href="../stuff/glossary.html">CMS</a> hoặc Framework hay những công nghệ của
+                            bên thứ 3, đã được thiết kế đảm bảo an toàn và chính xác giúp cho ae không chỉ quản lý dễ
+                            dàng hơn mà còn tăng tính bảo mật .
+                            Những CMS như Wordpress, Joomla, Drupal ... hay các Framework như Laravel, Django, Ruby on
+                            Rails ... đều đã được thiết kế để giúp ae tránh bị tấn công bởi Directory Traversal.
+                        </p>
+
+
+
+                        <p class="red-bold">
+                            Use Indirection (Sử dụng gián tiếp)
+
+
+                        </p>
+                        <p>
+                            Nếu ae thấy việc sử dụng CMS hoặc Framework hỗ trợ "căng" quá, hãy cân nhắc sử dụng phương
+                            pháp gián tiếp để gán nhãn (label) cho tệp của ae.
+                            Mỗi khi tải lên một tệp hay thư tục, đặt cho chúng nó một nhãn riêng biệt, sau đó sử dụng
+                            nhãn đó để truy cập vào tệp đó. Điều này sẽ giúp ae tránh được việc truy cập trực tiếp vào
+                            tệp của mình.
+                            Cách tiếp cận này hiệu quả trong việc giới hạn các tệp và thư mục mà người dùng có thể truy
+                            cập (white-list).
+                        </p>
+
+                        <p class="red-bold">
+                            Segregate Your Documents (Phân loại tài liệu)
+
+                        </p>
+                        <p>
+                            Phân loại tài liệu của ae vào các thư mục khác nhau, mỗi thư mục sẽ chứa các tệp tài liệu
+                            cùng loại, hoặc sử dụng lưu trữ đám mây (cloud) cũng là một cách hay.
+                            Điều này giúp ae dễ dàng quản lý giữa những nội dung công khai, nội dung nhạy cảm và kiểm
+                            soát quyền truy cập của người dùng vào các tệp tài liệu.
+                        </p>
+
+                        <p class="red-bold">
+                            Sanitize Filename Parameters (Làm sạch tham số tên tệp)
+
+                        </p>
+                        <p>
+                            Nếu ae nhất quyết không chịu làm theo cách trên, hãy chắc chắn rằng ae đã kiểm tra và làm
+                            sạch tên tệp trước khi sử dụng chúng.
+                            Ban đầu từ việc đơn giản như kiểm tra các đường dẫn để "back-tracking" (truy cập ngược) hay
+                            các kí tự đặc biệt như ".." hay "/".
+                            Đến thực tế, mỗi hệ điều dành riêng lại có những cách truy cập đường dẫn riêng ( "~/",
+                            "C:\", "file://", "http://" v.v.) nên ae cần phải kiểm tra kĩ càng.<br>
+                            <span class="bold">Cách tiếp cận an toàn nhất là hạn chế các tên tệp thành các danh sách ký
+                                tự hợp lệ và đảm bảo mọi tên tệp đều phải tuân thủ theo danh sách đó.</span>
+                        </p>
+                        <p class="red-bold">
+                            Run with Restricted Permissions ( Chạy với quyền hạn chế)
+                        </p>
+                        <p>
+                            Đảm bảo rằng ứng dụng của ae chạy với <span class="bold">quyền hạn tối thiểu</span> cần
+                            thiết, không nên chạy với quyền root hay quyền hạn cao hơn cần thiết.
+                            Mỗi tiến trình của máy chủ chỉ có thể truy cập các thư mục với đặc quyền của nó và hạn chế
+                            việc ghi và thực thi các tệp khác.
+                            Điều này sẽ hạn chế mã đọc hại "leo thang" ra khỏi ứng dụng của ae.
+                        </p>
+                    </div>
+
+                    <br>
+
+                    <div class="moreinfo">
+                        <h2> <i class="fa-solid fa-info"></i> Thông tin thêm</h2>
+                        <p>
+                            Đây là một số bài viết hay ho mà mình thấy nên đọc thêm:
+                        </p>
+                        <ul class="styled-list">
+                            <li><i class="fa-solid fa-link"></i><a href="https://owasp.org/www-community/attacks/Path_Traversal" target="_blank">OWASP
+                                    Path Traversal</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://portswigger.net/web-security/file-path-traversal" target="_blank">Port
+                                    Swigger Path Traversal</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://www.acunetix.com/blog/articles/path-traversal/" target="_blank">Acunetix
+                                    Path Traversal</a></li>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <footer class="bg-dark text-white text-center py-3">
+        <script>
+            function saveInput() {
+                const userInput = document.getElementById('userInput').value;
+                const output = document.getElementById('output');
+
+                // Lưu và hiển thị nội dung mà không mã hóa (raw HTML) => dễ bị XSS
+                output.innerHTML = userInput;
+
+                // Ngăn chặn reload form
+                return false;
+            }
+        </script>
+        <p>&copy; Clone lại thằng Hacksplaining | <a href="https://github.com/Baodeptraii"
+                class="text-white text-decoration-none">By Re3on</a></p>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"></script>
+    </footer>
+
+    <!-- Thêm Bootstrap JS và Popper.js -->
+
+</body>
+
+</html>

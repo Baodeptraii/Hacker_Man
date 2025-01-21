@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buffer Overflows
+
+
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/lessonstyle.css">
+    <style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            text-align: center;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="bg-success text-white py-5 text-center">
+        <div class="container text-center">
+            <h1 class="display-4">Buffer Overflows
+
+
+            </h1>
+            <a href="../../index.html" class="btn btn-light btn-lg mt-3">Back to Home</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Hiếm - Thỉnh thoảng - Thường xuyên -->
+        <!-- Khó - Trung bình - Dễ -->
+        <!-- Nhẹ - Trung bình - Nghiêm trọng -->
+
+        <div class="row row-box">
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Độ phổ biến</h3>
+                    <p>Hiếm</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Khả năng khai thác</h3>
+                    <p>Trung bình</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Ảnh hưởng</h3>
+                    <p>Nghiêm trọng</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Nội dung chính -->
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-16">
+
+                <div class="lesson-list p-4 shadow-sm bg-white rounded">
+
+                    <div class="what">
+                        <h2> <i class="fa-solid fa-magnifying-glass"></i>Buffer Overflows
+
+
+                            là gì ?<a href="../demos/demo5.html">Demo</a ></h2>
+                        <p>
+                            Buffer Overflow (Tràn bộ đệm) là một lỗ hổng bảo mật phổ biến trong phần mềm. Khi một ứng
+                            dụng không kiểm
+                            tra kỹ đầu vào của người dùng, kẻ tấn công có thể ghi đè lên vùng nhớ đệm (buffer) của ứng
+                            dụng và thực thi mã độc.
+                        </p>
+
+
+                    </div>
+
+                    <br>
+
+                    <div class="how">
+                        <h2> <i class="fa-solid fa-shield-halved"></i>Cách để ngăn chặn Buffer Overflows
+
+                        </h2>
+                        <p>
+                            <span class="red-bold">C/C++</span>
+                        </p>
+                        <p>
+                            Lỗi tràn độ đệm trong C/C++ thường xảy ra khi một hàm nhận đầu vào từ người dùng mà không
+                            kiểm tra
+                            độ dài của đầu vào. Để ngăn chặn lỗi này, ae nên sử dụng các hàm an toàn như:
+                        <table>
+                            <tr>
+                                <th>Không an toàn</th>
+                                <th>An toàn</th>
+                            </tr>
+                            <tr>
+                                <td>strcpy()</td>
+                                <td>strncpy()</td>
+                            </tr>
+                            <tr>
+                                <td>strcat()</td>
+                                <td>strncat()</td>
+                            </tr>
+                            <tr>
+                                <td>sprintf()</td>
+                                <td>snprintf()</td>
+                            </tr>
+                            <tr>
+                                <td>gets()</td>
+                                <td>fgets()</td>
+                            </tr>
+                        </table>
+
+                        </p>
+                        <p><span class="red-bold">Buffer Overflows in the Applications (Tràn bộ đệm ở các ứng
+                                dụng)</span></p>
+                        <p>
+                            Hiếm khi web được viết bằng C/C++, vì vậy rủi ro bị tràn độ đệm lớn nhất là đến từ các ứng
+                            dụng hay dịch vụ được dùng trong quá trình phát triển web như máy chủ web, hệ điều hành ...
+                        </p>
+                        <p><span class="bold">Web Servers (Máy chủ web)</span></p>
+                        <p>
+                            Hầu hết các trang web được triển khai bằng máy chủ web để phục vụ nội dung tĩnh (static
+                            content). (Điều này
+                            khác với máy chủ ứng dụng thực thi nội dung động (dynamic content).) Ba máy chủ web phổ biến
+                            nhất là:
+                        <ul class="styled-list-4">
+                            <li>Apache HTTP Server</li>
+                            <li>Microsoft Internet Information Services (IIS)</li>
+                            <li>Nginx</li>
+                        </ul>
+
+                        </p>
+                        <p>
+                            Mỗi máy chủ web đều có thể bị tràn bộ đệm vào những thời điểm khác nhau. Các nhà cung cấp
+                            máy
+                            chủ web rất nhanh chóng vá các lỗ hổng, vì vậy chìa khóa để giữ an toàn cho ae là triển
+                            khai các bản vá bảo mật ngay khi chúng mới cập nhật.
+                        </p>
+
+                        <p><span class="bold">Operating Systems and Language Runtimes (Hệ điều hành và môi trường chạy
+                                ngôn ngữ)</span></p>
+                        <p>
+                            Các cuộc tấn công tràn bộ đệm vào các trang web bằng cách lợi dụng
+                            các lỗ hổng trong hệ điều hành và thời gian chạy Cuộc tấn công Heartbleed đã lợi
+                            dụng một lỗ hổng nghiêm trọng trong thư viện phần mềm mã hóa OpenSSL mà máy chủ web chạy
+                            Linux sử dụng để mã hóa lưu lượng SSL/TLS. Tương tự như vậy, các nhà nghiên cứu bảo mật đã
+                            phát hiện ra các lỗ hổng trong nhiều chức năng khác nhau trong thời gian chạy PHP cho phép
+                            kẻ tấn công phát động các cuộc tấn công tràn bộ đệm từ xa bằng cách tạo ra đầu vào độc hại.
+                        </p>
+                        <p><span class="bold">Remediation (Cách khắc phục)</span></p>
+                        <p>
+                            Để tránh bị lộ các lỗ hổng tràn bộ đệm trong các ứng dụng ae sử dụng, ae cần cập nhật
+                            chúng bằng các bản vá bảo mật mới nhất. Đây là những điều quan trọng cần thực hiện:
+                        <ul class="styled-list-2">
+                            <li>Tự động hóa quy trình xây dựng và triển khai</li>
+                            <li>Luôn cập nhật các bản tin bảo mật</li>
+                            <li>Triển khai các bản vá bảo mật ngay khi chúng có sẵn</li>
+                        </ul>
+                        </p>
+
+                    </div>
+
+
+
+
+
+                    <br>
+
+                    <div class="moreinfo">
+                        <h2> <i class="fa-solid fa-info"></i> Thông tin thêm</h2>
+                        <p>
+                            Đây là một số bài viết hay ho mà mình thấy nên đọc thêm:
+                        </p>
+                        <ul class="styled-list">
+
+                            <li><i class="fa-solid fa-link"></i><a
+                                    href="https://owasp.org/www-community/attacks/Buffer_Overflow"
+                                    target="_blank">Buffer
+                                    Overflow</a></li>
+
+                            <li><i class="fa-solid fa-link"></i><a
+                                    href="https://www.csoonline.com/article/3254543/what-is-a-buffer-overflow-and-how-do-you-prevent-it.html"
+                                    target="_blank">What is a Buffer Overflow and how do you prevent it?</a></li>
+                            <li><i class="fa-solid fa-link"></i><a
+                                    href="https://www.geeksforgeeks.org/buffer-overflow-attack-with-example/"
+                                    target="_blank">Buffer Overflow Attack with Example</a></li>
+                            <li><i class="fa-solid fa-link"></i><a
+                                    href="https://www.synopsys.com/glossary/what-is-buffer-overflow.html"
+                                    target="_blank">What is Buffer Overflow?</a></li>
+
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <footer class="bg-dark text-white text-center py-3">
+        <script>
+
+        </script>
+        <p>&copy; Clone lại thằng Hacksplaining | <a href="https://github.com/Baodeptraii"
+                class="text-white text-decoration-none">By Re3on</a></p>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"></script>
+    </footer>
+
+    <!-- Thêm Bootstrap JS và Popper.js -->
+
+</body>
+
+</html>

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thuật ngữ bảo mật</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 2rem;
+        }
+
+        .search-container {
+            position: sticky;
+            top: 0;
+            background-color: #fff;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            z-index: 100;
+        }
+
+        .search-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 0.5rem;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .search-wrapper:focus-within {
+            border-color: #4a90e2;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(74, 144, 226, 0.1);
+        }
+
+        .search-icon {
+            color: #666;
+            margin: 0 0.5rem;
+        }
+
+        #searchInput {
+            flex: 1;
+            padding: 0.8rem;
+            border: none;
+            background: transparent;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .glossary {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        }
+
+        .glossary-item {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .glossary-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .glossary-item h3 {
+            color: #2c3e50;
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            border-bottom: 2px solid #4a90e2;
+            padding-bottom: 0.5rem;
+        }
+
+        .glossary-item p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .no-results {
+            text-align: center;
+            grid-column: 1 / -1;
+            padding: 2rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+                margin: 1rem;
+            }
+
+            .glossary {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        a {
+            color: #4a90e2;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="search-container">
+            <div class="search-wrapper">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="searchInput" placeholder="Ae chịu khó search để tìm nhé ..." autocomplete="off">
+            </div>
+        </div>
+
+        <div class="glossary" id="glossaryList">
+
+
+
+            <div class="glossary-item" data-term="APIs (Application Programming Interfaces)">
+                <h3>APIs (Application Programming Interfaces)</h3>
+                <p>Là một tập hợp các quy tắc và định dạng cho phép các ứng dụng khác nhau giao tiếp với nhau. Ví dụ:
+                    khi bạn sử dụng một ứng dụng trên điện thoại để đăng nhập vào một trang web, ứng dụng đó sẽ gọi đến
+                    API của trang web để thực hiện quá trình đăng nhập.</p>
+                <a href="https://www.youtube.com/watch?v=4vLxWqE94l4">Xem thêm</a>
+            </div>
+            <div class="glossary-item" data-term="Regex Biểu thức chính quy
+            ">
+                <h3>Biểu thức chính quy (Regex)</h3>
+                <p>Là một ngôn ngữ dùng để xác định mẫu (pattern) trong văn bản, thường được sử dụng trong tìm kiếm và
+                    thay thế chuỗi ký tự. Kiểm tra dữ liệu đầu vào, lọc dữ liệu hoặc tìm kiếm các chuỗi đặc biệt trong
+                    văn bản</p>
+                <a href="https://www.youtube.com/@Fireship">Xem thêm</a>
+            </div>
+            <div class="glossary-item" data-term="Chính sách bảo mật nội dung (CSP)">
+                <h3>Chính sách bảo mật nội dung (CSP)</h3>
+                <p>Là cơ chế giúp kiểm soát các nguồn nội dung (như script, hình ảnh, hoặc iframe) được phép tải lên
+                    trang web. Giúp ngăn chặn nhiều cuộc tấn công</p>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP">Xem thêm</a>
+            </div>
+            <div class="glossary-item" data-term="Chứng chỉ SSL/TLS">
+                <h3>Chứng chỉ SSL/TLS</h3>
+                <p>Là công nghệ mã hóa dữ liệu trao đổi giữa trình duyệt và máy chủ, đảm bảo tính bảo mật và toàn vẹn dữ
+                    liệu. Được sử dụng trong giao thức HTTPS để bảo vệ thông tin người dùng.</p>
+                <a href="https://sslinsights.com/what-is-an-ssl-certificate/">Xem thêm</a>
+            </div>
+            <div class="glossary-item" data-term="Chữ ký số">
+                <h3>Chữ ký số</h3>
+                <p>Là một phương pháp xác thực điện tử sử dụng mã hóa bất đối xứng để đảm bảo tính xác thực và toàn vẹn
+                    của dữ liệu. Để ký tài liệu, hợp đồng điện tử, và giao dịch trực tuyến.</p>
+                <a href="https://www.youtube.com/watch?v=-U6kepIbARk">Youtube: VTV24</a>
+            </div>
+            <div class="glossary-item" data-term="Content Management System (CMS)">
+                <h3>Content Management System (CMS)</h3>
+                <p>ột hệ thống phần mềm được sử dụng để tạo, quản lý và xuất bản nội dung trên một trang web. Các CMS
+                    phổ biến bao gồm WordPress, Joomla, Drupal.</p>
+                <a
+                    href="https://support.pagely.com/hc/en-us/articles/25087347139227-What-Is-a-CMS-Content-Management-Systems-Explained">Xem
+                    thêm</a>
+            </div>
+            <div class="glossary-item" data-term="Cookies">
+                <h3>Cookies</h3>
+                <p>Là tệp nhỏ được lưu trên trình duyệt người dùng, giúp trang web ghi nhớ thông tin như đăng nhập, tùy
+                    chọn ngôn ngữ.</p>
+                <a href="https://www.youtube.com/watch?v=o_VDcEy029M">Youtube: F8</a>
+            </div>
+            <div class="glossary-item" data-term="Phiên (Session)">
+                <h3>Phiên (Session)</h3>
+                <p>Là một chuỗi tương tác giữa người dùng và ứng dụng trong khoảng thời gian xác định. Phiên bị đánh cắp
+                    dẫn đến chiếm quyền sử dụng.</p>
+                <a href="https://www.youtube.com/watch?v=o_VDcEy029M&t=1820s&pp=ygUQUGhpw6puIChTZXNzaW9uKQ%3D%3D">Youtube:
+                    F8</a>
+            </div>
+            <div class="glossary-item" data-term="Defense in Depth">
+                <h3>Defense in Depth</h3>
+                <p> Là chiến lược bảo mật nhiều lớp, kết hợp nhiều biện pháp để bảo vệ hệ thống. Firewall, IDS/IPS, mã
+                    hóa, kiểm tra bảo mật phần mềm. Nếu một lớp bị xâm nhập, các lớp khác vẫn bảo vệ hệ thống.</p>
+                <a
+                    href="https://www.powermag.com/wp-content/uploads/2018/04/figure-2_defense-in-depthframework_kudelski.jpg">Hình
+                    minh họa</a>
+            </div>
+            <div class="glossary-item" data-term="Ranh giới tin cậy (Trust Boundaries)">
+                <h3>Ranh giới tin cậy (Trust Boundaries)</h3>
+                <p>Là các điểm mà dữ liệu chuyển từ một vùng tin cậy sang một vùng không tin cậy.</p>
+                <a href="https://en.wikipedia.org/wiki/Trust_boundary">wikipedia</a>
+            </div>
+            <div class="glossary-item" data-term="HTTP - HTTPS">
+                <h3>HTTP - HTTPS</h3>
+                <p>HTTP (Hypertext Transfer Protocol): Giao thức truyền tải dữ liệu giữa trình duyệt và máy chủ.</p>
+                <p>HTTPS (Hypertext Transfer Protocol Secure): Phiên bản bảo mật của HTTP, sử dụng chứng chỉ SSL/TLS để
+                    mã hóa dữ liệu truyền tải.</p>
+                <a href="https://cystack.net/vi/blog/http-va-https-la-gi">Xem thêm</a>
+
+            </div>
+            <div class="glossary-item" data-term="AJAX">
+                <h3>AJAX</h3>
+                <p>Asynchronous Javascript and XML (JavaScript và XML không đồng bộ). AJAX là phương thức trao đổi dữ
+                    liệu với máy chủ cho phép cập nhật một hay nhiều phần của trang web, hoàn toàn không reload lại toàn
+                    bộ trang.</p>
+                <a href="https://topdev.vn/blog/ajax-la-gi/">Xem thêm</a>
+
+            </div>
+            <div class="glossary-item" data-term="Logging (Ghi nhật ký)">
+                <h3>Logging (Ghi nhật ký)</h3>
+                <p>Là việc lưu trữ thông tin sự kiện trong hệ thống để theo dõi và phân tích. Giám sát an ninh, phát
+                    hiện tấn công.</p>
+                <a
+                    href="https://viblo.asia/p/logging-metrics-monitoring-notification-automation-nhung-cong-cu-khong-the-thieu-trong-cac-du-an-lon-x7Z4DAkDJnX">Xem
+                    thêm</a>
+            </div>
+            <div class="glossary-item" data-term="OWASP">
+                <h3>OWASP</h3>
+                <p> Tổ chức phi lợi nhuận cung cấp tài nguyên và hướng dẫn về bảo mật ứng dụng web.</p>
+                <a href="https://owasp.org/search/?searchString=top+10">OWASP TOP 10</a>
+            </div>
+            <div class="glossary-item" data-term="Brute Force">
+                <h3>Brute Force</h3>
+                <p>Là một kỹ thuật thử tất cả các khả năng về mật khẩu hoặc thông tin đăng nhập cho đến khi thành công.
+                    Có thể truy cập trái phép vào hệ thống nếu mật khẩu yếu.</p>
+                <a href="https://www.strongdm.com/blog/brute-force-attack">Xem thêm</a>
+            </div>
+            <div class="glossary-item" data-term="Injection">
+                <h3>Injection</h3>
+                <p>Là lỗ hổng bảo mật khi dữ liệu đầu vào của người dùng được nhúng trực tiếp vào câu lệnh hoặc truy
+                    vấn, gây hại cho hệ thống. Ví dụ: SQL Injection, Command Injection.</p>
+                <a href="https://www.youtube.com/watch?v=ciNHn38EyRc">Xem thêm</a>
+            </div>
+
+            <div class="glossary-item" data-term="Làm khó hiểu (Obfuscate)">
+                <h3>Làm khó hiểu (Obfuscate)</h3>
+                <p>Là quá trình biến mã nguồn hoặc dữ liệu thành dạng khó hiểu hoặc khó đọc. Bảo vệ mã nguồn khỏi bị sao
+                    chép hoặc khai thác.</p>
+                <a href="https://obfuscator.io/">Obfuscate tool</a>
+
+            </div>
+            <div class="glossary-item" data-term="Salted Hash">
+                <h3>Salted Hash</h3>
+                <p>"Muối" (salt) là một chuỗi ngẫu nhiên an toàn về mặt mật mã được thêm vào mật khẩu trước khi băm và
+                    salt phải
+                    được lưu trữ cùng với hàm băm, khiến kẻ tấn công khó có thể biết được văn bản thuần túy gốc nếu
+                    không có quyền truy cập vào cả hai nguồn</p>
+                <a href="https://www.geeksforgeeks.org/what-is-salted-password-hashing/">Xem thêm về "muối"</a>
+
+            </div>
+            <div class="glossary-item" data-term="DNS">
+                <h3>DNS</h3>
+                <p>DNS (Domain Name System) là hệ thống phân giải tên miền cho phép thiết lập tương ứng giữa địa chỉ IP
+                    và tên miền trên internet. Khi người dùng nhập địa chỉ trang web trên trình duyệt, DNS sẽ tìm địa
+                    chỉ IP của máy chủ chứa trang web và trả về kết quả hiển thị tương ứng của trang web cần tìm.</p>
+                <a href="https://www.youtube.com/watch?v=FBF-xXX7nVM&pp=ygUEZG5zIA%3D%3D">Youtube</a>
+
+            </div>
+            <div class="glossary-item" data-term="XML">
+                <h3>XML</h3>
+                <p>Extensible Markup Language là ngôn ngữ đánh dấu mở rộng được thiết kế để lưu trữ và truyền tải dữ
+                    liệu một cách có cấu trúc. Tác dụng chính của XML là đơn giản hóa việc chia sẻ dữ liệu giữa các nền
+                    tảng và các hệ thống được kết nối thông qua mạng Internet.</p>
+                <a href="https://www.youtube.com/watch?v=1JblVElt5K0&pp=ugMICgJ2aRABGAHKBQR4bWwg">Youtube</a>
+
+            </div>
+
+
+            <div class="glossary-item" data-term="Lừa đảo (Phishing)">
+                <h3>Lừa đảo (Phishing)</h3>
+                <p>Là hành vi giả mạo email, trang web để đánh cắp thông tin cá nhân. </p>
+                <a href="https://www.youtube.com/watch?v=TorIRH_wisY">Youtube</a>
+            </div>
+            <div class="glossary-item" data-term="Man-in-the-Middle (MitM)">
+                <h3>Man-in-the-Middle (MitM)</h3>
+                <p>Là việc lưu trữ thông tin sự kiện trong hệ thống để theo dõi và phân tích. Giám sát an ninh, phát
+                    hiện tấn công.</p>
+                <a href="https://www.youtube.com/watch?v=83LOa-dYi_A">Youtube</a>
+            </div>
+
+
+
+
+
+            <div class="glossary-item" data-term="Spoofing">
+                <h3>Spoofing</h3>
+                <p>Là hành vi giả mạo danh tính hoặc thông tin để lừa đảo. Email spoofing, IP spoofing.</p>
+                <a href="https://bkhost.vn/blog/spoofing/">Xem thêm</a>
+            </div>
+            <div class="glossary-item" data-term="Mã độc (Malware)">
+                <h3>Mã độc (Malware)</h3>
+                <p>Maliciuos Software là phần mềm độc hại, là một thuật ngữ chung cho vi rút, sâu, trojan và các chương
+                    trình máy tính có hại khác mà tin tặc sử dụng để phá hoại các hệ thống máy tính.</p>
+                <a
+                    href="https://www.youtube.com/watch?v=o80hCwitBso&t=15s&pp=ygUQdmlydXMgbcOheSB0w61uaA%3D%3D">Youtube</a>
+            </div>
+
+            <div class="glossary-item" data-term="Sâu (Worm)">
+                <h3>Sâu (Worm)</h3>
+                <p>Là mã độc tự sao chép và lây lan qua mạng mà không cần tác động của người dùng.</p>
+                <a
+                    href="https://baotintuc.vn/giai-mat/stuxnet-vu-khi-ky-thuat-so-tan-pha-co-so-hat-nhan-lon-nhat-iran-ky-1-20240930172204912.htm">Kỳ
+                    án Stuxnet (Hay phết)</a>
+            </div>
+            <div class="glossary-item" data-term="Virus">
+                <h3>Virus</h3>
+                <p>Là mã độc lây nhiễm vào file hoặc chương trình để thực hiện các hành vi phá hoại.</p>
+                <a href="https://www.bkav.com.vn/home">"Virus"</a>
+            </div>
+            <div class="glossary-item" data-term="Ransomware">
+                <h3>Ransomware</h3>
+                <p>Là mã độc mã hóa dữ liệu và yêu cầu tiền chuộc để giải mã.</p>
+                <a href="https://www.youtube.com/watch?v=aEhGl9_v-wM">Wannacry </a>
+            </div>
+            <div class="glossary-item" data-term="Keyloggers">
+                <h3>Keyloggers</h3>
+                <p>Là phần mềm hoặc phần cứng ghi lại các phím bấm trên bàn phím, nhằm đánh cắp thông tin như mật khẩu
+                    hoặc tài khoản ngân hàng. </p>
+                <a href="https://www.youtube.com/watch?v=d_0asxvfcEY&t=1176s">Youtube: Gà Python</a>
+            </div>
+            <div class="glossary-item" data-term="Botnets">
+                <h3>Botnets</h3>
+                <p> Là mạng lưới các thiết bị bị nhiễm mã độc và bị kẻ tấn công điều khiển từ xa. Dùng để phát tán mã
+                    độc, thực hiện tấn công DDoS, hoặc đánh cắp dữ liệu. </p>
+                <a
+                    href="https://www.researchgate.net/profile/Emmanuel-Ogu/publication/298788691/figure/fig1/AS:340891270172674@1458286220692/A-Typical-Botnet-Attack-Structure.png">Xem
+                    hình minh họa</a>
+            </div>
+            <div class="glossary-item" data-term="Lỗ hổng Zero-Day">
+                <h3>Lỗ hổng Zero-Day</h3>
+                <p>Là lỗ hổng chưa được phát hiện hoặc công khai, do đó không có bản vá ngay lập tức. Dễ bị khai thác
+                    bởi hacker.</p>
+                <a href="https://en.wikipedia.org/wiki/Pwn2Own">Pwn2Own</a>
+            </div>
+
+
+
+        </div>
+    </div>
+
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const glossaryList = document.getElementById('glossaryList');
+        const glossaryItems = document.querySelectorAll('.glossary-item');
+
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        function filterGlossary() {
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            let hasResults = false;
+
+            glossaryItems.forEach(item => {
+                const term = item.getAttribute('data-term').toLowerCase();
+                const description = item.querySelector('p').textContent.toLowerCase();
+                const isMatch = term.includes(searchTerm) || description.includes(searchTerm);
+
+                item.style.display = isMatch ? '' : 'none';
+                if (isMatch) hasResults = true;
+            });
+
+            // Remove existing "no results" message if it exists
+            const existingNoResults = document.querySelector('.no-results');
+            if (existingNoResults) {
+                existingNoResults.remove();
+            }
+
+            // Add "no results" message if necessary
+            if (!hasResults && searchTerm !== '') {
+                const noResults = document.createElement('div');
+                noResults.className = 'no-results';
+                noResults.textContent = 'No matching terms found';
+                glossaryList.appendChild(noResults);
+            }
+        }
+
+        const debouncedFilter = debounce(filterGlossary, 300);
+        searchInput.addEventListener('input', debouncedFilter);
+    </script>
+</body>
+
+</html>

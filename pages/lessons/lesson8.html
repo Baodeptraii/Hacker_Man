@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM-based XSS
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/lessonstyle.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <header class="bg-success text-white py-5 text-center">
+        <div class="container text-center">
+            <h1 class="display-4">DOM-based XSS
+            </h1>
+            <a href="../../index.html" class="btn btn-light btn-lg mt-3">Back to Home</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Hiếm - Thỉnh thoảng - Thường xuyên -->
+        <!-- Khó - Trung bình - Dễ -->
+        <!-- Nhẹ - Trung bình - Nghiêm trọng -->
+
+        <div class="row row-box">
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Độ phổ biến</h3>
+                    <p>Hiếm</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Khả năng khai thác</h3>
+                    <p>Dễ</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Ảnh hưởng</h3>
+                    <p>Trung bình</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Nội dung chính -->
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-16">
+
+                <div class="lesson-list p-4 shadow-sm bg-white rounded">
+
+                    <div class="what">
+                        <h2> <i class="fa-solid fa-magnifying-glass"></i>DOM-based XSS là gì ?</h2>
+                        <p>
+                            Tương tự như Reflected XSS, DOM-based XSS là một loại tấn công XSS mà không cần phải gửi mã
+                            độc từ máy chủ. Thay vào đó, kẻ tấn công sẽ tận dụng các lỗ hổng trong mã Javascript của
+                            trang web để thực thi mã độc trên trình duyệt của người dùng. Điều này thường xảy ra khi
+                            trang web sử dụng các giá trị từ URL hoặc từ các thẻ HTML để thực thi mã Javascript mà không
+                            kiểm tra kỹ.
+                            Tuy nhiên DOM-based XSS <span class="bold">không thể</span> bị phát hiện từ phía máy chủ.
+                            Tất cả những trang web có sử dụng URI hoặc các thẻ HTML để thực thi mã Javascript đều có thể
+                            bị tấn công bởi DOM-based XSS.
+                        </p>
+
+
+                    </div>
+
+                    <br>
+
+                    <div class="how">
+                        <h2> <i class="fa-solid fa-shield-halved"></i>Cách để ngăn chặn DOM-based XSS</h2>
+
+                        <p>
+                            Để chống lại DOM-based XSS, ae cần phải kiếm tra các đoạn mã Javascript có diễn giải các
+                            đoạn URI (URI fragment - phần đứng sau dấu "#" trên URL ấy ) một cách an toàn hay không.
+                            Hầu hết các Framework của Javascript hiện đại đều hỗ trợ cho việc kiểm soát và thực thi các
+                            đoạn mã một cách an toàn.
+
+                        <p class="red-bold">
+                            Use a JavaScript Framework (Sử dụng các Framework của Javascript)
+                        </p>
+                        <p>
+                            <span class="bold">AngularJS</span>
+                        <pre class="code-block">
+<span class="comment">// Trong Angular, tất cả các nội dung động đều được thoát một cách an toàn nhờ vào cặp dấu "{ }"</span>
+&lt;<span class="class-name">div</span>&gt;{{dynamicContent}}&lt;/<span class="class-name">div</span>&gt;
+
+<span class="comment">// Hạn chế dùng <span class="string">innerHTML</span> để làm việc với các nội dung động</span>
+<span class="comment">// Bởi vì nó sẽ khiến cho các đoạn mã dễ bị tấn công hơn</span>
+&lt;<span class="class-name">div</span> <span class="variable">[innerHTML]</span>=<span class="string">"dynamicContent"</span>&gt;&lt;/<span class="class-name">div</span>&gt;
+&lt;<span class="class-name">div</span> <span class="variable">innerHTML</span>=<span class="string">"{{dynamicContent}}"</span>&gt;&lt;/<span class="class-name">div</span>&gt;</pre>
+
+
+                        </p>
+                        <p><span class="bold">React</span><br>
+                            Cũng giống như Angular, React cũng hỗ trợ việc thoát các nội dung động một cách an toàn bằng
+                            cặp dấu "{ }".</p>
+                        <pre class="code-block">
+<span class="class-name">render</span>() {
+    <span class="variable">return </span>&lt;<span class="class-name">div</span>&gt;{dynamicContent} </span>&lt;/<span class="class-name">div</span>&gt;
+}</pre>
+
+
+
+
+                        <p class="red-bold">
+                            Audit Your Code Carefully (Kiểm tra mã code cẩn thận)
+                        </p>
+                        <p>Đôi khi, việc sử dụng một framework JavaScript đầy đủ có thể quá khó khăn cho ae. Trong
+                            trường hợp này, ae cần thường xuyên kiểm tra mã nguồn để tìm các vị trí tham chiếu đến
+                            window.location.hash. Hãy đặt ra các tiêu chuẩn mã hóa rõ ràng về cách viết và xử lý các
+                            đoạn URI (URI fragments) và tập trung logic này vào một thư viện cốt lõi.<br>
+                            Nếu ae sử dụng jQuery, hãy kiểm tra cẩn thận bất kỳ đoạn mã nào sử dụng hàm html(...). Nếu
+                            ae tạo HTML trực tiếp từ phía máy khách dựa trên đầu vào không đáng tin cậy, có thể ae đang
+                            gặp rủi ro, bất kể đầu vào đến từ URI fragment hay không. Hãy ưu tiên sử dụng hàm text(...)
+                            để thay thế khi có thể. <br>
+                            Nếu ae làm việc với API DOM gốc, hãy tránh sử dụng các thuộc tính và hàm sau: <span
+                                class="bold">innerHTML</span>, <span class="bold">outerHTML</span>, <span
+                                class="bold">document.write</span>.
+                            <br> Thay vào đó hãy sử dụng hàm <span class="bold">textContent</span>
+
+
+
+                        </p>
+
+                        <p class="red-bold">
+                            Parse JSON Carefully (Xử lý JSON cẩn thận)
+                        </p>
+                        <p><span class="bold">Không</span> sử dụng hàm eval(...) để chuyển từ JSON sang JavaScript.
+                            Thay vào đó, hãy sử dụng JSON.parse(...) để xử lý dữ liệu JSON một cách an toàn.
+                        </p>
+                        
+                        <p class="red-bold">
+                            Detect Unsafe Code Using Development Tools (Phát hiện mã code không an toàn bằng công cụ phát triển)
+                        </p>
+                        <p>Ae có thể sử dụng Burp Suite, một công cụ do công ty bảo mật PortSwigger phát triển, để phát hiện các lỗ hổng bảo mật dựa trên DOM.
+                        </p>
+
+                        <p class="red-bold">
+                            Don't Use URI Fragments At All! (Tốt nhất là không sử dụng URI fragments)
+
+                        </p>
+                        <p>
+                            Nếu có thể, ae nên tránh sử dụng URI fragments hoàn toàn. Thay vào đó, hãy sử dụng các phương
+                            pháp khác như sử dụng cookies hoặc localStorage để lưu trữ thông tin.
+                            Không có thì làm sao mà hack được đúng không ae :))
+                        </p>
+
+                        <p class="red-bold">
+                            Implement a Content-Security Policy (Cài đặt chính sách bảo mật nội dung)
+
+
+                        </p>
+                        <p>
+                            Cài đặt Content-Security Policy (CSP) có thể giúp ae ngăn chặn các cuộc tấn công XSS bằng cách
+                            giới hạn các nguồn mà trình duyệt có thể tải tài nguyên từ. CSP cũng giúp ae ngăn chặn việc
+                            thực thi các đoạn mã Javascript không an toàn.
+                            <pre class="code-block">
+<span class="class-name">Content-Security-Policy</span>: script-src 'self' https://apis.google.com</pre>
+                        </p>
+
+                    </div>
+
+                    <br>
+
+                    <div class="moreinfo">
+                        <h2> <i class="fa-solid fa-info"></i> Thông tin thêm</h2>
+                        <p>
+                            Đây là một số bài viết hay ho mà mình thấy nên đọc thêm:
+                        </p>
+                        <ul class="styled-list">
+                            <li><i class="fa-solid fa-link"></i><a href="https://portswigger.net/web-security/cross-site-scripting/dom-based" target="_blank">DOM-based
+                                    XSS</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://www.acunetix.com/blog/articles/dom-xss/" target="_blank">DOM XSS</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://www.netsparker.com/blog/web-security/dom-based-xss/" target="_blank">DOM-based
+                                    XSS</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <footer class="bg-dark text-white text-center py-3">
+        <script>
+            function saveInput() {
+                const userInput = document.getElementById('userInput').value;
+                const output = document.getElementById('output');
+
+                // Lưu và hiển thị nội dung mà không mã hóa (raw HTML) => dễ bị XSS
+                output.innerHTML = userInput;
+
+                // Ngăn chặn reload form
+                return false;
+            }
+        </script>
+        <p>&copy; Clone lại thằng Hacksplaining | <a href="https://github.com/Baodeptraii"
+                class="text-white text-decoration-none">By Re3on</a></p>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"></script>
+    </footer>
+
+    <!-- Thêm Bootstrap JS và Popper.js -->
+
+</body>
+
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unencrypted Communication
+
+
+
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/lessonstyle.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <header class="bg-success text-white py-5 text-center">
+        <div class="container text-center">
+            <h1 class="display-4">Unencrypted Communication
+
+
+
+            </h1>
+            <a href="../../index.html" class="btn btn-light btn-lg mt-3">Back to Home</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Hiếm - Thỉnh thoảng - Thường xuyên -->
+        <!-- Khó - Trung bình - Dễ -->
+        <!-- Nhẹ - Trung bình - Nghiêm trọng -->
+
+        <div class="row row-box">
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Độ phổ biến</h3>
+                    <p>Thỉnh thoảng</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Khả năng khai thác</h3>
+                    <p>Khó</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Ảnh hưởng</h3>
+                    <p> Nghiêm trọng</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Nội dung chính -->
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-16">
+
+                <div class="lesson-list p-4 shadow-sm bg-white rounded">
+
+                    <div class="what">
+                        <h2> <i class="fa-solid fa-magnifying-glass"></i>Unencrypted Communication
+
+                            là gì ?<a href="../demos/demo6.html">Demo</a ></h2>
+                        <p>
+                            Unencrypted Communication (Không mã hóa đường truyền) là một lỗ hổng bảo mật mà kẻ tấn công
+                            có thể sử dụng để đánh cắp
+                            thông tin nhạy cảm khi dữ liệu được truyền qua mạng mà không được mã hóa. Điều này có thể
+                            xảy ra khi dữ liệu được truyền qua mạng không được mã hóa, hoặc khi dữ liệu được truyền qua
+                            mạng bằng cách sử dụng giao thức không an toàn. Hãy luôn nhớ mã hóa để ngăn chặn kẻ tấn công
+                            chặn bắt (intercepting) lưu lượng mạng được gửi giữa ae và người dùng. Nó rẻ, an toàn và dễ
+                            triển khai,
+                            tội gì mà không sử dụng nó nhỉ ae ?
+                        </p>
+
+
+                        <p>
+                            Các điểm truy cập Wifi công cộng, các trang web không sử dụng <a href="../stuff/glossary.html">HTTPS</a>, và các ứng dụng không
+                            mã hóa dữ liệu
+                            là những ví dụ phổ biến về Unencrypted Communication. Bất kỳ điểm kết nối nào giữa máy chủ
+                            của ae và trình duyệt của
+                            người dùng đều là một điểm yếu nếu không được mã hóa. Kẻ tấn công có thể dễ dàng chặn bắt
+                            thông tin nhạy cảm như mật khẩu,
+                            thông tin tài khoản, và thông tin cá nhân khác. Do bản chất không xác định của định tuyến
+                            Internet, rất nhiều cơ hội cho kẻ tấn công
+                            để chặn bắt thông tin nhạy cảm của ae.
+
+                        </p>
+
+                    </div>
+
+                    <br>
+
+                    <div class="how">
+                        <h2> <i class="fa-solid fa-shield-halved"></i>Cách để ngăn chặn Unencrypted Communication
+                        </h2>
+                        <p><span class="red-bold">Buy a certificate, install it, and configure your web server to use
+                                it. (Mua một chứng chỉ, cài đặt nó, và cấu hình máy chủ web của ae để sử dụng nó)</span>
+                        </p>
+
+                        <p>
+                            Chỉ đơn giản vậy thôi ae ạ. Các máy chủ web thường sử dụng các giao thức HTTP ( cổng 80) và
+                            HTTPS (cổng 443) để truyền dữ liệu.
+                            Tuy nhiên giao thức HTTPS sử dụng mã hóa để bảo vệ dữ liệu được truyền qua mạng. Để sử dụng
+                            HTTPS, ae cần mua một <a href="../stuff/glossary.html">chứng chỉ SSL/TLS</a> từ một tổ chức cấp chứng chỉ uy tín, sau đó cài đặt
+                            chứng chỉ này vào máy chủ web của mình. Khi cài đặt xong, ae cần cấu hình máy chủ web để
+                            sử dụng chứng chỉ này. Điều này sẽ bảo vệ dữ liệu được truyền qua mạng giữa máy chủ web và
+                            trình duyệt của người dùng.
+                        </p>
+                        <p>
+                            <span class="red-bold">Let's Encrypt</span>
+                        </p>
+                        <p>
+                            Nếu ae không muốn mua một chứng chỉ SSL/TLS, ae có thể sử dụng Let's Encrypt, một dịch vụ
+                            cung
+                            cấp chứng chỉ SSL/TLS miễn phí. Let's Encrypt cung cấp chứng chỉ SSL/TLS miễn phí thông qua
+                            một quy trình tự động hóa. Điều này giúp ae cài đặt chứng chỉ SSL/TLS mà không cần phải mất
+                            nhiều thời gian và công sức.
+                            Sử dụng Let's Encrypt tại đây : <a href="https://letsencrypt.org/">Let's Encrypt</a>
+
+                        </p>
+                        <p>
+                            <span class="red-bold">Một số đoạn code ae có thể tham khảo</span>
+                        </p>
+                        <p>Những đoạn code dưới đây sẽ minh họa cách "nâng cấp" đường truyền sử dụng HTTPS.</p>
+                        <div class="div-1" style="margin: 1rem;">
+
+                            <span class="red-bold">Reverse Proxies</span>
+                            <p>Việc đặt Apache hoặc Nginx giữa máy chủ web của ae và bên ngoài là khá phổ
+                                biến. Nếu ae có thiết lập này, ae có thể dễ dàng chuyển hướng các yêu cầu HTTP để sử
+                                dụng HTTPS. Trong Apache, quy tắc viết lại sẽ như sau:</p>
+                            <pre class="code-block">
+<span class="purple">RewriteEngine </span><span class="string">On</span>
+<span class="purple">RewriteCond </span><span class="class-name">%{SERVER_PORT}</span> !^<span class="string">443</span>$
+<span class="purple">RewriteRule </span>^(.*)$ https://<span class="class-name">%{HTTP_HOST}</span>/$<span class="string">1</span> <span class="keyword">[QSA,NC,R,L]</span></pre>
+                            <p>Còn trong Nginx thì:</p>
+                            <pre class="code-block">
+<span class="variable">server</span>{
+    <span class="purple">listen </span><span class="string">80</span>;
+    <span class="purple">rewrite </span>^(.*) https://<span class="class-name">$host$1</span> <span class="string">permanent</span>;
+}    </pre>
+                            <span class="red-bold">Python</span>
+                            <p>Cấu hình module cho Django để sử dụng HTTPS, đảm bảo cookie chỉ được truyền qua các kết
+                                nối an toàn:</p>
+                            <pre class="code-block">
+<span class="purple">SECURE_SSL_REDIRECT </span>= <span class="keyword">True</span>
+<span class="purple">SESSION_COOKIE_SECURE </span>= <span class="keyword">True</span>
+<span class="purple">CSRF_COOKIE_SECURE </span>= <span class="keyword">True</span></pre>
+                            <span class="red-bold">Java</span>
+                            <p>Cấu hình cookie trong file <span class="bold">web.xml</span></p>
+                            <pre class="code-block">
+<span class="variable">&lt;session-config&gt;</span>
+    <span class="variable">&lt;cookie-config&gt;</span>
+        <span class="variable">&lt;http-only&gt;</span>true<span class="variable">&lt;/http-only&gt;</span>
+        <span class="variable">&lt;secure&gt;</span>true<span class="variable">&lt;/secure&gt;</span>
+    <span class="variable">&lt;/cookie-config&gt;</span>
+<span class="variable">&lt;/session-config&gt;</span></pre>
+
+
+
+
+                        </div>
+
+                    </div>
+
+                    <br>
+
+                    <div class="moreinfo">
+                        <h2> <i class="fa-solid fa-info"></i> Thông tin thêm</h2>
+                        <p>
+                            Đây là một số bài viết hay ho mà mình thấy nên đọc thêm:
+                        </p>
+                        <ul class="styled-list">
+                            <li><i class="fa-solid fa-link"></i><a
+                                    href="https://www.cloudflare.com/learning/ssl/what-is-ssl/">What is SSL?</a></li>
+                            <li><i class="fa-solid fa-link"></i><a
+                                    href="https://www.cloudflare.com/learning/ssl/why-https/">Why HTTPS?</a></li>
+                            <li><i class="fa-solid fa-link"></i><a
+                                    href="https://www.cloudflare.com/learning/ssl/ssl-tls-difference/">SSL vs TLS</a>
+                            </li>
+                            <li><i class="fa-solid fa-link"></i><a
+                                    href="https://www.cloudflare.com/learning/ssl/ssl-certificate/">SSL Certificate</a>
+                            </li>
+                            <li><i class="fa-solid fa-link"></i><a
+                                    href="https://www.cloudflare.com/learning/ssl/ssl-encryption/">SSL Encryption</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <footer class="bg-dark text-white text-center py-3">
+        <script>
+
+        </script>
+        <p>&copy; Clone lại thằng Hacksplaining | <a href="https://github.com/Baodeptraii"
+                class="text-white text-decoration-none">By Re3on</a></p>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"></script>
+    </footer>
+
+    <!-- Thêm Bootstrap JS và Popper.js -->
+
+</body>
+
+</html>

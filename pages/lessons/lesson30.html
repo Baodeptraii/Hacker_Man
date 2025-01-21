@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insecure Design
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/lessonstyle.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <header class="bg-success text-white py-5 text-center">
+        <div class="container text-center">
+            <h1 class="display-4">Insecure Design
+
+
+
+
+            </h1>
+            <a href="../../index.html" class="btn btn-light btn-lg mt-3">Back to Home</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Hiếm - Thỉnh thoảng - Thường xuyên -->
+        <!-- Khó - Trung bình - Dễ -->
+        <!-- Nhẹ - Trung bình - Nghiêm trọng -->
+
+        <div class="row row-box">
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Độ phổ biến</h3>
+                    <p>Thường xuyên</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Khả năng khai thác</h3>
+                    <p>Dễ</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Ảnh hưởng</h3>
+                    <p>Nghiêm trọng</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Nội dung chính -->
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-16">
+
+                <div class="lesson-list p-4 shadow-sm bg-white rounded">
+
+                    <div class="what">
+                        <h2> <i class="fa-solid fa-magnifying-glass"></i>Insecure Design
+                            là gì ?</h2>
+                        <p>
+                            Insecure Design ( Thiết kế không an toàn ) là một lỗi bảo mật phổ biến trong các ứng dụng
+                            web. Thiết kế không an toàn xảy ra khi các nhà phát triển không xem xét đầy đủ các mối đe
+                            dọa bảo
+                            mật trong quá trình thiết kế ứng dụng. Điều này có thể dẫn đến các lỗ hổng bảo mật nghiêm
+                            trọng, cho phép kẻ tấn công khai thác và gây hại cho hệ thống.
+
+                        </p>
+                        <p>
+                            Để xây dựng phần mềm an toàn, ae cần hiểu rõ các mối đe dọa, xác định điểm nhập của dữ liệu
+                            độc hại, dự đoán các tình huống lỗi, nắm vững các nguyên tắc bảo mật và xây dựng quy trình
+                            để khắc phục cũng như học hỏi từ các vấn đề bảo mật.
+                        </p>
+
+
+                    </div>
+
+                    <br>
+
+                    <div class="how">
+                        <h2> <i class="fa-solid fa-shield-halved"></i>Cách ngăn chặn Insecure Design
+                        </h2>
+
+                        <p><span class="red-bold">Visualizing threats (Mô hình hóa mối đe dọa)</span></p>
+                        <p>
+                            Hiểu rõ ai có thể muốn tấn công ứng dụng của ae và cách họ thực hiện là điều cốt yếu để tự
+                            bảo vệ. Bắt đầu bằng cách sử dụng sơ đồ luồng dữ liệu (<span class="bold">Data Flow
+                                Diagram</span> - DFD). Đây là công
+                            cụ giúp minh họa luồng dữ liệu, các kho dữ liệu, quy trình, tương tác và ranh giới tin cậy
+                            trong ứng dụng. DFD cho thấy những điểm truy cập tiềm năng, nơi dữ liệu độc hại có thể xâm
+                            nhập. Ví dụ:
+                        <ul class="styled-list-4">
+                            <li>Thông tin đăng nhập qua HTTPS có thể bị giả mạo không?</li>
+                            <li>Cơ sở dữ liệu của ae có bị truy cập công khai qua internet không?</li>
+                        </ul>
+                        </p>
+                        <p>
+                            Ví dụ điển hình và phổ biến cho DFD là mô hình STRIDE của Microsoft, một công cụ hữu ích để
+                            xác định rủi ro tại các điểm truy cập và 6 rủi ro chính là:
+                        <ul class="styled-list-4">
+                            <li>Spoofing (Giả mạo)</li>
+                            <li>Tampering (Sửa đổi trái phép)</li>
+                            <li>Repudiation (Phủ nhận hành động)</li>
+                            <li>Information disclosure (Tiết lộ thông tin)</li>
+                            <li>Denial of Service (Từ chối dịch vụ)</li>
+                            <li>Elevation of Privilege (Nâng quyền trái phép)</li>
+                        </ul>
+
+                        </p>
+                        <p>
+                            Ngoài ra ae cũng nên xây dựng các mô hình dành cho các loại dữ liệu nhạy cảm, như thông tin
+                            cá nhân, thông tin tài chính, thông tin y tế, v.v.
+                            Các ứng dụng xử lý dữ liệu nhạy cảm cũng có thể yêu cầu chiến lược phân loại dữ liệu. Điều
+                            này sẽ chia dữ liệu của ae thành các danh mục rộng để ae có thể tập trung vào việc bảo vệ
+                            dữ liệu nhạy cảm nhất. Ví dụ: ae có thể phân loại các mục dữ liệu thành:
+                        <ul class="styled-list-4">
+                            <li>Dữ liệu công khai: Blog công ty.</li>
+                            <li>Dữ liệu riêng tư: Chỉ dành cho người dùng đã xác thực.</li>
+                            <li>Dữ liệu hạn chế: Thông tin nhạy cảm như hồ sơ cá nhân.</li>
+                            <li>Dữ liệu rủi ro cao: Token truy cập, mật khẩu, API key.</li>
+                        </ul>
+                        </p>
+
+
+                        <p><span class="red-bold">Securing the Development Lifecycle (Bảo vệ chu kỳ phát triển)</span>
+                        </p>
+                        <p>
+                            Sau khi đã mô hình hóa các mối đe dọa, ae cần biến thông tin đó thành các yêu cầu bảo mật
+                            và áp dụng quy trình phát triển phần mềm có kỷ luật (<span class="bold">Software Development
+                                Life-Cycle - </span>SDLC). Một quy trình có thể được coi là hiệu quả nếu bao gồm:
+                        <ul class="styled-list-2">
+                            <li>Kiểm soát mã nguồn: Quản lý mã với công cụ như Git để phân tích các thay đổi.</li>
+                            <li>Tự động hóa xây dựng: Tránh khác biệt giữa mã thử nghiệm và mã triển khai.</li>
+                            <li>Kiểm tra đơn vị (Unit Testing): Đảm bảo các yêu cầu bảo mật được đáp ứng.</li>
+                            <li>Tích hợp liên tục (CI): Chạy kiểm tra tự động khi mã được đẩy lên hệ thống.</li>
+                            <li>Đánh giá mã: Nhờ đồng nghiệp kiểm tra để phát hiện lỗi.</li>
+                            <li>Triển khai tự động: Đơn giản hóa quy trình triển khai để giảm lỗi thủ công.</li>
+                            <li>Khả năng hoàn tác (Rollback): Cho phép hoàn tác nhanh chóng khi phát hiện lỗ hổng.</li>
+                        </ul>
+
+
+
+                        </p>
+
+                        <p><span class="red-bold">Applying Security Principles (Áp dụng nguyên tắc bảo mật)</span></p>
+                        <p>
+                            Các nguyên tắc bảo mật cơ bản là cơ sở để xây dựng ứng dụng an toàn. Một số nguyên tắc quan
+                            trọng bao gồm:
+                        <ul class="styled-list-4">
+                            <li><span class="bold">Principle of least privilege</span> - Nguyên tắc tối thiểu: Giới hạn
+                                quyền truy cập cho mọi người và hệ thống.</li>
+                            <li><span class="bold">Validation of input</span> - Xác thực đầu vào: Kiểm tra định dạng dữ
+                                liệu từ nguồn không tin cậy.</li>
+                            <li><span class="bold">Segregation of tenants</span> - Tách biệt môi trường: Ngăn cách mạng
+                                sản xuất và thử nghiệm.</li>
+                            <li><span class="bold">Encryption</span> - Mã hóa dữ liệu: Bảo vệ dữ liệu cả khi lưu trữ và
+                                khi truyền tải.</li>
+                            <li><span class="bold">Fail securely.</span> - Xử lý lỗi an toàn: Không tiết lộ chi tiết hệ
+                                thống qua thông báo lỗi.</li>
+                            <li><span class="bold">Observability</span> - Khả năng quan sát: Ghi nhật ký hoạt động và
+                                giám sát hệ thống.</li>
+                        </ul>
+                        </p>
+
+                        <p><span class="red-bold">Maintaining Security (Duy trì bảo mật)</span>
+                        </p>
+                        <p>
+                            Rất có thể ứng dụng của ae sẽ tiếp tục thêm các tính năng và thay đổi theo thời gian tùy
+                            theo nhu cầu. Các yêu cầu phải được ghi lại - ví dụ như các vấn đề trong trình theo dõi
+                            sự cố - và các thay đổi mã phải tham chiếu đến các vấn đề mà chúng đang giải quyết. Khi xem
+                            xét các thay đổi mã, ae cần đảm bảo rằng phiên bản mới vẫn đáp ứng các yêu cầu bảo mật
+                            chung.
+                        </p>
+                        <p>
+                            Đặc biệt chú ý đến <a href="../stuff/glossary.html">ranh giới tin cậy</a> ( <span class="bold">trust boundaries</span> ), nơi đầu
+                            vào không đáng tin cậy đi vào ứng dụng. Bất kỳ
+                            thay đổi nào về cách xử lý đầu vào đều phải được xem xét kỹ lưỡng. Thường thì việc suy nghĩ
+                            về các nguồn - nơi đầu vào đi vào hệ thống - và đồng bộ hóa - sẽ giúp ích cho việc thực hiện
+                            các hoạt động nhạy cảm trong mã. Việc theo dõi mã từ mỗi nguồn đến mỗi lần đồng bộ hóa sẽ
+                            giúp làm rõ các lỗ hổng tiềm ẩn.
+                        </p>
+
+                        <p><span class="red-bold">Learning from Your Mistakes (Học hỏi từ những sai lầm)</span></p>
+                        </span></p>
+                        <p>
+                            Sai lầm luôn xảy ra và điều quan trọng là ae phải rút ra bài học bất cứ khi nào một lỗ hổng
+                            bị khai thác. Cần tiến hành phân tích sau sự cố để xác định nơi các biện pháp bảo
+                            mật không hoạt động hiệu quả. Hãy nhớ rằng, ae đang tìm kiếm các lỗi trong quy
+                            trình chứ không phải đổ lỗi cho cá nhân - vì không ai nên hành động một mình và thường các
+                            lỗi là do
+                            quy trình giám sát chứ không phải do sự cẩu thả.
+
+                            Sau khi ae đã quyết định biện pháp bảo vệ nào là cần thiết, hãy ghi lại quy trình mới và
+                            nếu hữu ích, hãy thêm các bài kiểm tra để đảm bảo sự cố không xảy ra.
+                        </p>
+
+                        <p><span class="red-bold">Keep it Usable (Duy trì tính khả dụng)</span></p>
+                        <p>Cuối cùng, điều quan trọng là không nên làm cho các giao thức bảo mật trở nên quá nặng nề đối
+                            với nhóm phát triển của ae hoặc người dùng, nếu không mọi người sẽ
+                            không tuân thủ chúng. Đúng là phần mềm an toàn nhất là ứng dụng không có người dùng, nhưng
+                            đó không phải là mục tiêu mà ae hướng đến phải không =))</p>
+                    </div>
+
+
+
+
+
+                    <br>
+
+                    <div class="moreinfo">
+                        <h2> <i class="fa-solid fa-info"></i> Thông tin thêm</h2>
+                        <p>
+                            Đây là một số bài viết hay ho mà mình thấy nên đọc thêm:
+                        </p>
+                        <ul class="styled-list">
+
+                            <li><i class="fa-solid fa-link"></i><a href="https://owasp.org/www-project-top-ten/"
+                                    target="_blank">OWASP Top 10</a></li>
+                            <li><i class="fa-solid fa-link"></i><a
+                                    href="https://owasp.org/www-project-application-security-verification-standard/"
+                                    target="_blank">OWASP ASVS</a></li>
+
+                            <li><i class="fa-solid fa-link"></i><a
+                                    href="https://www.owasp.org/index.php/Threat_Risk_Modeling" target="_blank">Threat
+                                    Risk Modeling</a></li>
+                            <li><i class="fa-solid fa-link"></i><a
+                                    href="https://docs.microsoft.com/en-us/azure/security/fundamentals/threat-modeling-tool"
+                                    target="_blank">Microsoft Threat Modeling Tool</a></li>
+
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <footer class="bg-dark text-white text-center py-3">
+        <script>
+
+        </script>
+        <p>&copy; Clone lại thằng Hacksplaining | <a href="https://github.com/Baodeptraii"
+                class="text-white text-decoration-none">By Re3on</a></p>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"></script>
+    </footer>
+
+    <!-- Thêm Bootstrap JS và Popper.js -->
+
+</body>
+
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toxic Dependencies
+
+
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/lessonstyle.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <header class="bg-success text-white py-5 text-center">
+        <div class="container text-center">
+            <h1 class="display-4">Toxic Dependencies
+
+
+            </h1>
+            <a href="../../index.html" class="btn btn-light btn-lg mt-3">Back to Home</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Hiếm - Thỉnh thoảng - Thường xuyên -->
+        <!-- Khó - Trung bình - Dễ -->
+        <!-- Nhẹ - Trung bình - Nghiêm trọng -->
+
+        <div class="row row-box">
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Độ phổ biến</h3>
+                    <p>Thi thoảng</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Khả năng khai thác</h3>
+                    <p>Trung bình</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Ảnh hưởng</h3>
+                    <p>Nghiêm trọng</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Nội dung chính -->
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-16">
+
+                <div class="lesson-list p-4 shadow-sm bg-white rounded">
+
+                    <div class="what">
+                        <h2> <i class="fa-solid fa-magnifying-glass"></i>Toxic Dependencies
+
+
+                            là gì ?</h2>
+                        <p>
+                            Toxic Dependencies (phụ thuộc độc hại) là một loại lỗ hổng bảo mật mà xảy ra khi một ứng
+                            dụng phụ thuộc vào một
+                            thư viện, bộ công cụ, hoặc máy chủ không an toàn. Toxic Dependencies có thể dẫn đến các rủi
+                            ro bảo mật nghiêm trọng như lộ thông tin, tấn công từ chối dịch vụ (DoS), hoặc tấn công
+                            khai thác (exploit).
+                        </p>
+                        <p>
+                            Các nhóm phát triển thường ít khi kiểm tra kỹ mã nguồn của thư viện bên thứ ba, nhưng chính
+                            các thư viện và công cụ này lại là nguồn gốc của nhiều lỗ hổng bảo mật. Là một chủ sở hữu
+                            website, ae cần đảm bảo rằng mã do người khác viết không làm hệ thống của ae trở nên mất
+                            an toàn.
+                        </p>
+                        <p>
+                            Hầu như mọi loại lỗ hổng bảo mật đều đã từng xuất hiện trong các thư viện phần mềm phổ biến,
+                            như: SQL Injection, Cross-Site Scripting (XSS), Command Injection, ... <br>
+                            Nếu chẳng may sử dụng các thư viện chứa lỗ hổng này vào hệ thống, ae và cả những người dùng
+                            đều có thể gặp rủi ro bị đánh cắp dữ liệu, nhiễm mã độc và hoàn toàn mất kiểm soát với hệ
+                            thống.
+                        </p>
+                        <p>Ngoài ra, thư viện bên thứ ba đang trở thành mục tiêu của tấn công chuỗi cung ứng
+                            (supply-chain attacks), khi hacker tiêm mã độc vào phần mềm thông qua các quy trình build
+                            không được bảo mật.</p>
+
+                    </div>
+
+                    <br>
+
+                    <div class="how">
+                        <h2> <i class="fa-solid fa-shield-halved"></i>Cách để ngăn chặn Toxic Dependencies
+
+                        </h2>
+                        <p>
+                            Quản lý tốt các thư viện bên thứ ba là chìa khóa để bảo vệ hệ thống. Dưới đây là các bước
+                            cần thực hiện:
+                        </p>
+                        <p>
+                            <span class="red-bold">Automate your build and deployment processes (Tự động hóa quy trình
+                                xây dựng và triển khai)</span>
+                        </p>
+                        <p>
+                            Ae nên khai báo tất cả các thư viện bên thứ ba trong script build hoặc hệ thống quản lý phụ
+                            thuộc
+                            (dependency management) và
+                            triển khai mã từ hệ thống kiểm soát phiên bản (source control).
+                            Hơn nữa ae có thể lưu lại nhật ký triển khai để biết chính xác mã nào đang chạy.
+                        </p>
+
+                        <p><span class="red-bold">Deploy known-good versions of software ( Sử dụng các phiên bản đã được
+                                kiểm tra)</span></p>
+                        <p>
+                            Tránh sử dụng các công cụ quản lý phụ thuộc cho phép lấy phiên bản mới nhất (new release)
+                            một cách tự động.
+                            Chỉ nâng cấp khi ae đã xem xét kỹ lưỡng ghi chú phát hành (release notes) và cố định phiên
+                            bản trong mã nguồn của mình.
+
+                        </p>
+                        <p><span class="red-bold">Be careful of private dependencies (Cẩn thận với phụ thuộc riêng
+                                tư)</span></p>
+                        <p>
+                            Nếu tổ chức của ae sử dụng cả phụ thuộc công khai (public) và riêng tư (private), hãy cẩn
+                            thận với thứ tự ưu tiên trong quy trình build.
+                            Tấn công nhầm lẫn phụ thuộc (dependency confusion) có thể xảy ra khi kẻ tấn công tải lên một
+                            phiên bản mã độc của thư viện riêng tư trên kho công khai.
+
+                        </p>
+
+                        <p><span class="red-bold">Use dedicated tools to scan your dependency tree for security risks
+                                (Dùng công cụ kiểm tra bảo mật phụ thuộc)</span></p>
+                        <p>
+                            Sử dụng các công cụ chuyên dụng để kiểm tra các thư viện của bên thứ ba trong dự án, như:
+                            OWASP Dependency-Check, Snyk, WhiteSource, Black Duck, và Dependency Track.
+
+                        </p>
+
+                        <p><span class="red-bold">Keep on top of security bulletins (Theo dõi các thông báo bảo
+                                mật)</span></p>
+                        <p>
+                            Hãy đăng ký nhận thông báo bảo mật từ các nhà phát triển thư viện mà ae sử dụng (qua email,
+                            diễn đàn, hoặc mạng xã hội).
+                            Cộng đồng phát triển thường là nơi đầu tiên phát hiện và thông báo lỗ hổng.
+                        </p>
+
+                        <p><span class="red-bold">Perform regular code reviews (Thường xuyên kiểm tra lại mã
+                                nguồn)</span></p>
+                        <p>
+                            Đảm bảo nhóm của ae hiểu rõ những thư viện nào đang được sử dụng và phần nào của mã nguồn
+                            phụ thuộc vào chúng.
+                            Kiểm tra mã nguồn thường xuyên để phát hiện lỗ hổng bảo mật sớm nhất có thể.
+                        </p>
+
+                        <p><span class="red-bold">Make penetration testing part of your development lifecycle (Kiếm 1
+                                ông kiểm thử về)</span></p>
+                        <p>
+                            Tích hợp kiểm thử xâm nhập vào quá trình phát triển. Các công cụ này giúp kiểm tra xem liệu
+                            hệ thống của ae có chứa các thành phần dễ bị khai thác hay không.
+                        </p>
+                        <br>
+                        <p>Nếu ae chưa bao giờ sử dụng các hệ thống quản lý phụ thuộc ( dependency management), ae nên
+                            học dần cách sử dụng nó. Dưới đây là một số hệ thống phổ biến cho ngôn ngữ mà ae hay sử
+                            dụng: 
+                            <ul class="styled-list-2">
+                                <li>Bundler dành cho Ruby Gems.</li>
+                                <li>Pip dành cho Python Packages</li>
+                                <li>NPM dành cho Node Modules.</li>
+                                <li>Maven và Gradle dành cho Java jars.</li>
+                                <li>NuGet dành cho .NET.</li>
+                                <li>Composer dành cho PHP.</li>
+                            </ul>
+                        </p>
+
+                    </div>
+
+
+
+
+
+                    <br>
+
+                    <div class="moreinfo">
+                        <h2> <i class="fa-solid fa-info"></i> Thông tin thêm</h2>
+                        <p>
+                            Đây là một số bài viết hay ho mà mình thấy nên đọc thêm:
+                        </p>
+                        <ul class="styled-list">
+
+                            <li><i class="fa-solid fa-link"></i><a
+                                    href="https://owasp.org/www-project-dependency-check/" target="_blank">OWASP
+                                    Dependency-Check</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://snyk.io/" target="_blank">Snyk</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://www.whitesourcesoftware.com/"
+                                    target="_blank">WhiteSource</a></li>
+                            <li><i class="fa-solid fa-link"></i><a
+                                    href="https://www.synopsys.com/software-integrity/security-testing/software-composition-analysis.html"
+                                    target="_blank">Black Duck</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://dependencytrack.org/"
+                                    target="_blank">Dependency Track</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <footer class="bg-dark text-white text-center py-3">
+        <script>
+
+        </script>
+        <p>&copy; Clone lại thằng Hacksplaining | <a href="https://github.com/Baodeptraii"
+                class="text-white text-decoration-none">By Re3on</a></p>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"></script>
+    </footer>
+
+    <!-- Thêm Bootstrap JS và Popper.js -->
+
+</body>
+
+</html>

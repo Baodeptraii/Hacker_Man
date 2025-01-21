@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Host Header Poisoning
+
+
+
+
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/lessonstyle.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <header class="bg-success text-white py-5 text-center">
+        <div class="container text-center">
+            <h1 class="display-4">Host Header Poisoning
+
+
+
+
+            </h1>
+            <a href="../../index.html" class="btn btn-light btn-lg mt-3">Back to Home</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Hiếm - Thỉnh thoảng - Thường xuyên -->
+        <!-- Khó - Trung bình - Dễ -->
+        <!-- Nhẹ - Trung bình - Nghiêm trọng -->
+
+        <div class="row row-box">
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Độ phổ biến</h3>
+                    <p>Hiếm</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Khả năng khai thác</h3>
+                    <p>Dễ</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Ảnh hưởng</h3>
+                    <p>Trung bình</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Nội dung chính -->
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-16">
+
+                <div class="lesson-list p-4 shadow-sm bg-white rounded">
+
+                    <div class="what">
+                        <h2> <i class="fa-solid fa-magnifying-glass"></i>Host Header Poisoning
+                            là gì ?</h2>
+                        <p>
+                            Host Header Poisoning ( tấn công tiêu đề Host) là một kỹ thuật tấn công mà kẻ tấn công thay
+                            đổi giá trị của tiêu đề
+                            Host trong yêu cầu HTTP để thực hiện các cuộc tấn công khác nhau. Kỹ thuật này thường được
+                            sử dụng để thực hiện các cuộc tấn công SSRF (Server-Side Request Forgery) hoặc để thực hiện
+                            các cuộc tấn công khác như chuyển hướng người dùng, tấn công từ chối dịch vụ (DoS) hoặc
+                            thậm chí là tấn công giả mạo.
+                        </p>
+                        <p>
+                            Tiêu đề Host trong yêu cầu HTTP được đặt bởi trình duyệt và có thể được máy chủ phụ trợ sử
+                            dụng
+                            để phân biệt các yêu cầu từ các miền khác nhau được phục vụ trên cùng một địa chỉ giao thức
+                            internet. Tuy nhiên, nếu máy chủ web dựa vào giá trị được cung cấp của tiêu đề Host, người
+                            dùng có ác ý có thể cung cấp giá trị giả mạo để tạo liên kết gây hiểu lầm trên trang web của
+                            ae và trong email giao dịch.
+                        </p>
+
+
+                    </div>
+
+                    <br>
+
+                    <div class="how">
+                        <h2> <i class="fa-solid fa-shield-halved"></i>Thông tin về Host Header Poisoning
+                        </h2>
+
+                        <p>
+                            Hầu hết các ứng dụng web không tự động biết được chúng đang được lưu trữ trên tên miền nào.
+                            Tên miền được đăng ký trong Hệ thống Tên miền (DNS - Domain Name System), hệ thống này hướng
+                            trình duyệt định
+                            tuyến lưu lượng internet cho một tên miền đến các địa chỉ IP tương ứng. Lưu lượng HTTP và
+                            HTTPS gửi đến các địa chỉ IP này sẽ được chuyển đến một bộ cân bằng tải, sau đó phân phối
+                            yêu cầu đến các máy chủ web khác nhau. Ứng dụng chạy trên máy chủ này chỉ nhận yêu cầu ở
+                            bước cuối mà không biết các yêu cầu đã vào mạng như thế nào, sau đó gửi phản hồi quay lại
+                            cùng tuyến đường đó.
+                        </p>
+                        <p>
+                            Khi gửi yêu cầu HTTP, trình duyệt sẽ thiết lập một trường Host trong mỗi yêu cầu để chỉ ra
+                            tên miền mà yêu cầu hướng đến. Tuy nhiên, thông thường không có cách nào để xác minh tên
+                            miền trong trường Host có khớp với địa chỉ IP được sử dụng trong quá trình thiết lập kết nối
+                            TCP ban đầu hay không. Một tác nhân độc hại - chẳng hạn như một đoạn mã của hacker - có thể
+                            tùy ý đặt trường Host thành bất kỳ giá trị nào họ muốn.
+                        </p>
+                        <p><span class="red-bold">Relative vs Absolute URLs (URL tương đối và URL tuyệt đối)</span></p>
+                        </span></p>
+                        <p>
+                            Hầu hết thời gian, một trang web không cần biết chính xác tên miền mà nó đang chạy, vì các
+                            liên kết trong HTML thường sử dụng URL tương đối, và các tệp được nhập từ phía máy khách
+                            cũng sử dụng URL tương đối tương tự:
+                        <pre class="code-block">
+<span class="comment">&lt;!-- Các liên kết nội bộ không cần chỉ định tên miền. --&gt;</span>
+<span>&lt;<span class="keyword">a</span> <span class="variable">href</span>=<span class="string">"/profile"</span>&gt; Profile &lt;/<span class="keyword">a</span>&gt;</span>
+                            
+<span class="comment">&lt;!-- Các tệp nhập cục bộ cũng không cần chỉ định tên miền. --&gt;</span>
+<span>&lt;<span class="keyword">script </span><span class="variable">src</span>=<span class="string">"js/navigation.js"</span>&gt;&lt;/<span class="keyword">script</span>&gt;</span>
+
+</pre>
+                        </p>
+                        <p>
+                            Sử dụng URL tương đối là một phương pháp tốt nhất trong phát triển web vì nó giúp dễ dàng
+                            triển khai mã web trên các môi trường khác nhau. Tuy nhiên, trong một số trường hợp, URL
+                            tuyệt đối là bắt buộc, chẳng hạn khi tạo liên kết trong email giao dịch. Ví dụ, nếu người
+                            dùng yêu cầu đặt lại mật khẩu, liên kết trong email phải chứa tên miền đầy đủ của trang web,
+                            vì người dùng sẽ truy cập từ một nguồn bên ngoài (trình quản lý email).
+                        </p>
+
+                        <p><span class="red-bold">Generating Safe Absolute URLs (Tạo URL tuyệt đối an toàn)</span></p>
+                        </span></p>
+                        <p>
+                            Trong trường hợp đặt lại mật khẩu, nhiều người thường nghĩ đến việc lấy tên miền từ trường
+                            Host trong yêu cầu. Tuy nhiên, hãy nhớ rằng trường này có thể bị chỉnh sửa bởi kẻ tấn công,
+                            dẫn đến việc các chức năng quan trọng như đặt lại mật khẩu không hoạt động đúng cách. Kẻ tấn
+                            công có thể lợi dụng các chức năng này để gửi email đặt lại mật khẩu cho nạn nhân kèm
+                            theo liên kết quay lại trang web độc hại do chúng kiểm soát. Nếu trang web này trông giống
+                            trang web của ae đến mức gây nhầm lẫn - và có tên miền đủ giống để nạn nhân không nhận ra -
+                            kẻ tấn công có cách dễ dàng để thu thập thông tin đăng nhập.
+                        </p>
+                        <p>
+                            Vì lý do này, ae nên luôn lấy tên miền cho URL tuyệt đối từ tệp cấu hình được lưu trữ an
+                            toàn trên máy chủ. Dưới đây là một số cách tạo email đặt lại mật khẩu an toàn:
+                        <div class="div-1">
+                            <span class="red-bold">Python</span>
+                            <pre class="code-block">
+<span class="keyword">import</span> <span class="class-name">smtplib</span>
+<span class="keyword">from</span> <span class="class-name">email.message</span> <span class="keyword">import</span> <span class="class-name">EmailMessage</span>
+
+<span class="keyword">def</span> <span class="class-name">send_password_reset_email</span>(<span class="variable">user</span>):
+    <span class="variable">message</span> = <span class="class-name">EmailMessage</span>()
+
+    <span class="comment"># Taking the Host from the configuration parameters is safe.</span>
+    <span class="variable">password_reset_url</span> = <span class="string">'https://{}/password/reset/{}'</span>.format(
+        os.environ.get(<span class="string">"DOMAIN"</span>), <span class="variable">user</span>.reset_token
+    )
+
+    <span class="variable">message</span>.set_content(<span class="string">"Click here to reset your password: "</span> + <span class="variable">password_reset_url</span>)
+    <span class="variable">message</span>[<span class="string">'Subject'</span>] = <span class="string">"Forget your password?"</span>
+    <span class="variable">message</span>[<span class="string">'To'</span>] = <span class="variable">user</span>.email
+    <span class="variable">message</span>[<span class="string">'From'</span>] = <span class="string">"support@example.com"</span>
+
+    <span class="variable">smtp</span> = <span class="class-name">smtplib.SMTP</span>(os.environ.get(<span class="string">"SMTP_HOST"</span>))
+    <span class="variable">smtp</span>.send_message(<span class="variable">message</span>)
+    <span class="variable">smtp</span>.quit()
+                                </pre>
+
+                            <span class="red-bold">Java</span>
+                            <pre class="code-block">
+<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="class-name">sendPasswordResetEmail</span>(<span class="class-name">String</span> <span class="variable">toAddress</span>, <span class="class-name">String</span> <span class="variable">passwordResetToken</span>) <span class="keyword">throws</span> <span class="class-name">MessagingException</span> {
+    <span class="class-name">Properties</span> <span class="variable">properties</span> = <span class="class-name">System</span>.getProperties();
+
+    <span class="comment">// Taking the Host from the configuration parameters is safe.</span>
+    <span class="class-name">String</span> <span class="variable">passwordResetURL</span> = <span class="string">"https://"</span> + <span class="variable">properties</span>.getProperty(<span class="string">"host"</span>) 
+                                            + <span class="string">"/password/reset/"</span> 
+                                            + <span class="variable">passwordResetToken</span>;
+
+    <span class="class-name">Session</span> <span class="variable">session</span> = <span class="class-name">Session</span>.getDefaultInstance(<span class="variable">properties</span>);
+    <span class="class-name">MimeMessage</span> <span class="variable">message</span> = <span class="keyword">new</span> <span class="class-name">MimeMessage</span>(<span class="variable">session</span>);
+
+    <span class="variable">message</span>.setFrom(<span class="keyword">new</span> <span class="class-name">InternetAddress</span>(<span class="string">"support@example.com"</span>));
+    <span class="variable">message</span>.addRecipient(<span class="class-name">Message</span>.<span class="class-name">RecipientType</span>.TO, <span class="keyword">new</span> <span class="class-name">InternetAddress</span>(<span class="variable">toAddress</span>));
+    <span class="variable">message</span>.setSubject(<span class="string">"Forget your password?"</span>);
+    <span class="variable">message</span>.setText(<span class="string">"Click here to reset your password: "</span> + <span class="variable">passwordResetURL</span>);
+
+    <span class="class-name">Transport</span>.send(<span class="variable">message</span>);
+}
+                                </pre>
+
+                        </div>
+                        </p>
+                    </div>
+
+
+
+
+
+                    <br>
+
+                    <div class="moreinfo">
+                        <h2> <i class="fa-solid fa-info"></i> Thông tin thêm</h2>
+                        <p>
+                            Đây là một số bài viết hay ho mà mình thấy nên đọc thêm:
+                        </p>
+                        <ul class="styled-list">
+
+                            <li><i class="fa-solid fa-link"></i><a href="https://portswigger.net/web-security/host-header" target="_blank">Host Header
+                                    Injection</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://www.acunetix.com/blog/articles/host-header-attacks/" target="_blank">Host
+                                    Header Attacks</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://www.hacksplaining.com/prevention/host-header-poisoning" target="_blank">Host
+                                    Header Poisoning</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <footer class="bg-dark text-white text-center py-3">
+        <script>
+
+        </script>
+        <p>&copy; Clone lại thằng Hacksplaining | <a href="https://github.com/Baodeptraii"
+                class="text-white text-decoration-none">By Re3on</a></p>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"></script>
+    </footer>
+
+    <!-- Thêm Bootstrap JS và Popper.js -->
+
+</body>
+
+</html>

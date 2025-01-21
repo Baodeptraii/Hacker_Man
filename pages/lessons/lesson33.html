@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSL Stripping
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/lessonstyle.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <header class="bg-success text-white py-5 text-center">
+        <div class="container text-center">
+            <h1 class="display-4">SSL Stripping
+
+
+
+
+            </h1>
+            <a href="../../index.html" class="btn btn-light btn-lg mt-3">Back to Home</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Hiếm - Thỉnh thoảng - Thường xuyên -->
+        <!-- Khó - Trung bình - Dễ -->
+        <!-- Nhẹ - Trung bình - Nghiêm trọng -->
+
+        <div class="row row-box">
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Độ phổ biến</h3>
+                    <p>Thỉnh thoảng</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Khả năng khai thác</h3>
+                    <p>Dễ</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Ảnh hưởng</h3>
+                    <p>Trung bình</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Nội dung chính -->
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-16">
+
+                <div class="lesson-list p-4 shadow-sm bg-white rounded">
+
+                    <div class="what">
+                        <h2> <i class="fa-solid fa-magnifying-glass"></i>SSL Stripping
+                            là gì ?</h2>
+                        <p>
+                            SSL Stripping (tước đoạt SSL) là một kỹ thuật tấn công mà kẻ tấn công có thể sử dụng để tấn
+                            công các trang web
+                            sử dụng HTTPS. Kỹ thuật này hoạt động bằng cách chuyển đổi các kết nối HTTPS thành HTTP, sau
+                            đó
+                            chuyển tiếp các yêu cầu HTTP đó đến trang web mà không cần sự chứng thực SSL. Điều này cho
+                            phép
+                            kẻ tấn công theo dõi và thậm chí thay đổi thông tin truy cập giữa người dùng và trang web mà
+                            họ
+                            đang truy cập. Kỹ thuật này thường được sử dụng để đánh cắp thông tin cá nhân của người dùng
+                            hoặc thực hiện các cuộc tấn công khác như Cross-Site Scripting (XSS) hoặc Cross-Site Request
+                            Forgery (CSRF).
+                        </p>
+                        <p>
+                            Đây là một dạng tấn công <a href="../stuff/glossary.html">Man-in-the-Middle (MITM)</a> mà kẻ tấn công có thể sử dụng để theo dõi
+                            và
+                            thậm chí thay đổi thông tin truy cập giữa người dùng và trang web mà họ đang truy cập. Khi
+                            một
+                            người dùng truy cập một trang web sử dụng HTTPS, trình duyệt của họ sẽ thiết lập một kết nối
+                            an toàn với máy chủ web bằng cách sử dụng SSL/TLS. Khi kết nối này được thiết lập, tất cả dữ
+                            liệu truy cập giữa người dùng và trang web sẽ được mã hóa và bảo vệ khỏi việc bị đánh cắp.
+
+                        </p>
+
+
+                    </div>
+
+                    <br>
+
+                    <div class="how">
+                        <h2> <i class="fa-solid fa-shield-halved"></i>Cách ngăn chặn SSL Stripping
+                        </h2>
+
+                        <p>
+                            Để giảm thiểu các cuộc tấn công tước SSL, các trang web nên áp dụng kết nối HTTPS cho mọi
+                            loại lưu lượng trên trang web của ae. Ae nên yêu cầu trình duyệt luôn luôn kết nối bằng
+                            HTTPS
+                            bằng cách triển khai Bảo mật truyền tải nghiêm ngặt HTTP (HSTS - HTTP Strict Transport
+                            Security). Điều này được thực hiện
+                            bằng cách thêm tiêu đề phản hồi HTTP:
+                        <pre class="code-block">
+Strict-Transport-Security "max-age=31536000"; </pre>
+
+
+
+                        </p>
+                        <p>
+                            Trong trường hợp này, trình duyệt được yêu cầu sử dụng HTTPS cho tất cả các yêu cầu đến
+                            nguồn
+                            gốc này trong 1 năm tiếp theo, trình duyệt sẽ kiểm tra lại tiêu đề. Nếu
+                            trình duyệt
+                            không thể kết nối bằng HTTPS, nó sẽ từ chối kết nối.
+                        </p>
+                        <p>
+                            Ae có thể tham khảo các đoạn code mẫu ở dưới đây:
+                        <div class="div-1">
+                            <span class="red-bold">Nginx</span>
+                            <pre class="code-block">
+<span class="keyword">server</span> {
+    <span class="variable">listen</span> <span class="number">80</span>;
+    <span class="variable">server_name</span> <span class="string">example.com</span>;
+
+    <span class="comment"># Chuyển hướng HTTP sang HTTPS</span>
+    <span class="keyword">return</span> <span class="number">301</span> <span class="string">https://$server_name$request_uri</span>; 
+}
+    
+<span class="keyword">server</span> {
+    <span class="variable">listen</span> <span class="number">443</span> <span class="variable">ssl</span>; <span class="variable">server_name</span> <span class="string">example.com</span>;
+
+    <span class="comment"># Sử dụng chứng chỉ số để mã hóa, </span>
+    <span class="comment"># và một cặp khóa bí mật để giải mã.</span>
+    <span class="variable">ssl_certificate</span> <span class="string">/path/to/ssl/certificate.crt</span>;  
+    <span class="variable">ssl_certificate_key</span> <span class="string">/path/to/ssl/private.key</span>;
+
+    <span class="comment"># Sử dụng HSTS 1 năm ~ 31536000 giây.</span>
+    <span class="variable">add_header</span> <span class="string">Strict-Transport-Security</span> <span class="string">"max-age=31536000"</span>;
+
+    <span class="comment"># Đảm bảo sử dụng phiên bản TLS đủ mạnh </span>
+    <span class="variable">ssl_protocols</span> <span class="variable">TLSv1.3</span>; 
+}</pre>
+                            <span class="red-bold">Apache</span>
+                            <pre class="code-block">
+<span class="comment"># Chuyển HTTP sang HTTPS</span>
+&lt;<span class="keyword">VirtualHost</span> <span class="variable">*:80</span>&gt;
+    <span class="variable">ServerName</span> <span class="string">example.com</span>
+    
+    <span class="variable">RewriteEngine</span> <span class="keyword">On</span>
+    <span class="variable">RewriteCond</span> %{HTTPS} <span class="string">off</span>
+    <span class="variable">RewriteRule</span> <span class="string">^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]</span>
+&lt;/<span class="keyword">VirtualHost</span>&gt;
+
+<span class="comment"># Tải SSL module</span>
+<span class="variable">LoadModule</span> <span class="variable">ssl_module</span> <span class="variable">modules/mod_ssl.so</span>
+
+<span class="comment"># Cấu hình cho SSL/TLS </span>
+&lt;<span class="keyword">VirtualHost</span> <span class="string">_default_:443</span>&gt;
+    <span class="variable">ServerName</span> <span class="string">example.com</span>
+
+    <span class="comment"># Sử dụng HSTS 1 năm ~ 31536000 giây.</span>
+    <span class="variable">Header</span> <span class="keyword">always set</span> <span class="string">Strict-Transport-Security "max-age=31536000"</span>
+
+    <span class="comment"># Setup SSL Engine </span>
+    <span class="variable">SSLEngine</span> <span class="keyword">on</span>
+
+    <span class="comment"># Sử dụng chứng chỉ số để mã hóa, </span>
+    <span class="comment"># và một cặp khóa bí mật để giải mã.</span>
+    <span class="variable">SSLCertificateFile</span> <span class="string">/path/to/your/certificate.crt</span>
+    <span class="variable">SSLCertificateKeyFile</span> <span class="string">/path/to/your/private-key.key</span>
+    
+    <span class="comment"># Đảm bảo sử dụng phiên bản TLS đủ mạnh</span>
+    <span class="variable">SSLProtocol</span> <span class="keyword">+TLSv1.3</span>
+
+    <span class="comment"># Cấu hình SSL/TLS khác (tùy ae)</span>
+    <span class="comment"># SSLCipherSuite, SSLHonorCipherOrder, SSLCompression, etc.</span>
+
+    <span class="comment"># Thông báo log</span>
+    <span class="variable">ErrorLog</span> <span class="string">"/var/log/httpd/error_log"</span>
+    <span class="variable">TransferLog</span> <span class="string">"/var/log/httpd/access_log"</span>
+&lt;/<span class="keyword">VirtualHost</span>&gt;</pre>
+                                
+
+
+                        </div>
+                        </p>
+
+
+
+                    </div>
+
+
+
+
+
+                    <br>
+
+                    <div class="moreinfo">
+                        <h2> <i class="fa-solid fa-info"></i> Thông tin thêm</h2>
+                        <p>
+                            Đây là một số bài viết hay ho mà mình thấy nên đọc thêm:
+                        </p>
+                        <ul class="styled-list">
+
+                            
+                            <li><i class="fa-solid fa-link"></i><a href="https://www.cloudflare.com/learning/ssl/what-is-ssl-stripping/" target="_blank">What is SSL Stripping?</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://www.cloudflare.com/learning/ssl/ssl-encryption/" target="_blank">What is SSL Encryption?</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://www.cloudflare.com/learning/ssl/ssl-tls-difference/" target="_blank">What is the difference between SSL and TLS?</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://www.cloudflare.com/learning/ssl/ssl-certificate/" target="_blank">What is an SSL Certificate?</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://www.cloudflare.com/learning/ssl/ssl-protocol/" target="_blank">What is the SSL Protocol?</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://www.cloudflare.com/learning/ssl/ssl-handshake/" target="_blank">What is an SSL Handshake?</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://www.cloudflare.com/learning/ssl/ssl-cipher-suites/" target="_blank">What are SSL Cipher Suites?</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://www.cloudflare.com/learning/ssl/ssl-terminology/" target="_blank">SSL Terminology</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://www.cloudflare.com/learning/ssl/ssl-secure-connection/" target="_blank">How to secure a connection with SSL/TLS</a></li>
+                          
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <footer class="bg-dark text-white text-center py-3">
+        <script>
+
+        </script>
+        <p>&copy; Clone lại thằng Hacksplaining | <a href="https://github.com/Baodeptraii"
+                class="text-white text-decoration-none">By Re3on</a></p>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"></script>
+    </footer>
+
+    <!-- Thêm Bootstrap JS và Popper.js -->
+
+</body>
+
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload Vulnerabilities
+
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/lessonstyle.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <header class="bg-success text-white py-5 text-center">
+        <div class="container text-center">
+            <h1 class="display-4">File Upload Vulnerabilities
+
+            </h1>
+            <a href="../../index.html" class="btn btn-light btn-lg mt-3">Back to Home</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Hiếm - Thỉnh thoảng - Thường xuyên -->
+        <!-- Khó - Trung bình - Dễ -->
+        <!-- Nhẹ - Trung bình - Nghiêm trọng -->
+
+        <div class="row row-box">
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Độ phổ biến</h3>
+                    <p>Thường xuyên</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Khả năng khai thác</h3>
+                    <p>Trung bình</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Ảnh hưởng</h3>
+                    <p>Trung bình</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Nội dung chính -->
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-16">
+
+                <div class="lesson-list p-4 shadow-sm bg-white rounded">
+
+                    <div class="what">
+                        <h2> <i class="fa-solid fa-magnifying-glass"></i>File Upload Vulnerabilities
+                            là gì ?</h2>
+                        <p>
+                            File Upload Vulnerabilities (Lỗ hổng tải lên tệp) là một cách dễ dàng để kẻ tấn công tải lên
+                            các tệp độc hại vào máy chủ. Những tệp này có thể chứa mã độc, mã thực thi hoặc các tập lệnh
+                            có thể gây hại cho hệ thống. Khi máy chủ xử lý các tệp này mà không kiểm tra kỹ lưỡng, kẻ
+                            tấn công có thể thực thi mã độc và chiếm quyền kiểm soát hệ thống.
+                            <br>Sau khi đã tải lên tệp thành công, bước tiếp theo của các hacker là cố tìm cách để thực
+                            thi chúng. Có nhiều cách để thực thi tệp tải lên, nhưng phổ biến nhất là thông qua các lỗ
+                            hổng <span class="bold">XSS (Cross-Site Scripting)</span> hoặc <span class="bold">RCE
+                                (Remote Code Execution)</span>. Các công ty lớn cũng
+                            thường xuyên bị tấn công bởi các lỗ hổng này, đặc biệt là các công ty có các dịch vụ tải tệp
+                            lên của người dùng hoặc các công ty có công nghệ và code đã quá cũ, không được bảo trì
+                            thường xuyên .
+                        </p>
+
+                        <pre class="code-block">
+Giả sử ta có một trang cho phép upload file nhé<form id="uploadForm"><label for="file">Chọn tệp:</label>
+
+<input type="file" id="file" name="file">
+
+<button type="submit">Tải lên</button></form><p style="font-size: medium" id="status"></p><span class="comment"><p style="font-size: medium" id="status2"></p></span></pre>
+
+
+                    </div>
+
+                    <br>
+
+                    <div class="how">
+                        <h2> <i class="fa-solid fa-shield-halved"></i>Cách để ngăn chặn File Upload Vulnerabilities</h2>
+                        <p> <span class="bold">Đảm bảo bất kỳ dữ liệu đầu vào nào cũng phải được xử lý.</span></p>
+
+
+
+                        <p class="red-bold">
+                            Segregate Your Uploads (Phân loại các tệp tải lên)
+                        </p>
+                        <p>
+                            Các loại tệp đã tải lên thường là các tệp "trơ" (tức là không thực thi được). Trừ khi ae
+                            đang xây dựng một trang web đặc biệt nào đó, nếu không, thường sẽ
+                            chỉ là các tệp hình ảnh, video hoặc tài liệu thay vì các đoạn mã thực thi. Nếu thế, hãy phân
+                            loại các tệp tải lên vào các thư mục riêng biệt dựa trên loại tệp. Ví dụ, hình ảnh có thể
+                            được lưu trữ trong một thư mục riêng, video trong một thư mục khác và tài liệu trong một thư
+                            mục khác nữa. Điều này giúp giảm thiểu rủi ro khi một loại tệp không mong muốn được tải lên
+                            và thực thi.
+                            <br>Ae có thể cân nhắc sử dụng lưu trữ đám mây để tách biệt hoàn toàn các file tải lên với
+                            server chính. Điều này giúp giảm thiểu rủi ro khi một file độc hại được tải lên và thực thi
+                            trên server.
+                        </p>
+                        </p>
+                        <p>
+                        <p class="red-bold">
+                            Ensure Upload Files Cannot Be Executed (Đảm bảo các tệp tải lên không thể thực thi)
+
+                        </p>
+                        <p>
+                            Đảm bảo rằng các tệp tải lên không thể thực thi trên máy chủ. Điều này có thể được thực hiện
+                            bằng cách thêm một số kiểm tra vào mã của ae để đảm bảo rằng tệp tải lên không thể thực thi.
+                            Server có quyền đọc và ghi vào các tệp tải lên, nhưng không thể thực thi chúng.
+                            Ví dụ, ae có thể kiểm tra phần mở rộng của tệp tải lên và từ chối tệp nếu phần mở rộng không
+                            phù hợp. Nếu ae đang dùng hệ điều hành họ Unix, hãy đảm bảo trong các tệp tải lên không chứa cờ hiệu "x" (thực thi) trong quyền của file.
+
+                        </p>
+
+                        <p class="red-bold">
+                            Rename Files on Upload (Đổi tên tệp khi tải lên)
+
+                        </p>
+                        <p>
+                            Việc đổi tên hoặc làm khó hiểu (obfuscate) tên tệp sau khi tải lên sẽ khiến kẻ tấn công khó tìm được tệp độc hại mà chúng đã tải lên. Thông thường, các tệp được tải lên sẽ được cung cấp lại qua HTTP, ví dụ như hình ảnh mà người dùng tải lên phải có thể hiển thị ở đâu đó trên trang web.
+                            Do đó, bạn nên triển khai một cơ chế truy xuất gián tiếp (indirection) khi hiển thị nội dung được tải lên trong trình duyệt. Cách này đảm bảo nội dung không bị tham chiếu trực tiếp bằng tên gốc từ lần tải lên ban đầu. Điều này giúp tăng cường bảo mật và giảm nguy cơ bị khai thác.
+                        </p>
+
+                        <p class="red-bold">
+                            Validate File Formats and Extensions (Xác thực định dạng và phần mở rộng của tệp)
+
+                        </p>
+                        <p>
+                            Tạo một danh sách cho phép (white-list) chỉ cho phép định dạng và phần mở rộng đúng yêu cầu được tải lên.
+                            Hãy nhớ thực hiện điều này ở phía máy chủ, không phải ở phía client. Kẻ tấn công có thể dễ dàng thay đổi phần mở rộng của tệp trước khi tải lên.
+                        </p>
+
+                        <p class="red-bold">
+                            Validate the Content-Type Header (Xác thực tiêu đề Content-Type)
+
+                        </p>
+                        <p>
+                            Xác thực tiêu đề Content-Type của tệp tải lên để đảm bảo rằng nó khớp với định dạng thực tế của tệp. Điều này giúp ngăn chặn các cuộc tấn công mà kẻ tấn công cố gắng tải lên các tệp độc hại bằng cách thay đổi tiêu đề Content-Type.
+                            ( Hãy cẩn thận các đoạn mã hoặc proxy đơn giản có thể giả mạo tiêu đề Content-Type, do đó cách này tuy hữu ích nhưng không đủ để ngăn chặn tất cả các cuộc tấn công)
+                        </p>
+
+                        <p class="red-bold">
+                            Other Considerations (Xem xét thêm)
+
+                        </p>
+                        <p>
+                            Để ngăn chặn các cuộc tấn công tải lên tệp, hãy xem xét các biện pháp bảo mật khác như:
+                            <ul class="styled-list-2" >
+                                <li>Giới hạn kích thước tệp tải lên</li>
+                                <li>Giới hạn số lượng tệp tải lên</li>
+                                <li>Giới hạn độ dài tên tệp tải lên</li>
+                                <li>Cẩn thận với các tệp tin bị nén</li>
+                                <li>Chạy các công cụ quét mã độc trên tệp tải lên</li>
+
+                            </ul>
+                        </p>
+
+                    </div>
+
+                    <br>
+
+                    <div class="moreinfo">
+                        <h2> <i class="fa-solid fa-info"></i> Thông tin thêm</h2>
+                        <p>
+                            Đây là một số bài viết hay ho mà mình thấy nên đọc thêm:
+                        </p>
+                        <ul class="styled-list" >
+                            <li><i class="fa-solid fa-link"></i><a href="https://owasp.org/www-community/vulnerabilities/Unrestricted_File_Upload" target="_blank">OWASP - Unrestricted File Upload</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://portswigger.net/web-security/file-upload" target="_blank">PortSwigger - File Upload</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://www.acunetix.com/blog/articles/file-upload-vulnerabilities/" target="_blank">Acunetix - File Upload Vulnerabilities</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <footer class="bg-dark text-white text-center py-3">
+        <script>
+            document.getElementById('uploadForm').addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                const fileInput = document.getElementById('file');
+                const file = fileInput.files[0];
+
+                if (file) {
+                    // Giả lập tải lên
+                    document.getElementById('status').innerText = `Tệp "${file.name}" đã được tải lên.`;
+                    // Hiển thị thông tin tệp ra trang
+                    const fileInfo = document.createElement('p');
+                    fileInfo.style.fontSize = '16px'; // Giảm kích thước chữ
+                    fileInfo.innerText = `Tên tệp: ${file.name}, Kích thước: ${file.size} bytes, Loại: ${file.type}`;
+                    document.getElementById('status').appendChild(fileInfo);
+                    document.getElementById('status2').innerText = `Ae có thể thấy, người dùng có thể tải lên bất kì loại/kiểu file nào mà họ muốn
+điều này có thể dẫn đến việc tải lên các file độc hại và thực thi chúng trên server.`;
+
+
+                } else {
+                    document.getElementById('status').innerText = "Hãy chọn một tệp.";
+                }
+
+            });
+        </script>
+        <p>&copy; Clone lại thằng Hacksplaining | <a href="https://github.com/Baodeptraii"
+                class="text-white text-decoration-none">By Re3on</a></p>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"></script>
+    </footer>
+
+    <!-- Thêm Bootstrap JS và Popper.js -->
+
+</body>
+
+</html>

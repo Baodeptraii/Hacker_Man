@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reflected XSS
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/lessonstyle.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <header class="bg-success text-white py-5 text-center">
+        <div class="container text-center">
+            <h1 class="display-4">Reflected XSS
+            </h1>
+            <a href="../../index.html" class="btn btn-light btn-lg mt-3">Back to Home</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Hiếm - Thỉnh thoảng - Thường xuyên -->
+        <!-- Khó - Trung bình - Dễ -->
+        <!-- Nhẹ - Trung bình - Nghiêm trọng -->
+
+        <div class="row row-box">
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Độ phổ biến</h3>
+                    <p>Thường xuyên</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                        <i class="fa-solid fa-virus fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Khả năng khai thác</h3>
+                    <p>Dễ</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                        <i class="fa-solid fa-wrench fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <h3>Ảnh hưởng</h3>
+                    <p>Trung bình</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                        <i class="fa-solid fa-skull fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Nội dung chính -->
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-16">
+
+                <div class="lesson-list p-4 shadow-sm bg-white rounded">
+
+                    <div class="what">
+                        <h2> <i class="fa-solid fa-magnifying-glass"></i>Reflected XSS là gì ?<a href="../demos/demo8.html">Demo</a ></h2>
+                        <p>
+                            Cũng là một dạng tấn công XSS, so với Stored XSS, Reflected XSS không lưu trữ mã độc hại
+                            trên máy chủ mà thay vào đó, mã độc hại được "phản chiếu" (Reflected) từ người dùng đến
+                            người dùng khác thông qua các trang web hoặc ứng dụng web.
+                            Tuy <span class="bold">ít nguy hiểm hơn</span> so với Stored XSS, Reflected XSS lại <span
+                                class="bold">phổ biến hơn</span> nhiều.
+                            Bất kì một trang web nào yêu cầu lấy tham số được truyền từ GET hoặc POST và hiển thị nó
+                            trên trang web mà không kiểm tra cẩn thận đều có thể bị tấn công bởi Reflected XSS.
+                            Nếu trang web của ae không xử lí các tham số ở chuỗi truy vấn sẽ tạo điều kiện cho kẻ tấn
+                            công chèn mã độc hại vào URL và gửi cho người dùng khác như các đường link qua mail, MXH
+                            ...<br>
+                            Các lỗ hổng Reflected XSS thường được sử dụng để tấn công người dùng cuối, thường là thông
+                            qua các trang web hoặc ứng dụng web. Hãy đặc biệt cẩn thân khi kiểm tra các trang web kiểu
+                            như sau:
+                        <ul style="list-style-type: none;">
+                            <li><span class="bold">Trang web tìm kiếm</span>: Nội dung tìm kiếm có được hiển thị lại không ? Có được ghi lại trong
+                                tiêu đề trang không ? </li>
+                            <li><span class="bold">Các trang lỗi</span>: Nếu có thông báo lỗi về đầu vào không hợp lệ,
+                                đầu vào có được thoát đúng cách khi hiển thị lại cho người dùng không ? Trang 404 Not
+                                Found có hiển thị lại đường dẫn mà người dùng đang tìm kiếm không ?</li>
+                            <li><span class="bold">Những trang gửi form (đăng ký, đăng nhập ... )</span>: Nếu một trang
+                                POST dữ liệu, một phần thông tin đã gửi có hiển thị lại không ? Nếu thực hiện không
+                                thành công thì nội dung có hiển thị lại không ?</li> </ul>
+                            </p>
+                        <p>Cố gắng trả lời các câu hỏi trên để phòng tránh Reflected XSS nhé ae ;) </p>
+
+
+                    </div>
+
+                    <br>
+
+                    <div class="how">
+                        <h2> <i class="fa-solid fa-shield-halved"></i>Cách để ngăn chặn Reflected XSS</h2>
+
+                        <p>
+                            <span class="bold">Be sure to check all pages on your site, whether they write to the data store or not!
+                            </span><br>
+                            Tạm dịch: "Hãy chắc chắn kiểm tra tất cả các trang trên trang web của bạn, dù chúng có được ghi vào cơ sở dữ liệu hay không!" <br>
+                            Thật ra phần này là nó y hệt thằng Stored XSS được đề cập ở bài số 2 ấy :v </p>
+
+                        <p class="red-bold">
+                            Escape Dynamic Content (Thoát khỏi nội dung động)
+                        </p>
+                        <p>
+                            Thường các web được xây dựng bằng HTML, được mô tả trong các tệp mẫu (template), với các nội
+                            dung động được thêm vào từ cơ sở dữ liệu hoặc từ người dùng khi trang hiển thị.
+                            Các cuộc tấn công XSS lưu trữ (stored XSS) lợi dụng việc xử lí không đúng nội dung động từ
+                            cơ sở dữ liệu backend. Kẻ tấn công lợi dụng một trường có thể chỉnh sửa được
+                            từ phía người dùng (điền thông tin, tìm kiếm, ... ) để chèn mã độc. Khi có người dùng khác
+                            truy cập vào trường đó, mã độc sẽ được thực thi.<br>
+                            Ví dụ về HTML thô (raw HTML):
+                        </p>
+
+                        <pre class="code-block">
+<span class="">&lt;h1&gt;Hello, anh em&lt;/h1&gt;</span>
+<span>&lt;a href="javascript:alert('Bạn đã bị hack ;0 ')"&gt;click me&lt;/a&gt;</span>
+<span class="comment">\\ Đầu tiên ae thử nhập cái gì đó, sau đó hãy nhập 2 dòng code trên vào ô phía dưới thử xem. </span>
+<form id="xssForm" onsubmit="return saveInput()">
+<label for="userInput">Nhập nội dung:</label>
+<input type="text" id="userInput" name="userInput" style="width: 200px;"><button type="submit">Submit</button></form>
+Nội dung vừa nhập<div id="output"></div></pre>
+
+
+                        <p>Thế nên là ae phải thoát khỏi các nội dung động trước khi gửi chúng để trình duyệt xử lí nó
+                            như là nội dung của thẻ HTML, không phải HTML thô.
+                            Cách tốt nhất để làm điều này là sử dụng hàm <span class="bold">escapeHTML()</span> để
+                            chuyển các ký tự đặc biệt thành các thẻ HTML, hoặc mã hóa các kí tự đặc biệt như sau:
+                            ( thực tế để hiển thị các dấu "<" hay ">" trên đoạn code mẫu kia, mình đã mã hóa nó như bảng
+                                dưới r đấy ) <table>
+                                <tr>
+                                    <th>Character</th>
+                                    <th>Encoding</th>
+                                </tr>
+                                <tr>
+                                    <td>&lt;</td>
+                                    <td>&amp;#60</td>
+                                </tr>
+                                <tr>
+                                    <td>&gt;</td>
+                                    <td>&amp;#62</td>
+                                </tr>
+                                <tr>
+                                    <td>&amp;</td>
+                                    <td>&amp;#38</td>
+                                </tr>
+                                <tr>
+                                    <td>&quot;</td>
+                                    <td>&amp;#34</td>
+                                </tr>
+                                <tr>
+                                    <td>&#39;</td>
+                                    <td>&amp;#39</td>
+                                </tr>
+                                </table>
+                        </p>
+
+
+
+                        <p>Hầu hết các framework xịn xịn bây giờ thì đã có thể tự thoát khỏi nội dung động theo mặc định
+                            rồi. Với phương pháp này, các nội dung mã độc sẽ
+                            không bao giờ được thực thi trên trình duyệt của người dùng. Điều này gần như đã chặn đứng
+                            phần lớn các cuộc tấn công XSS rồi đấy ae ạ.
+                        </p>
+
+                        <p class="red-bold">
+                            Allowlist Values (Sử dụng các giá trị trong danh sách cho phép)
+                        </p>
+                        <p>Nếu các giá trị có thể biết trước cụ thể, kiểu như là tên quốc gia, thành phố, quận, huyện...
+                            thì tốt nhất nên làm một cái danh sách lựa chọn thay
+                            vì yêu cầu người dùng nhập chính xác. Điều này hạn chế tối đa việc kẻ tấn công có thể trực
+                            tiếp đưa các mã độc vào.</p>
+
+                        <p class="red-bold">
+                            Implement a Content-Security Policy ( Thực thi chính sách bảo mật nội dung)
+                        </p>
+                        <p>Những trình duyệt có hỗ trợ chính sách bảo mật nội dung ( Content-Security Policy) sẽ giúp ae
+                            kiểm soát vị trí có thể thực thi các đoạn mã Javascript ( và các tài nguyên khác)
+                            Như đã nói phần trên, các cuộc tấn công XSS dựa vào việc có thể chèn các đoạn mã độc hại
+                            trên trang web người dùng hoặc lừa trình duyệt thực thi chúng từ một bên thứ ba.<br>
+                            Bằng cách đặt các chính sách bảo mật trong phần header của trang web, ae có thể kiểm soát
+                            được việc thực thi các đoạn mã Javascript từ các nguồn không tin cậy.
+                        </p>
+                        <pre class="code-block">
+<span class="class-name">Content-Security-Policy</span>: script-src 'self' https://apis.google.com</pre>
+
+                        <p>
+                            Hoặc việc đưa ra danh sách URLs cho phép thực thi cũng là một cách tốt để bảo vệ trang web
+                            khỏi các cuộc tấn công XSS.
+                        </p>
+                        <pre class="code-block">
+&lt;meta <span class="class-name">http-equiv</span>=<span class="string">"Content-Security-Policy"</span>
+      <span class="class-name">content</span>=<span class="string">"script-src 'self' https://apis.google.com"</span>&gt;</pre>
+                        <pre class="code-block">
+<span class="comment">// Trình duyệt có thể thông báo cho bạn bất kì các vi phạm chính sách nào</span>
+<span class="class-name">Content-Security-Policy-Report-Only</span>: script-src 'self'; report-uri https://example.com/csr-reports</pre>
+
+                    </div>
+
+                    <br>
+
+                    <div class="moreinfo">
+                        <h2> <i class="fa-solid fa-info"></i> Thông tin thêm</h2>
+                        <p>
+                            Đây là một số bài viết hay ho mà mình thấy nên đọc thêm:
+                        </p>
+                        <ul class="styled-list">
+                            <li><i class="fa-solid fa-link"></i><a href="https://portswigger.net/web-security/cross-site-scripting" target="_blank">Cross-site
+                                    Scripting (XSS) 01</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://owasp.org/www-community/attacks/xss/" target="_blank">Cross-site
+                                    Scripting (XSS) 02</a></li>
+                            <li><i class="fa-solid fa-link"></i><a href="https://www.cloudflare.com/learning/security/threats/xss/" target="_blank">Cross-site
+                                    Scripting (XSS 03)</a></li>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <footer class="bg-dark text-white text-center py-3">
+        <script>
+            function saveInput() {
+                const userInput = document.getElementById('userInput').value;
+                const output = document.getElementById('output');
+
+                // Lưu và hiển thị nội dung mà không mã hóa (raw HTML) => dễ bị XSS
+                output.innerHTML = userInput;
+
+                // Ngăn chặn reload form
+                return false;
+            }
+        </script>
+        <p>&copy; Clone lại thằng Hacksplaining | <a href="https://github.com/Baodeptraii"
+                class="text-white text-decoration-none">By Re3on</a></p>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"></script>
+    </footer>
+
+    <!-- Thêm Bootstrap JS và Popper.js -->
+
+</body>
+
+</html>
